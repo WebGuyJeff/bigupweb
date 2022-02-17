@@ -1,2 +1,2 @@
-# bigupweb.uk
-A website for Bigup Web
+# Bigup Web
+A website for bigupweb.uk
