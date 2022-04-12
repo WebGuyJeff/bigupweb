@@ -6,8 +6,6 @@ import { StaticImage } from "gatsby-plugin-image"
 import {   
     container,
     heading,
-    navLinks,
-    navLinkItem,
     navLinkText,
     siteTitle
 } from './layout.module.css'
@@ -25,32 +23,13 @@ const Layout = ({ pageTitle, children }) => {
                     <StaticImage
                         className="logo"
                         alt="Bigup Web Logo"
-                        src="../static/logo/bigup-web-logo-wide.png"
+                        src="../../static/logo/bigup-web-logo-wide.png"
                         loading="eager"
                         transformOptions={{ fit: "inside" }}
                         height={logoHeight}
                     />
                 </Link>
             </header>
-            <nav>
-                <ul className={navLinks}>
-                    <li className={navLinkItem}>
-                        <Link to="/" className={navLinkText}>
-                            Home
-                        </Link>
-                    </li>
-                    <li className={navLinkItem}>
-                        <Link to="/about" className={navLinkText}>
-                            About
-                        </Link>
-                    </li>
-                    <li className={navLinkItem}>
-                        <Link to="/blog" className={navLinkText}>
-                            Blog
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
             <main>
                 <h1 className={heading}>{pageTitle}</h1>
                 {children}

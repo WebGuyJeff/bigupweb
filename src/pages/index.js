@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from '../components/layout'
+import Layout from '../components/layout-no-nav'
 import {
     useStaticQuery,
     graphql
@@ -31,12 +31,13 @@ const Home = () => {
             </p>
             <br />
             <p>
-                👷 We have a brand new home in the works, but that doesn't mean we aren't still cooking
-                up the web!
+				👋 Hi! If you're a client of Jeff's don't worry. Jeff is the driving force behind
+				Bigup Web and you can find his website in the <a href="https://jeffersonreal.uk">usual place</a>.
             </p>
-            <p>
-                ✉️ <a href="mailto:jeff@bigupweb.uk">Send us an email</a> so we can get your web idea
-                off the ground. 
+			<p>
+                👷 Bigup Web has a brand new home in the works, but we are business as usual!
+				Please <a href="mailto:jeff@bigupweb.uk">send us an email</a> so we can get your web
+				idea off the ground.
             </p>
             <p>
                 🔗 Bookmark this page to see our new home come to life over the coming weeks.
