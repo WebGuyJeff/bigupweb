@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from '../components/layout-no-nav'
+import Layout from '../components/LayoutNoNav'
 import {
     useStaticQuery,
     graphql

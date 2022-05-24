@@ -11,6 +11,7 @@ import {
     navLinkText,
     siteTitle
 } from './layout.module.css'
+const logoUri = "../../static/logo/bigup-web-logo-wide.png"
 
 const Layout = ({ pageTitle, children }) => {
 
@@ -25,7 +26,7 @@ const Layout = ({ pageTitle, children }) => {
                     <StaticImage
                         className="logo"
                         alt="Bigup Web Logo"
-                        src="../static/logo/bigup-web-logo-wide.png"
+                        src={logoUri}
                         loading="eager"
                         transformOptions={{ fit: "inside" }}
                         height={logoHeight}
