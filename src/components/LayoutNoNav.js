@@ -8,7 +8,7 @@ import {
     heading,
     navLinkText,
     siteTitle
-} from './layout.module.scss'
+} from './Layout/layout.module.scss'
 
 const Layout = ({ pageTitle, children }) => {
 

@@ -11,7 +11,7 @@ import {
     navLinkText,
     siteTitle
 } from './layout.module.scss'
-import Footer from "./Footer/Footer"
+import Footer from "../Footer/Footer"
 
 const logoUri = "../../static/logo/bigup-web-logo-wide.png"
 

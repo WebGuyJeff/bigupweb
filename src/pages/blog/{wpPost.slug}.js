@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import WpPostTemplate from "../../templates/WpPostTemplate"
 import Seo from "../../components/SEO"
-import Layout from "../../components/Layout"
+import Layout from "../../components/Layout/Layout"
 import PropTypes from "prop-types"
 
 const WpPost = ({ data: { wpPost } }) => {
