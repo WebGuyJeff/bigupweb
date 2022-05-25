@@ -94,7 +94,7 @@ export const PostItemStyles = styled(Link)`
 
 		a {
 			text-decoration: none;
-			color: #fff;
+			color: inherit;
 		}
 
 		.blogitem__meta {

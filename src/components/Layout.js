@@ -10,7 +10,9 @@ import {
     navLinkItem,
     navLinkText,
     siteTitle
-} from './layout.module.css'
+} from './layout.module.scss'
+import Footer from "./Footer/Footer"
+
 const logoUri = "../../static/logo/bigup-web-logo-wide.png"
 
 const Layout = ({ pageTitle, children }) => {
@@ -56,6 +58,7 @@ const Layout = ({ pageTitle, children }) => {
                 <h1 className={heading}>{pageTitle}</h1>
                 {children}
             </main>
+			<Footer />
         </div>
     )
 }

@@ -7,22 +7,23 @@ require("dotenv").config({
 	path: `.env.${process.env.NODE_ENV}`,
 })
 module.exports = {
-    siteMetadata: {
-      title: `Bigup Web`,
-      description: `Exciting, Bold, and Downright Different Web Development`,
-	  author: "Jefferson Real",
-	  twitterUsername: "bigupweb",
-	  facebookUsername: "bigupweb",
-	  instagramUsername: "bigupweb",
-	  linkedinUsername: "bigupweb",
-	  image: "/static/logo/bigup-web-logo-wide.png",
-	  siteUrl: "https://bigupweb.uk",
-	  developerName: "Jefferson Real",
-	  developerUrl: "https://jeffersonreal.uk",
+	siteMetadata: {
+		title: `Bigup Web`,
+		description: `Exciting, Bold, and Downright Different Web Development`,
+		author: "Jefferson Real",
+		twitterUsername: "bigupweb",
+		facebookUsername: "bigupweb",
+		instagramUsername: "bigupweb",
+		linkedinUsername: "bigupweb",
+		image: "/static/logo/bigup-web-logo-wide.png",
+		siteUrl: "https://bigupweb.uk",
+		developerName: "Jefferson Real",
+		developerUrl: "https://jeffersonreal.uk",
 	},
     plugins: [
         `gatsby-plugin-image`,
         `gatsby-plugin-sharp`,
+		`gatsby-plugin-sass`,
         `gatsby-transformer-sharp`,
 		{
 			resolve: `gatsby-source-wordpress`,
@@ -63,8 +64,8 @@ module.exports = {
 				},
 				debug: {
 					graphql: {
-					  writeQueriesToDisk: true,
-					  showQueryOnError: true,
+						writeQueriesToDisk: true,
+						showQueryOnError: true,
 					},
 				},
 			},
