@@ -1,0 +1,23 @@
+
+
+.blogsingle {
+	padding: var(--sectionMargin) var(--borderSpacing) 0 var(--borderSpacing);
+	max-width: 750px;
+	margin: 0 auto;
+	box-sizing: content-box;
+
+
+	&__title {
+		font-size: var(--h2);
+		font-weight: 700;
+	}
+
+	&__content {
+		border-top: 2px solid var(--primary);
+		padding-top: calc(var(--gap));
+	}
+
+	&__back {
+		padding-top: var(--gap);
+	}
+}

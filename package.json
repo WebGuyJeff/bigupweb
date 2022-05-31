@@ -20,6 +20,12 @@
     "url": "https://github.com/bigupjeff/bigupweb/issues"
   },
   "homepage": "https://github.com/bigupjeff/bigupweb#readme",
+  "browserslist": [
+	">0.2%",
+	"not dead",
+	"not ie <= 11",
+	"not op_mini all"
+  ],
   "dependencies": {
     "dotenv": "^16.0.1",
     "gatsby": "^4.15.0",

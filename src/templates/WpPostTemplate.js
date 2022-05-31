@@ -1,16 +1,30 @@
 import React from "react"
 import { Link } from "gatsby"
 import Button from "../components/Button/Button"
-import { PostSingleStyles } from "../components/Post/PostStyles"
 import WpLatestPosts from "../components/Post/WpLatestPosts"
 
+
+import {
+	blogsingle
+} from './WpPostTemplate.module.scss'
+
+console.log(blogsingle)
+
+
 const WpPostTemplate = (wordpressPost) => {
-	const { title, date, content } = wordpressPost
+
+const { 
+	title,
+	date,
+	excerpt,
+	content
+} = wordpressPost
+
 	return (
 		<>
 			<section>
-				<PostSingleStyles>
-					{title && <h1 className="blogsingle__title">{title}</h1>}
+				<article className={blogsingle}>
+					{title && <h1 className={blogsingle.__title}>{title}</h1>}
 					{date && (
 						<p className="blogsingle__date">Posted on {date}</p>
 					)}
@@ -29,7 +43,7 @@ const WpPostTemplate = (wordpressPost) => {
 							</div>
 						</article>
 					)}
-				</PostSingleStyles>
+				</article>
 			</section>
 			<WpLatestPosts title="Further reading from WordPress" />
 		</>
