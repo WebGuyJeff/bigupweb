@@ -2,23 +2,14 @@ import React from "react"
 import { Link } from "gatsby"
 import Button from "../components/Button/Button"
 import WpLatestPosts from "../components/Post/WpLatestPosts"
-
+import PropTypes from "prop-types"
 
 import {
 	blogsingle
 } from './WpPostTemplate.module.scss'
 
-console.log(blogsingle)
 
-
-const WpPostTemplate = (wordpressPost) => {
-
-const { 
-	title,
-	date,
-	excerpt,
-	content
-} = wordpressPost
+const WpPostTemplate = ( { title, date, excerpt, content } ) => {
 
 	return (
 		<>
@@ -48,6 +39,13 @@ const {
 			<WpLatestPosts title="Further reading from WordPress" />
 		</>
 	)
+}
+
+WpPostTemplate.propTypes = {
+	title:   PropTypes.string.isRequired,
+	date:    PropTypes.string,
+	excerpt: PropTypes.string,
+	content: PropTypes.string.isRequired
 }
 
 export default WpPostTemplate
