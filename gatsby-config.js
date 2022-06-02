@@ -26,6 +26,13 @@ module.exports = {
 		`gatsby-plugin-sass`,
         `gatsby-transformer-sharp`,
 		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `logo`,
+				path: `${__dirname}/static/logo/`,
+			},
+		},
+		{
 			resolve: `gatsby-source-wordpress`,
 			options: {
 				url: process.env.WP_GRAPHQL_ENDPOINT_URL,

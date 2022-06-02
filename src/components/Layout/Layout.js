@@ -1,8 +1,7 @@
 import * as React from 'react'
-import {
-    Link
-} from 'gatsby'
+import { Link } from 'gatsby'
 import { StaticImage } from "gatsby-plugin-image"
+import PropTypes from "prop-types"
 import {   
     container,
     heading,
@@ -13,7 +12,7 @@ import {
 } from './layout.module.scss'
 import Footer from "../Footer/Footer"
 
-const logoUri = "../../static/logo/bigup-web-logo-wide.png"
+const logoRelativePath = "../../static/logo/bigup-web-logo-wide.png"
 
 const Layout = ({ pageTitle, children }) => {
 
@@ -28,7 +27,7 @@ const Layout = ({ pageTitle, children }) => {
                     <StaticImage
                         className="logo"
                         alt="Bigup Web Logo"
-                        src={logoUri}
+                        src={logoRelativePath}
                         loading="eager"
                         transformOptions={{ fit: "inside" }}
                         height={logoHeight}
@@ -63,6 +62,11 @@ const Layout = ({ pageTitle, children }) => {
 			<Footer />
         </div>
     )
+}
+
+Layout.propTypes = {
+	pageTitle: PropTypes.PropTypes.string,
+	children: PropTypes.PropTypes.node.isRequired
 }
 
 export default Layout
