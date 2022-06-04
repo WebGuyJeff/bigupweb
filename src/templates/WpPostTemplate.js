@@ -9,7 +9,7 @@ import {
 } from './WpPostTemplate.module.scss'
 
 
-const WpPostTemplate = ( { title, date, excerpt, content } ) => {
+const WpPostTemplate = ( { title, date, content } ) => {
 
 	return (
 		<>

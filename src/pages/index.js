@@ -4,45 +4,50 @@ import {
     useStaticQuery,
     graphql
 } from 'gatsby'
+import Seo from "../components/SEO"
 
 const Home = () => {
 
     const data = useStaticQuery(graphql`
-        query {
-            site {
-                siteMetadata {
-                    description
-                    title
-                }
-            }
-        }
+		query QuerySiteMeta {
+			wp {
+				generalSettings {
+					title
+					description
+				}
+			}
+		}
     `)
 
+	const seoTitle = data.wp.generalSettings.description + ' | ' + data.wp.generalSettings.title
+
     return (
-        <Layout 
-            pageTitle={data.site.siteMetadata.description}
-        >
-            <title>{data.site.siteMetadata.description} | {data.site.siteMetadata.title}</title>
-            <br />
-            <br />
-            <h1>Welcome to Bigup Web!</h1>
-            <p>
-                Here we specialise in making memorable web sites and web apps that just work.
-            </p>
-            <br />
-            <p>
-				👋 Hi! If you're a client of Jeff's don't worry. Jeff is the driving force behind
-				Bigup Web and you can find his website in the <a href="https://jeffersonreal.uk">usual place</a>.
-            </p>
-			<p>
-                👷 Bigup Web has a brand new home in the works, but we are business as usual!
-				Please <a href="mailto:jeff@bigupweb.uk">send us an email</a> so we can get your web
-				idea off the ground.
-            </p>
-            <p>
-                🔗 Bookmark this page to see our new home come to life over the coming weeks.
-            </p>
-        </Layout>
+		<>
+			<Seo title={seoTitle} />
+			<Layout 
+				pageTitle={data.wp.generalSettings.description}
+			>
+				<br />
+				<br />
+				<h1>Welcome to Bigup Web!</h1>
+				<p>
+					Here we specialise in making memorable web sites and web apps that just work.
+				</p>
+				<br />
+				<p>
+					👋 Hi! If you're a client of Jeff's don't worry. Jeff is the driving force behind
+					Bigup Web and you can find his website in the <a href="https://jeffersonreal.uk">usual place</a>.
+				</p>
+				<p>
+					👷 Bigup Web has a brand new home in the works, but we are business as usual!
+					Please <a href="mailto:jeff@bigupweb.uk">send us an email</a> so we can get your web
+					idea off the ground.
+				</p>
+				<p>
+					🔗 Bookmark this page to see our new home come to life over the coming weeks.
+				</p>
+			</Layout>
+		</>
     )
 }
 
