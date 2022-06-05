@@ -1,72 +1,59 @@
 :root {  
-  --bannerTitle: 34px;
-  --borderSpacing: 30px;
-  --menuWidth: 100vw;
-  --blockquote: 20px;
-  --inActive: #555;
-  --letterSpacing: -0.075rem;
-  --boxShadow: 0px 15px 22px 3px rgba(0, 0, 0, 0.55);
-  --textShadow: 0px 0px 5px rgba(0, 0, 0, 1);
-  --p: 14px;
-  --h2: 20px;
-  --h3: 19px;
-  --h4: 18px;
-  --h5: 17px;
-  --h6: 16px;
-  --gap: 40px;
-  --sectionMargin: 60px;
+	--borderSpacing: 30px;
+	--menuWidth: 100vw;
+	--blockquote: 20px;
+	--inActive: #555;
+	--letterSpacing: -0.075rem;
+	--boxShadow: 0px 15px 22px 3px rgba(0, 0, 0, 0.55);
+	--textShadow: 0px 0px 5px rgba(0, 0, 0, 1);
+	--gap: 40px;
+	--sectionMargin: 60px;
 
-  /* use as rgba(var(--theme), 1) */
-  --theme_background: 255, 255, 255;
-  --theme_foreground: 36, 36, 36;
-  --theme_primary: 233, 0, 128;
+	/* Font sizes */
+	--display-1: calc(1.625rem + 4.5vw);
+	--display-2: calc(1.575rem + 3.9vw);
+	--display-3: calc(1.525rem + 3.3vw);
+	--display-4: calc(1.475rem + 2.7vw);
+	--display-5: calc(1.425rem + 2.1vw);
+	--display-6: calc(1.375rem + 1.5vw);
+	--h1: calc(1.375rem + 1.5vw);
+	--h2: calc(1.325rem + .9vw);
+	--h3: calc(1.3rem + .6vw);
+	--h4: calc(1.275rem + .3vw);
+	--h5: 1.25rem;
+	--h6: 1rem;
+	--small: 0.85rem;
+	--xsmall: 0.7rem;
 
-  @media(min-width:375px) {
-    --bannerTitle: 36px;    
-    --h2: 22px;
-    --h3: 21px;
-    --h4: 20px;
-    --h5: 19px;
-    --h6: 18px;
-    --sectionMargin: 80px;
-  }
+	/* use as rgba(var(--theme), 1) */
+	--theme_background: 255, 255, 255;
+	--theme_foreground: 36, 36, 36;
+	--theme_primary: 233, 0, 128;
 
-  @media(min-width:414px) {
-    --bannerTitle: 40px;    
-    --h2: 27px;
-    --h3: 25px;
-    --h4: 23px;
-    --h5: 21px;
-    --h6: 20px;
-  }
-
-  @media(min-width:768px) {
-    --bannerTitle: 46px;    
-    --blockquote: 26px;
-    --p: 15px;
-    --h2: 30px;
-    --h3: 28px;
-    --h4: 26px;
-    --h5: 24px;
-    --h6: 22px;
-    --sectionMargin: 100px;
-  }
-
-  @media(min-width:1024px) {
-    --borderSpacing: 75px;
-    --p: 16px;
-    --h2: 36px;
-    --h3: 32px;
-    --h4: 29px;
-    --h5: 27px;
-    --h6: 25px;
-    --sectionMargin: 180px;
-  }
-
-  @media(min-width:1200px) {
-    --p: 17px;
-  }
+	font-size: 1rem;
 }
+
+@media (min-width:1200px) {
+	:root {
+		--display-1: 5rem;
+		--display-2: 4.5rem;
+		--display-3: 4rem;
+		--display-4: 3.5rem;
+		--display-5: 3rem;
+		--display-6: 2.5rem;
+		--h1: 2.5rem;
+		--h2: 2rem;
+		--h3: 1.75rem;
+		--h4: 1.5rem;
+	}
+}
+
+@media (min-width:1536px) {
+	:root {
+		font-size: 1.125rem;
+  	}
+}
+
 
 * {
     box-sizing: border-box;
@@ -82,7 +69,6 @@ body {
     background-color: rgba(var(--theme_background), 1);
     color: rgba(var(--theme_foreground), 1);
     overflow-x: hidden;
-    font-size: var(--p);
 }
 
 h1,
@@ -107,7 +93,7 @@ h6 {
 }
 
 h1 {
-    font-size: var(--bannerTitle);
+    font-size: var(--h1);
 }
 
 h2 {

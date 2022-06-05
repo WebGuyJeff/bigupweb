@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from '../components/LayoutNoNav'
+import Layout from '../components/Layout/Layout'
 import {
     useStaticQuery,
     graphql
@@ -27,13 +27,10 @@ const Home = () => {
 			<Layout 
 				pageTitle={data.wp.generalSettings.description}
 			>
-				<br />
-				<br />
-				<h1>Welcome to Bigup Web!</h1>
 				<p>
-					Here we specialise in making memorable web sites and web apps that just work.
+					Welcome to Bigup Web where we specialise in making memorable web sites and web
+					apps that just work.
 				</p>
-				<br />
 				<p>
 					👋 Hi! If you're a client of Jeff's don't worry. Jeff is the driving force behind
 					Bigup Web and you can find his website in the <a href="https://jeffersonreal.uk">usual place</a>.
