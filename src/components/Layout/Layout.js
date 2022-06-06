@@ -12,7 +12,7 @@ import {
 } from './layout.module.scss'
 import Footer from "../Footer/Footer"
 
-const logoRelativePath = "../../static/logo/bigup-web-logo-wide.png"
+const logoRelativePath = "../../../static/logo/bigup-web-logo-wide.png"
 
 const Layout = ({ pageTitle, children }) => {
 

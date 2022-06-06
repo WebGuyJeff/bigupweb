@@ -25,13 +25,28 @@ module.exports = {
         `gatsby-plugin-sharp`,
 		`gatsby-plugin-sass`,
         `gatsby-transformer-sharp`,
+		`gatsby-plugin-react-helmet`,
+		`gatsby-plugin-offline`,
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
-				name: `logo`,
-				path: `${__dirname}/static/logo/`,
+				name: `assets`,
+				path: `${__dirname}/content/assets`,
 			},
 		},
+		{
+			// See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
+			resolve: `gatsby-plugin-manifest`,
+			options: {
+				name: `Bigup Web`,
+				short_name: `Bigup Web`,
+				start_url: `/`,
+				background_color: `#ffffff`,
+				theme_color: `#e90080`,
+				display: `minimal-ui`,
+				icon: `content/assets/bigupweb-icon.png`,
+			},
+		},	
 		{
 			resolve: `gatsby-source-wordpress`,
 			options: {
@@ -44,14 +59,14 @@ module.exports = {
 					}
 				},
 				verbose: true,
-				searchAndReplace: [
-					{
-						// This is a regex search and replace rule to find any occurances of the
-						// WordPress source URL and replace it with the URL of the Gatsby site.
-						search: process.env.WP_SOURCE_BASE_URL,
-						replace: process.env.GATSBY_WEBSITE_URL,
-					},
-				],
+//				searchAndReplace: [
+//					{
+//						// This is a regex search and replace rule to find any occurances of the
+//						// WordPress source URL and replace it with the URL of the Gatsby site.
+//						search: process.env.WP_SOURCE_BASE_URL,
+//						replace: process.env.GATSBY_WEBSITE_URL,
+//					},
+//				],
 				html: {
 					// Causes the source plugin to find/replace images in html with Gatsby images.
 					useGatsbyImage: true,
