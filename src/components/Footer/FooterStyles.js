@@ -91,7 +91,7 @@ export const FooterMenuStyles = styled.div`
 			}
 
 			li {
-				font-size: var(--h6);
+				font-size: var(--h4);
 				margin-right: 8px;
 
 				@media (min-width: 768px) {

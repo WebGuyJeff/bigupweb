@@ -1,0 +1,64 @@
+
+.header {
+	padding: var(--gap) var(--borderSpacing) 0 var(--borderSpacing);
+
+	img {
+		height: 80px;
+	}
+
+	nav {
+		font-size: 1.25em;
+
+		ul {
+			margin-top: var(--gap);
+			margin-bottom: var(--gap);
+			display: flex;
+			flex-flow: row wrap;
+	
+			li {
+				margin-top: 5px;
+				margin-bottom: 5px;
+		
+				a {
+					color: var(--bodyColor);
+					text-decoration: none;
+					text-transform: capitalize;
+					font-weight: 700;
+					transition: color 0.3s ease;
+		
+					span {
+						color: var(--primary);
+					}
+				}
+		
+				&:hover,
+				&:focus {
+					a {
+						color: var(--primary);
+					}
+				}
+			}
+		}
+	}
+}
+
+.site-title {
+	font-size: 3rem;
+	color: gray;
+	font-weight: 700;
+	margin: 3rem 0;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.nav-link-item {
+    padding-right: 2rem;
+}
+
+.nav-link-text {
+    color: #333;
+}
