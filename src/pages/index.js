@@ -5,6 +5,7 @@ import {
     graphql
 } from 'gatsby'
 import Seo from "../components/SEO"
+import parse from "html-react-parser"
 
 const Home = () => {
 
@@ -27,6 +28,10 @@ const Home = () => {
 			<Layout 
 				pageTitle={data.wp.generalSettings.description}
 			>
+
+				{ parse('<hr id="foo" class="bar" data-attr="baz" custom="qux" style="top:42px;">') }
+
+
 				<p>
 					Welcome to Bigup Web where we specialise in making memorable web sites and web
 					apps that just work.

@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import Button from "../components/Button/Button"
 import WpLatestPosts from "../components/Post/WpLatestPosts"
 import PropTypes from "prop-types"
+import parse from "html-react-parser"
 
 import {
 	blogsingle
@@ -20,19 +21,20 @@ const WpPostTemplate = ( { title, date, content } ) => {
 						<p className="blogsingle__date">Posted on {date}</p>
 					)}
 					{content && (
-						<article className="blogsingle__content">
-							<div
-								dangerouslySetInnerHTML={{ __html: content }}
-							/>
+						<div className="blogsingle__content">
+
 
 							<div className="blogsingle__back">
+
+								{ parse(content) }
+
 								<Button
 									to="/blog"
 									text="Back to Blog"
 									as={Link}
 								/>
 							</div>
-						</article>
+						</div>
 					)}
 				</article>
 			</section>
