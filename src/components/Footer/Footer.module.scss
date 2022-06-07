@@ -1,6 +1,4 @@
-import styled from "styled-components"
-
-export const FooterStyles = styled.footer`
+.footer {
 	&.section {
 		padding: 0 var(--borderSpacing) var(--gap) var(--borderSpacing);
 
@@ -30,9 +28,9 @@ export const FooterStyles = styled.footer`
 			}
 		}
 	}
-`
+}
 
-export const FooterMenuStyles = styled.div`
+.footerMenu {
 	@media (min-width: 768px) {
 		flex-grow: 1;
 		width: 33.333%;
@@ -68,14 +66,14 @@ export const FooterMenuStyles = styled.div`
 			font-weight: 700;
 
 			span {
-				color: var(--primary);
+				color: rgba( var(--theme_primary), 1);
 			}
 		}
 
 		&:hover,
 		&:focus {
 			a {
-				color: var(--primary);
+				color: rgba( var(--theme_primary), 1);
 			}
 		}
 	}
@@ -100,7 +98,7 @@ export const FooterMenuStyles = styled.div`
 				}
 
 				a {
-					color: var(--primary);
+					color: rgba( var(--theme_primary), 1);
 				}
 
 				&:hover,
@@ -112,9 +110,9 @@ export const FooterMenuStyles = styled.div`
 			}
 		}
 	}
-`
+}
 
-export const CopyrightStyles = styled.div`
+.copyright {
 	font-size: 13px;
 	padding-top: var(--gap);
 
@@ -128,12 +126,12 @@ export const CopyrightStyles = styled.div`
 
 			&:hover,
 			&:focus {
-				color: var(--primary);
+				color: rgba( var(--theme_primary), 1);
 			}
 		}
 
 		span {
-			color: var(--primary);
+			color: rgba( var(--theme_primary), 1);
 		}
 	}
-`
+}

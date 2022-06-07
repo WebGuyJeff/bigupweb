@@ -27,14 +27,14 @@
 					transition: color 0.3s ease;
 		
 					span {
-						color: var(--primary);
+						color: rgba( var(--theme_primary), 1);
 					}
 				}
 		
 				&:hover,
 				&:focus {
 					a {
-						color: var(--primary);
+						color: rgba( var(--theme_primary), 1);
 					}
 				}
 			}

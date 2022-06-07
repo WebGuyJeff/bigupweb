@@ -21,16 +21,17 @@ export const PostItemStyles = styled(Link)`
 	position: relative;
 	flex: 0 0 100%;
 	flex-direction: column;
-	border: 2px solid rgba(255, 255, 255, 0.15);
+	border: 2px solid transparent;
 	border-radius: 6px;
 	overflow: hidden;
 	text-decoration: none;
 	color: #fff;
+
 	background: linear-gradient(
-		0deg,
-		rgba(0, 0, 0, 1) 0%,
-		rgba(0, 0, 0, 0) 100%
+		rgba(0, 0, 0, 0) 0%,
+		rgba(0, 0, 0, 1) 100%
 	);
+
 	transition: border-color 0.6s ease, background-color 0.6s ease,
 		box-shadow 0.6s ease;
 
@@ -123,7 +124,7 @@ export const PostItemStyles = styled(Link)`
 
 	&:hover {
 		color: #fff;
-		border-color: var(--primary);
+		border-color: rgba( var(--theme_primary), 1);
 		background-color: #151515;
 		box-shadow: var(--boxShadow);
 
@@ -147,7 +148,7 @@ export const PostSingleStyles = styled.article`
 		}
 
 		&__content {
-			border-top: 2px solid var(--primary);
+			border-top: 2px solid rgba( var(--theme_primary), 1);
 			padding-top: calc(var(--gap));
 		}
 

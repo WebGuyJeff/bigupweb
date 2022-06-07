@@ -167,7 +167,7 @@ blockquote {
   font-family: 'Times New Roman', Times, serif;
   font-style: italic;
   margin-left: 0;
-  border-left: 2px solid var(--primary);
+  border-left: 2px solid rgba(var(--theme_primary), 1);
   padding-left: var(--gap);
 }
 
@@ -189,11 +189,11 @@ blockquote {
       height: 4px;
     }
     &::-webkit-scrollbar-thumb {
-      background: var(--primary);
+      background: rgba(var(--theme_primary), 1);
       border-radius: 0px;
     }
     &::-webkit-scrollbar-thumb:hover {
-      background: var(--primary);
+      background: rgba(var(--theme_primary), 1);
     }
     &::-webkit-scrollbar-track {
       background: #000;

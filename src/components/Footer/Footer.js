@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import { menuItems } from "../../constants/links"
-import { FooterStyles, FooterMenuStyles, CopyrightStyles } from "./FooterStyles"
 import { UseSiteMetadata } from "../../hooks/useSiteMetadata"
 import {
 	FaFacebookSquare as Facebook,
@@ -9,13 +8,18 @@ import {
 	FaInstagram as Instagram,
 	FaLinkedin as Linkedin,
 } from "react-icons/fa"
+import {
+	footer,
+    footerMenu,
+	copyright    
+} from './Footer.module.scss'
 
 const Footer = () => {
 	const siteMeta = UseSiteMetadata()
 	return (
-		<FooterStyles style={{ marginBottom: 0 }} className="section">
+		<footer style={{ marginBottom: 0 }} className={footer}>
 			<div className="container container__tight">
-				<FooterMenuStyles className="footer__menu">
+				<div className={footerMenu}>
 					<h5>Links</h5>
 					<ul>
 						{menuItems.map((item, index) => {
@@ -32,7 +36,7 @@ const Footer = () => {
 							)
 						})}
 					</ul>
-				</FooterMenuStyles>
+				</div>
 {/*
 				{allProduct.length > 0 && (
 					<FooterMenuStyles className="footer__menu products__menu">
@@ -62,7 +66,7 @@ const Footer = () => {
 				siteMeta.facebookUsername ||
 				siteMeta.instagramUsername ||
 				siteMeta.linkedinUsername ? (
-					<FooterMenuStyles className="footer__menu social__menu">
+					<div className={footerMenu}>
 						<h5>
 							Follow Bigup Web<span>.</span>
 						</h5>
@@ -112,27 +116,25 @@ const Footer = () => {
 								</li>
 							)}
 						</ul>
-					</FooterMenuStyles>
+					</div>
 				) : (
 					""
 				)}
 			</div>
-			<CopyrightStyles>
-				<div className="container container__tight">
-					<p>
-						Designed & developed by{" "}
-						<a
-							href={siteMeta.developerUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							{siteMeta.developerName}
-						</a>
-						<span>.</span>
-					</p>
-				</div>
-			</CopyrightStyles>
-		</FooterStyles>
+			<div className={copyright}>
+				<p>
+					Designed & developed by{" "}
+					<a
+						href={siteMeta.developerUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						{siteMeta.developerName}
+					</a>
+					<span>.</span>
+				</p>
+			</div>
+		</footer>
 	)
 }
 

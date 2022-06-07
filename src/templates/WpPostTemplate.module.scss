@@ -13,7 +13,7 @@
 	}
 
 	&__content {
-		border-top: 2px solid var(--primary);
+		border-top: 2px solid rgba( var(--theme_primary), 1);
 		padding-top: calc(var(--gap));
 	}
 

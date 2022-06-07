@@ -1,17 +1,15 @@
-import styled from "styled-components"
-
-export const ButtonStyles = styled.button`
-	color: #fff;
+.button {
+	color: inherit;
 	background-color: transparent;
 	font-family: "Heebo", sans-serif;
 	border: 0;
 	text-decoration: none;
-	padding: 0;
 	transition: color 0.3s ease;
 	text-transform: capitalize;
-	font-size: var(--p);
+	font-size: inherit;
 	font-weight: 700;
 	position: relative;
+	padding: 0;
 	padding-bottom: 15px;
 	align-self: flex-start;
 	display: inline-flex;
@@ -25,22 +23,22 @@ export const ButtonStyles = styled.button`
 		left: 0;
 		right: 0;
 		bottom: 8px;
-		background-color: var(--primary);
+		background-color: rgba( var(--theme_primary), 1);
 		transition: left 0.3s ease;
 	}
 
 	&:focus {
-		color: var(--primary);
+		color: rgba( var(--theme_primary), 1);
 	}
 
 	@media (hover: hover) {
 		&:hover {
 			cursor: pointer;
-			color: var(--primary);
+			color: rgba( var(--theme_primary), 1);
 
 			&::after {
 				left: 100%;
 			}
 		}
 	}
-`
+}
