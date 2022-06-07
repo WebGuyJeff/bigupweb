@@ -10,16 +10,18 @@ import {
 } from "react-icons/fa"
 import {
 	footer,
-    footerMenu,
-	copyright    
+	container,
+	footer_menu,
+	social,
+	copyright
 } from './Footer.module.scss'
 
 const Footer = () => {
 	const siteMeta = UseSiteMetadata()
 	return (
 		<footer style={{ marginBottom: 0 }} className={footer}>
-			<div className="container container__tight">
-				<div className={footerMenu}>
+			<div className={container}>
+				<div className={footer_menu}>
 					<h5>Links</h5>
 					<ul>
 						{menuItems.map((item, index) => {
@@ -66,7 +68,7 @@ const Footer = () => {
 				siteMeta.facebookUsername ||
 				siteMeta.instagramUsername ||
 				siteMeta.linkedinUsername ? (
-					<div className={footerMenu}>
+					<div className={`${footer_menu} ${social}`}>
 						<h5>
 							Follow Bigup Web<span>.</span>
 						</h5>
