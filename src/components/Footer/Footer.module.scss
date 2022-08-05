@@ -118,13 +118,15 @@
 		margin: 0;
 
 		a {
-			color: #fff;
+			display: inline-block;
+			color: rgba( var(--theme_primary), 1);
 			font-weight: 700;
 			text-decoration: none;
 
 			&:hover,
 			&:focus {
-				color: rgba( var(--theme_primary), 1);
+				transform: rotate(-5deg) scale(1.1);
+				transition: all 0.2s ease;
 			}
 		}
 

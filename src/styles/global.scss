@@ -3,7 +3,6 @@
 	--menuWidth: 100vw;
 	--blockquote: 20px;
 	--inActive: #555;
-	--letterSpacing: -0.075rem;
 	--boxShadow: 0px 15px 22px 3px rgba(0, 0, 0, 0.55);
 	--textShadow: 0px 0px 5px rgba(0, 0, 0, 1);
 	--gap: 40px;
@@ -30,6 +29,7 @@
 	--theme_foreground: 36, 36, 36;
 	--theme_primary: 233, 0, 128;
 
+	font-family: 'Roboto', Arial, sans-serif;
 	font-size: 1rem;
 }
 
@@ -60,15 +60,29 @@
     scroll-behavior: smooth;
 }  
 
+html,
+#___gatsby,
+#gatsby-focus-wrapper {
+	height: 100vh;
+}
 
 body {
-    font-family: 'Heebo', sans-serif;
+	min-height: 100%;
     margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     background-color: rgba(var(--theme_background), 1);
-    color: rgba(var(--theme_foreground), 1);
+	min-height: 100%;
     overflow-x: hidden;
+    color: rgba(var(--theme_foreground), 1);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 900;
+	font-family: "Roboto Condensed", Arial, sans-serif;
 }
 
 h1,
@@ -76,8 +90,6 @@ h2 {
     margin-top: 0.5rem;
     margin-bottom: 1rem;
     line-height: 1.25em;
-    font-weight: 700;
-    letter-spacing: var(--letterSpacing);
 
     @media(min-width: 1200px) {
         margin-bottom: 1.5rem;

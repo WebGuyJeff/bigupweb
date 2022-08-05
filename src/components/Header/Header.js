@@ -3,9 +3,9 @@ import { Link } from 'gatsby'
 import { StaticImage } from "gatsby-plugin-image"
 import {   
     header,
+	nav,
 	navLinks,
-	navLinkItem,
-	navLinkText
+	navLinkItem
 } from './Header.module.scss'
 
 const Header = () => {
@@ -15,7 +15,7 @@ const Header = () => {
 		<header className={header}>
 			<Link
 				to="/"
-				className={navLinkText}>
+				className={navLinkItem}>
 				<StaticImage
 					alt="Bigup Web Logo"
 					src={logoRelativePath}
@@ -24,29 +24,21 @@ const Header = () => {
 					height="80"
 				/>
 			</Link>
-			<nav>
-				<ul className={navLinks}>
-					<li className={navLinkItem}>
-						<Link to="/" className={navLinkText}>
-							Home
-						</Link>
-					</li>
-					<li className={navLinkItem}>
-						<Link to="/about" className={navLinkText}>
-							About
-						</Link>
-					</li>
-					<li className={navLinkItem}>
-						<Link to="/blog" className={navLinkText}>
-							Blog
-						</Link>
-					</li>
-				</ul>
+			<nav className={nav}>
+				<div className={navLinks}>
+					<Link to="/" className={navLinkItem}>
+						Home
+					</Link>
+					<Link to="/about" className={navLinkItem}>
+						About
+					</Link>
+					<Link to="/blog" className={navLinkItem}>
+						Blog
+					</Link>
+				</div>
 			</nav>
 		</header>
     )
 }
-
-
 
 export default Header
