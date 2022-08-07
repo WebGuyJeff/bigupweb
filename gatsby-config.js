@@ -93,12 +93,38 @@ module.exports = {
 			},
 		},
 		{
+			resolve: "@pasdo501/gatsby-source-woocommerce",
+			options: {
+				// Base URL of the WordPress site.
+				api: process.env.DOMAIN,
+				// True if using https. false otherwise.
+				https: true,
+				// API keys obtained from the WooCommerce dashboard in WordPress.
+				api_keys: {
+					consumer_key: process.env.WOO_KEY,
+					consumer_secret: process.env.WOO_SECRET,
+				},
+				// Array of strings with fields you'd like to create nodes for.
+				fields: ['products'],
+				// OPTIONAL: How many results to retrieve per request.
+				per_page: 100,
+			}
+		},
+		{
 			resolve: 'gatsby-plugin-htaccess',
 			options: {
 				RewriteBase: '/',
 				https: true,
 				www: false,
 				host: 'bigupweb.uk', // if 'www' is set to 'false', be sure to also remove it here!
+			},
+		},
+		{
+			resolve: "gatsby-plugin-robots-txt",
+			options: {
+				host: process.env.GATSBY_WEBSITE_URL,
+				sitemap: process.env.GATSBY_SITEMAP_URL,
+				policy: [{ userAgent: "*", allow: "/" }],
 			},
 		},
     ],
