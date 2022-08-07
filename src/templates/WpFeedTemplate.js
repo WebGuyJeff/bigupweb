@@ -3,14 +3,13 @@ import * as React from "react"
 import Layout from "../components/Layout/Layout"
 import Seo from "../components/SEO"
 import SimpleBanner from "../components/SimpleBanner/SimpleBanner"
-import WooProductFeed from "../components/Feeds/WooProductFeed"
 import WpPostFeed from "../components/Feeds/WpPostFeed"
 
 const getFeedTemplate = (wpPage) => {
 	const templateName = wpPage.slug.includes(`products`) ? "products" : ""
 	switch (templateName) {
 		case "products":
-			return <WooProductFeed {...wpPage} />
+			return <div>No product feed component</div>
 
 		default:
 			return <WpPostFeed {...wpPage} />
