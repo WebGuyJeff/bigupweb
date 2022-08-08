@@ -7,10 +7,23 @@
 	margin-bottom: var(--gap);
 	padding: var(--gap) var(--borderSpacing) 0 var(--borderSpacing);
 
-	img {
-		height: 80px;
-		margin-top: 5px;
-		margin-bottom: 5px;
+	a {
+		img {
+			height: 80px;
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+
+		span {
+			clip: rect(0 0 0 0);
+			position: absolute;
+			margin: -1px;
+			border: 0;
+			padding: 0;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+		}
 	}
 }
 

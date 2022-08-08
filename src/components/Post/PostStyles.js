@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { Link } from "gatsby"
+import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 export const PostItemsStyles = styled.section`
 	display: flex;
@@ -16,7 +16,7 @@ export const PostItemsStyles = styled.section`
 	}
 `
 
-export const PostItemStyles = styled(Link)`
+export const PostItemStyles = styled( Link )`
 	display: flex;
 	position: relative;
 	flex: 0 0 100%;
@@ -27,10 +27,7 @@ export const PostItemStyles = styled(Link)`
 	text-decoration: none;
 	color: #fff;
 
-	background: linear-gradient(
-		rgba(0, 0, 0, 0) 0%,
-		rgba(0, 0, 0, 1) 100%
-	);
+	background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
 
 	transition: border-color 0.6s ease, background-color 0.6s ease,
 		box-shadow 0.6s ease;
@@ -124,7 +121,7 @@ export const PostItemStyles = styled(Link)`
 
 	&:hover {
 		color: #fff;
-		border-color: rgba( var(--theme_primary), 1);
+		border-color: rgba(var(--theme_primary), 1);
 		background-color: #151515;
 		box-shadow: var(--boxShadow);
 
@@ -148,7 +145,7 @@ export const PostSingleStyles = styled.article`
 		}
 
 		&__content {
-			border-top: 2px solid rgba( var(--theme_primary), 1);
+			border-top: 2px solid rgba(var(--theme_primary), 1);
 			padding-top: calc(var(--gap));
 		}
 

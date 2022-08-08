@@ -1,10 +1,10 @@
-import React from "react"
-import { Link } from "gatsby"
-import PostItems from "./PostItems"
-import WpPostItem from "./WpPostItem"
-import useLatestWpPosts from "../../hooks/useWpLatestPosts"
-import Button from "../Button/Button"
-import PropTypes from "prop-types"
+import React from 'react'
+import { Link } from 'gatsby'
+import PostItems from './PostItems'
+import WpPostItem from './WpPostItem'
+import useLatestWpPosts from '../../hooks/useWpLatestPosts'
+import Button from '../Button/Button'
+import PropTypes from 'prop-types'
 
 /**
  * WpLatestPosts Section
@@ -14,30 +14,30 @@ import PropTypes from "prop-types"
  * @returns Latest posts section component.
  *
  */
-const WpLatestPosts = ({ title, introduction }) => {
+const WpLatestPosts = ( { title, introduction } ) => {
 	const latestBlogPost = useLatestWpPosts()
 	return (
 		<div className="section">
 			<div className="container container__tight">
-				{title || introduction ? (
+				{ title || introduction ? (
 					<div className="intro__area">
-						{title && (
+						{ title && (
 							<h2>
-								{title}
+								{ title }
 								<span>.</span>
 							</h2>
-						)}
-						{introduction && <p>{introduction}</p>}
+						) }
+						{ introduction && <p>{ introduction }</p> }
 					</div>
-				) : null}
+				) : null }
 
 				<PostItems>
-					{latestBlogPost.map((node, index) => {
-						return <WpPostItem key={index} node={node} />
-					})}
+					{ latestBlogPost.map( ( node, index ) => {
+						return <WpPostItem key={ index } node={ node } />
+					} ) }
 				</PostItems>
 				<div className="learn__more">
-					<Button text="All Blog Posts" as={Link} to="/blog" />
+					<Button text="All Blog Posts" as={ Link } to="/blog" />
 				</div>
 			</div>
 		</div>

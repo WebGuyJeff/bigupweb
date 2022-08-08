@@ -4,7 +4,14 @@
   "description": "A website for bigupweb.uk",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
+	"lint-fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json}\"",
+    "start": "gatsby develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -52,6 +59,8 @@
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
     "eslint": "^8.21.0",
     "eslint-plugin-react": "^7.30.1",
     "sass": "^1.54.3",

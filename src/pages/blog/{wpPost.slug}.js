@@ -1,16 +1,16 @@
-import React from "react"
-import { graphql } from "gatsby"
-import WpPostTemplate from "../../templates/WpPostTemplate"
-import Seo from "../../components/SEO"
-import Layout from "../../components/Layout/Layout"
-import PropTypes from "prop-types"
+import React from 'react'
+import { graphql } from 'gatsby'
+import WpPostTemplate from '../../templates/WpPostTemplate'
+import Seo from '../../components/SEO'
+import Layout from '../../components/Layout/Layout'
+import PropTypes from 'prop-types'
 
-const WpPost = ({ data: { wpPost } }) => {
+const WpPost = ( { data: { wpPost } } ) => {
 	return (
 		<>
-			<Seo title={wpPost.title} />
+			<Seo title={ wpPost.title } />
 			<Layout>
-				<WpPostTemplate {...wpPost} />
+				<WpPostTemplate { ...wpPost } />
 			</Layout>
 		</>
 	)

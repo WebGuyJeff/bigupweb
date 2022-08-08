@@ -1,24 +1,19 @@
-import React   from "react"
-import Layout  from '../components/Layout/Layout'
+import React from 'react'
+import Layout from '../components/Layout/Layout'
 import Section from '../components/Section/Section'
-import {
-	useStaticQuery,
-	graphql
-} from 'gatsby'
-import Seo     from "../components/SEO"
-import parse   from "html-react-parser"
-import WebFont from 'webfontloader';
+import { useStaticQuery, graphql } from 'gatsby'
+import Seo from '../components/SEO'
+import parse from 'html-react-parser'
+import WebFont from 'webfontloader'
 
-WebFont.load({
+WebFont.load( {
 	google: {
-		families: ['Roboto:600,400:latin', 'Roboto Condensed:900,600:latin']
-	}
-});
-
+		families: [ 'Roboto:600,400:latin', 'Roboto Condensed:900,600:latin' ],
+	},
+} )
 
 const Home = () => {
-
-    const data = useStaticQuery(graphql`
+	const data = useStaticQuery( graphql`
 		query QuerySiteMeta {
 			wp {
 				generalSettings {
@@ -27,18 +22,19 @@ const Home = () => {
 				}
 			}
 		}
-    `)
+	` )
 
-	const seoTitle = data.wp.generalSettings.description + ' | ' + data.wp.generalSettings.title
+	const seoTitle =
+		data.wp.generalSettings.description +
+		' | ' +
+		data.wp.generalSettings.title
 
-    return (
+	return (
 		<>
-			<Seo title={seoTitle} />
-			<Layout 
-				pageTitle={data.wp.generalSettings.description}
-			>
+			<Seo title={ seoTitle } />
+			<Layout pageTitle={ data.wp.generalSettings.description }>
 				<Section>
-					{parse(`
+					{ parse( `
 						<p>
 							Welcome to Bigup Web where we specialise in making memorable web sites and web
 							apps that just work.
@@ -55,11 +51,11 @@ const Home = () => {
 						<p>
 							🔗 Bookmark this page to see our new home come to life over the coming weeks.
 						</p>
-					`)}
+					` ) }
 				</Section>
 			</Layout>
 		</>
-    )
+	)
 }
 
 export default Home

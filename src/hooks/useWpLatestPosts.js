@@ -1,9 +1,9 @@
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from 'gatsby'
 
 const useWpLatestPosts = () => {
 	const {
 		allWpPost: { nodes },
-	} = useStaticQuery(graphql`
+	} = useStaticQuery( graphql`
 		query wpLatestBlogLinksQuery {
 			allWpPost(sort: { fields: date, order: DESC }, limit: 3) {
 				nodes {
@@ -28,7 +28,7 @@ const useWpLatestPosts = () => {
 				}
 			}
 		}
-	`)
+	` )
 	return nodes
 }
 

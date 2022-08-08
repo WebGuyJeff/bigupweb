@@ -1,20 +1,13 @@
 import * as React from 'react'
-import PropTypes from "prop-types"
-import {   
-    section
-} from './Section.module.scss'
+import PropTypes from 'prop-types'
+import { section } from './Section.module.scss'
 
-const Section = ({ children }) => {
-
-    return (
-        <section className={section}>
-			{children}
-        </section>
-    )
+const Section = ( { children } ) => {
+	return <section className={ section }>{ children }</section>
 }
 
 Section.propTypes = {
-	children: PropTypes.PropTypes.node.isRequired
+	children: PropTypes.PropTypes.node.isRequired,
 }
 
 export default Section

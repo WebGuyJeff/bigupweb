@@ -1,17 +1,17 @@
-import React from "react"
-import { graphql } from "gatsby"
-import DefaultTemplate from "../templates/WpDefaultTemplate"
-import FeedTemplate from "../templates/WpFeedTemplate"
-import PropTypes from "prop-types"
+import React from 'react'
+import { graphql } from 'gatsby'
+import DefaultTemplate from '../templates/WpDefaultTemplate'
+import FeedTemplate from '../templates/WpFeedTemplate'
+import PropTypes from 'prop-types'
 
-const getPageTemplate = (wpPage) => {
+const getPageTemplate = ( wpPage ) => {
 	const templateName = wpPage.template.templateName
-	switch (templateName) {
-		case "Feed":
-			return <FeedTemplate {...wpPage} />
+	switch ( templateName ) {
+	case 'Feed':
+		return <FeedTemplate { ...wpPage } />
 
-		default:
-			return <DefaultTemplate {...wpPage} />
+	default:
+		return <DefaultTemplate { ...wpPage } />
 	}
 }
 
@@ -19,8 +19,8 @@ getPageTemplate.propTypes = {
 	wpPage: PropTypes.object.isRequired,
 }
 
-const Page = ({ data: { wpPage } }) => {
-	return <main>{getPageTemplate(wpPage)}</main>
+const Page = ( { data: { wpPage } } ) => {
+	return <main>{ getPageTemplate( wpPage ) }</main>
 }
 
 Page.propTypes = {
