@@ -5,7 +5,7 @@ const useWpLatestPosts = () => {
 		allWpPost: { nodes },
 	} = useStaticQuery( graphql`
 		query wpLatestBlogLinksQuery {
-			allWpPost(sort: { fields: date, order: DESC }, limit: 3) {
+			allWpPost(sort: {date: DESC}, limit: 3) {
 				nodes {
 					title
 					slug
@@ -16,11 +16,8 @@ const useWpLatestPosts = () => {
 							altText
 							localFile {
 								childImageSharp {
-									gatsbyImageData(
-										width: 1000
-										placeholder: BLURRED
-										formats: [AUTO, WEBP, AVIF]
-									)
+									gatsbyImageData(width: 1000, placeholder: BLURRED,
+										formats: [AUTO, WEBP, AVIF])
 								}
 							}
 						}

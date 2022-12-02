@@ -1,6 +1,6 @@
 import React from 'react'
-import WpPostItem from '../Post/WpPostItem'
 import useAllPost from '../../hooks/useWpAllPosts'
+import WpPostItem from '../Post/WpPostItem'
 
 const WpPostFeed = () => {
 	const allPost = useAllPost()

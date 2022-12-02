@@ -5,6 +5,7 @@ import Seo from '../components/SEO'
 import SimpleBanner from '../components/SimpleBanner/SimpleBanner'
 
 const DefaultTemplate = ( wpPage ) => {
+
 	const featuredImage = getImage(
 		wpPage.featuredImage.node.localFile.childImageSharp
 	)

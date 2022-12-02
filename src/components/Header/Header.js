@@ -11,7 +11,7 @@ import {
 	navLinks,
 	navLinkItem
 } from './Header.module.scss'
-import { visuallyhidden } from '../../styles/global.scss'
+import { visuallyHidden } from '../../styles/global.scss'
 
 const Header = () => {
 	const data = useStaticQuery( graphql`
@@ -36,7 +36,7 @@ const Header = () => {
 					transformOptions={ { fit: 'inside' } }
 					height="80"
 				/>
-				<span className={ visuallyhidden }>
+				<span className={ visuallyHidden }>
 					{ data.wp.generalSettings.title }
 				</span>
 			</Link>
