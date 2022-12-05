@@ -7,17 +7,17 @@
 	box-sizing: content-box;
 
 
-	&__title {
+	&_title {
 		font-size: var(--h2);
 		font-weight: 700;
 	}
 
-	&__content {
+	&_content {
 		border-top: 2px solid rgba( var(--theme_primary), 1);
 		padding-top: calc(var(--gap));
 	}
 
-	&__back {
+	&_back {
 		padding-top: var(--gap);
 	}
 }

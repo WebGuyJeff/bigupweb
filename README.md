@@ -8,7 +8,14 @@ We are using SCSS Modules because I don't like defining HTML elements in the sty
 
 One drawback to CSS Modules, is the incompatibility with underscores making my vanilla BEM syntax impossible. :(
 
-## NPM Bug
+## Usage
+
+**Linting**
+
+`npm run lint-fix`
+
+
+## Known Bugs
 
 For a reason I can't work out, NPM hangs when trying to fetch "@pasdo501/gatsby-source-woocommerce".
 

@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import Button from '../components/Button/Button'
-import WpLatestPosts from '../components/Post/WpLatestPosts'
+import WpLatestPosts from '../components/Post/WpLatestPosts/WpLatestPosts'
 import PropTypes from 'prop-types'
 import parse from 'html-react-parser'
-
 import { blogsingle } from './WpPostTemplate.module.scss'
 
 const WpPostTemplate = ( { title, date, content } ) => {
@@ -12,13 +11,13 @@ const WpPostTemplate = ( { title, date, content } ) => {
 		<>
 			<section>
 				<article className={ blogsingle }>
-					{ title && <h1 className={ blogsingle.__title }>{ title }</h1> }
+					{ title && <h1 className={ blogsingle._title }>{ title }</h1> }
 					{ date && (
-						<p className="blogsingle__date">Posted on { date }</p>
+						<p className="blogsingle_date">Posted on { date }</p>
 					) }
 					{ content && (
-						<div className="blogsingle__content">
-							<div className="blogsingle__back">
+						<div className="blogsingle_content">
+							<div className="blogsingle_back">
 								{ parse( content ) }
 
 								<Button

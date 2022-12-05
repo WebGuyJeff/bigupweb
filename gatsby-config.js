@@ -3,53 +3,54 @@
  *
  * @link https://www.gatsbyjs.org/docs/gatsby-config/
  */
-let NODE_ENV = 'development'; 
-require("dotenv").config({
-	path: `.env.development`,
-})
+
+require( 'dotenv' ).config( {
+	path: '.env.development',
+} )
+
 module.exports = {
 	siteMetadata: {
-		title: `Bigup Web`,
-		description: `Exciting, Bold, and Downright Different Web Development`,
-		author: "Jefferson Real",
-		twitterUsername: "bigupweb",
-		facebookUsername: "bigupweb",
-		instagramUsername: "bigupweb",
-		linkedinUsername: "bigupweb",
-		image: "/static/logo/bigup-web-logo-wide.png",
-		siteUrl: "https://bigupweb.uk",
-		developerName: "Jefferson Real",
-		developerUrl: "https://jeffersonreal.uk",
+		title: 'Bigup Web',
+		description: 'Exciting, Bold, and Downright Different Web Development',
+		author: 'Jefferson Real',
+		twitterUsername: 'bigupweb',
+		facebookUsername: 'bigupweb',
+		instagramUsername: 'bigupweb',
+		linkedinUsername: 'bigupweb',
+		image: '/static/logo/bigup-web-logo-wide.png',
+		siteUrl: 'https://bigupweb.uk',
+		developerName: 'Jefferson Real',
+		developerUrl: 'https://jeffersonreal.uk',
 	},
-    plugins: [
-        `gatsby-plugin-image`,
-        `gatsby-plugin-sharp`,
-		`gatsby-plugin-sass`,
-        `gatsby-transformer-sharp`,
-		`gatsby-plugin-react-helmet`,
-		`gatsby-plugin-offline`,
+	plugins: [
+		'gatsby-plugin-image',
+		'gatsby-plugin-sharp',
+		'gatsby-plugin-sass',
+		'gatsby-transformer-sharp',
+		'gatsby-plugin-react-helmet',
+		'gatsby-plugin-offline',
 		{
-			resolve: `gatsby-source-filesystem`,
+			resolve: 'gatsby-source-filesystem',
 			options: {
-				name: `assets`,
+				name: 'assets',
 				path: `${__dirname}/content/assets`,
 			},
 		},
 		{
 			// See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
-			resolve: `gatsby-plugin-manifest`,
+			resolve: 'gatsby-plugin-manifest',
 			options: {
-				name: `Bigup Web`,
-				short_name: `Bigup Web`,
-				start_url: `/`,
-				background_color: `#ffffff`,
-				theme_color: `#e90080`,
-				display: `minimal-ui`,
-				icon: `content/assets/bigupweb-icon.png`,
+				name: 'Bigup Web',
+				short_name: 'Bigup Web',
+				start_url: '/',
+				background_color: '#ffffff',
+				theme_color: '#e90080',
+				display: 'minimal-ui',
+				icon: 'content/assets/bigupweb-icon.png',
 			},
 		},	
 		{
-			resolve: `gatsby-source-wordpress`,
+			resolve: 'gatsby-source-wordpress',
 			options: {
 				url: process.env.WP_GRAPHQL_ENDPOINT_URL,
 				auth: {
@@ -60,30 +61,30 @@ module.exports = {
 					}
 				},
 				verbose: true,
-//				searchAndReplace: [
-//					{
-//						// This is a regex search and replace rule to find any occurances of the
-//						// WordPress source URL and replace it with the URL of the Gatsby site.
-//						search: process.env.WP_SOURCE_BASE_URL,
-//						replace: process.env.GATSBY_WEBSITE_URL,
-//					},
-//				],
+				//				searchAndReplace: [
+				//					{
+				//						// This is a regex search and replace rule to find any occurances of the
+				//						// WordPress source URL and replace it with the URL of the Gatsby site.
+				//						search: process.env.WP_SOURCE_BASE_URL,
+				//						replace: process.env.GATSBY_WEBSITE_URL,
+				//					},
+				//				],
 				html: {
 					// Causes the source plugin to find/replace images in html with Gatsby images.
 					useGatsbyImage: true,
 					// Determines the image quality that Sharp will use when generating inline html
 					// image thumbnails.
 					imageQuality: 90,
-					// When this is true, any url's which are wrapped in "", '', or () and which
+					// When this is true, any url's which are wrapped in '', '', or () and which
 					// contain /wp-content/uploads will be transformed into static files and the
 					// url's will be rewritten. 
 					createStaticFiles: true,
 					// When this is true, .webp images will be generated for images in html fields
 					// in addition to the images gatsby-image normally generates.
 					generateWebpImages: true,
-					// This can be either "blurred" or "dominantColor". This is the type of
+					// This can be either 'blurred' or 'dominantColor'. This is the type of
 					// placeholder image to be used in Gatsby Images in HTML fields.
-					placeholderType: "blurred",
+					placeholderType: 'blurred',
 				},
 				debug: {
 					graphql: {
@@ -103,12 +104,28 @@ module.exports = {
 			},
 		},
 		{
-			resolve: "gatsby-plugin-robots-txt",
+			resolve: 'gatsby-plugin-robots-txt',
 			options: {
 				host: process.env.GATSBY_WEBSITE_URL,
 				sitemap: process.env.GATSBY_SITEMAP_URL,
-				policy: [{ userAgent: "*", allow: "/" }],
+				policy: [ { userAgent: '*', allow: '/' } ],
 			},
 		},
-    ],
+		{
+			resolve: 'gatsby-plugin-react-css-modules',
+			options: {
+				// *.css files are included by default.
+				// To support another syntax (e.g. SCSS),
+				// add `postcss-scss` to your project's devDependencies
+				// and add the following option here:
+				filetypes: {
+					'.scss': { syntax: 'postcss-scss' },
+				},
+			
+				// Exclude global styles from the plugin using a RegExp:
+				exclude: '\/global\/',
+				// For all the options check babel-plugin-react-css-modules README link provided above
+			},
+		},
+	],
 }

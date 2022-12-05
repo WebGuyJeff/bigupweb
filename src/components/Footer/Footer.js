@@ -29,7 +29,7 @@ const Footer = () => {
 								<li key={ index }>
 									<Link
 										to={ item.path }
-										activeClassName="menu__item--active"
+										activeClassName="menu_item--active"
 									>
 										{ item.text }
 										<span>.</span>
@@ -41,7 +41,7 @@ const Footer = () => {
 				</div>
 				{ /*
 				{allProduct.length > 0 && (
-					<FooterMenuStyles className="footer__menu products__menu">
+					<FooterMenuStyles className="footer_menu products_menu">
 						<h5>
 							<Link to="/products">
 								All Products<span>.</span>

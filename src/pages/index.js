@@ -4,13 +4,6 @@ import Section from '../components/Section/Section'
 import { useStaticQuery, graphql } from 'gatsby'
 import Seo from '../components/SEO'
 import parse from 'html-react-parser'
-import WebFont from 'webfontloader'
-
-WebFont.load( {
-	google: {
-		families: [ 'Roboto:600,400:latin', 'Roboto Condensed:900,600:latin' ],
-	},
-} )
 
 const Home = () => {
 	const data = useStaticQuery( graphql`

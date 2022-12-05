@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { PostItemsStyles } from './PostStyles'
 import PropTypes from 'prop-types'
+import { posts } from './PostItems.module.scss'
 
 const PostItems = ( { children } ) => {
-	return <PostItemsStyles>{ children }</PostItemsStyles>
+	return <div className={ posts }>{ children }</div>
 }
 
 PostItems.propTypes = {

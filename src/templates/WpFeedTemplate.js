@@ -1,4 +1,4 @@
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import Layout from '../components/Layout/Layout'
 import Seo from '../components/SEO'

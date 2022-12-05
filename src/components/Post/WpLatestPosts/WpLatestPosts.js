@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import PostItems from './PostItems'
-import WpPostItem from './WpPostItem'
-import useLatestWpPosts from '../../hooks/useWpLatestPosts'
-import Button from '../Button/Button'
+import PostItems from '../PostItems/PostItems'
+import WpPostItem from '../WpPostItem/WpPostItem'
+import useLatestWpPosts from '../../../hooks/useWpLatestPosts'
+import Button from '../../Button/Button'
 import PropTypes from 'prop-types'
 
 /**
@@ -17,10 +17,10 @@ import PropTypes from 'prop-types'
 const WpLatestPosts = ( { title, introduction } ) => {
 	const latestBlogPost = useLatestWpPosts()
 	return (
-		<div className="section">
-			<div className="container container__tight">
+		<section>
+			<div className="container container_tight">
 				{ title || introduction ? (
-					<div className="intro__area">
+					<div className="intro_area">
 						{ title && (
 							<h2>
 								{ title }
@@ -36,11 +36,11 @@ const WpLatestPosts = ( { title, introduction } ) => {
 						return <WpPostItem key={ index } node={ node } />
 					} ) }
 				</PostItems>
-				<div className="learn__more">
+				<div className="learn_more">
 					<Button text="All Blog Posts" as={ Link } to="/blog" />
 				</div>
 			</div>
-		</div>
+		</section>
 	)
 }
 

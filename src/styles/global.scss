@@ -29,7 +29,8 @@
 	--theme_foreground: 36, 36, 36;
 	--theme_primary: 233, 0, 128;
 
-	font-family: 'Roboto', Arial, sans-serif;
+	font-family: 'MontserratVariable', Arial, sans-serif;
+	font-weight: 400;
 	font-size: 1rem;
 }
 
@@ -75,7 +76,8 @@ body {
     color: rgba(var(--theme_foreground), 1);
 }
 
-.visually-hidden { /* screenreader friendly */
+/* screenreader friendly hiding */
+.visuallyhidden {
 	clip: rect(0 0 0 0); 
 	clip-path: inset(50%);
 	height: 1px;
@@ -92,7 +94,7 @@ h4,
 h5,
 h6 {
     font-weight: 900;
-	font-family: "Roboto Condensed", Arial, sans-serif;
+	font-family: 'MontserratVariable', Arial, sans-serif;
 }
 
 h1,
@@ -186,7 +188,6 @@ a {
 
 blockquote {
   font-size: var(--blockquote);
-  font-family: 'Times New Roman', Times, serif;
   font-style: italic;
   margin-left: 0;
   border-left: 2px solid rgba(var(--theme_primary), 1);
@@ -197,11 +198,11 @@ blockquote {
   margin-left: auto;
   margin-right: auto;
 
-  &__tight {
+  &_tight {
     max-width: 1400px;
   }
 
-  &__scroll {
+  &_scroll {
     overflow-x: scroll;
     display: flex;
     scroll-snap-type: x mandatory;
@@ -233,13 +234,13 @@ blockquote {
     margin-bottom: var(--sectionMargin);
     padding: 0 var(--borderSpacing);
 
-    &.section__padding {
+    &_padding {
         padding-top: var(--sectionMargin);
         padding-bottom: var(--sectionMargin);
     }
 }
 
-.intro__area {
+.intro_area {
   margin-bottom: calc(var(--gap) * 2);
   max-width: 700px;
 
@@ -249,7 +250,7 @@ blockquote {
   }
 }
 
-.learn__more {
+.learn_more {
   margin-top: calc(var(--gap) * 2);
 }
 
