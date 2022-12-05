@@ -75,7 +75,7 @@ body {
     color: rgba(var(--theme_foreground), 1);
 }
 
-.visuallyHidden { /* screenreader friendly */
+.visually-hidden { /* screenreader friendly */
 	clip: rect(0 0 0 0); 
 	clip-path: inset(50%);
 	height: 1px;

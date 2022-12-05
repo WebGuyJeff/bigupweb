@@ -1,9 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import WpPostTemplate from '../../templates/WpPostTemplate'
+import PropTypes from 'prop-types'
 import Seo from '../../components/SEO'
 import Layout from '../../components/Layout/Layout'
-import PropTypes from 'prop-types'
+import WpPostTemplate from '../../templates/WpPostTemplate'
 
 const WpPost = ( { data: { wpPost } } ) => {
 	return (
