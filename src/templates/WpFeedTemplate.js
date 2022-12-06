@@ -1,7 +1,7 @@
 import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import Layout from '../components/Layout/Layout'
-import Seo from '../components/SEO'
+import HeadMeta from '../components/HeadMeta'
 import SimpleBanner from '../components/SimpleBanner/SimpleBanner'
 import WpPostFeed from '../components/Feeds/WpPostFeed'
 
@@ -16,13 +16,7 @@ const getFeedTemplate = ( wpPage ) => {
 	}
 }
 
-/**
- * Feed Page Component
- *
- * The data from the page query is passed to the component as data.wpPage. We're destructuring the
- * data object, then using it in our markup.
- *
- */
+let pageTitle
 
 const FeedTemplate = ( wpPage ) => {
 	const { title, content, featuredImage } = wpPage
@@ -30,9 +24,9 @@ const FeedTemplate = ( wpPage ) => {
 		? getImage( featuredImage.node.localFile.childImageSharp.gatsbyImageData )
 		: null
 	const altText = featuredImage ? featuredImage.node.altText : null
+	pageTitle = title
 	return (
 		<>
-			<Seo title={ title } />
 			<Layout>
 				<SimpleBanner
 					title={ title }
@@ -45,6 +39,14 @@ const FeedTemplate = ( wpPage ) => {
 				</div>
 			</Layout>
 		</>
+	)
+}
+
+export function Head() {
+	return (
+		<HeadMeta
+			title={ pageTitle }
+		/>
 	)
 }
 

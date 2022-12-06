@@ -2,30 +2,29 @@ import React from 'react'
 import Layout from '../components/Layout/Layout'
 import Section from '../components/Section/Section'
 import { useStaticQuery, graphql } from 'gatsby'
-import Seo from '../components/SEO'
+import HeadMeta from '../components/HeadMeta'
 import parse from 'html-react-parser'
 
-const Home = () => {
-	const data = useStaticQuery( graphql`
-		query QuerySiteMeta {
-			wp {
-				generalSettings {
-					title
-					description
-				}
+const siteData = useStaticQuery( graphql`
+	query {
+		site {
+			siteMetadata {
+				siteTitle: title
+				siteDesc: description
 			}
 		}
-	` )
+	}
+` )
+const { siteDesc, siteTitle } = siteData.siteMetadata
 
-	const seoTitle =
-		data.wp.generalSettings.description +
-		' | ' +
-		data.wp.generalSettings.title
+const Home = () => {
+
+	console.log( '### TEST ###' )
+	console.log( siteDesc )
 
 	return (
 		<>
-			<Seo title={ seoTitle } />
-			<Layout pageTitle={ data.wp.generalSettings.description }>
+			<Layout pageTitle={ siteTitle }>
 				<Section>
 					{ parse( `
 						<p>
@@ -48,6 +47,15 @@ const Home = () => {
 				</Section>
 			</Layout>
 		</>
+	)
+}
+
+export function Head() {
+	return (
+		<HeadMeta
+			title={ siteTitle }
+			description={ siteDesc }
+		/>
 	)
 }
 

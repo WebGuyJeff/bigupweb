@@ -1,14 +1,13 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-import Seo from '../../components/SEO'
+import HeadMeta from '../../components/HeadMeta'
 import Layout from '../../components/Layout/Layout'
 import WpPostTemplate from '../../templates/WpPostTemplate'
 
 const WpPost = ( { data: { wpPost } } ) => {
 	return (
 		<>
-			<Seo title={ wpPost.title } />
 			<Layout>
 				<WpPostTemplate { ...wpPost } />
 			</Layout>
@@ -30,4 +29,14 @@ export const data = graphql`
 		}
 	}
 `
+
+export function Head() {
+	return (
+		<HeadMeta
+			title={ wpPost.title }
+			description={ wpPost.excerpt }
+		/>
+	)
+}
+
 export default WpPost

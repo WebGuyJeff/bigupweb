@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 
@@ -18,18 +17,17 @@ const getData = graphql`
 	}
 `
 
-const SEO = ( { title, description } ) => {
+const HeadMeta = ( { title, description } ) => {
 	const { site } = useStaticQuery( getData )
-
 	const { siteDesc, siteTitle, siteUrl, image, twitterUsername } =
 		site.siteMetadata
 	return (
-		<Helmet
-			htmlAttribute={ { lang: 'en' } }
-			title={ `${title} | ${siteTitle}` }
-		>
+		<>
+			<title>{ `${title} | ${siteTitle}` }</title>
+
 			<meta name="description" content={ description || siteDesc } />
 			<meta name="image" content={ image } />
+
 			{ /* Facebook Card */ }
 			<meta property="og:url" content={ siteUrl } />
 			<meta property="og:type" content="website" />
@@ -45,13 +43,13 @@ const SEO = ( { title, description } ) => {
 			<meta name="twitter:title" content={ siteTitle } />
 			<meta name="twitter:description" content={ siteDesc } />
 			<meta name="twitter:image" content={ `${siteUrl}${image}` } />
-		</Helmet>
+		</>
 	)
 }
 
-SEO.propTypes = {
+HeadMeta.propTypes = {
 	title: PropTypes.string,
 	description: PropTypes.string,
 }
 
-export default SEO
+export default HeadMeta

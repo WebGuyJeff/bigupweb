@@ -25,9 +25,7 @@ module.exports = {
 	plugins: [
 		'gatsby-plugin-image',
 		'gatsby-plugin-sharp',
-		'gatsby-plugin-sass',
 		'gatsby-transformer-sharp',
-		'gatsby-plugin-react-helmet',
 		'gatsby-plugin-offline',
 		{
 			resolve: 'gatsby-source-filesystem',
@@ -70,20 +68,10 @@ module.exports = {
 				//					},
 				//				],
 				html: {
-					// Causes the source plugin to find/replace images in html with Gatsby images.
 					useGatsbyImage: true,
-					// Determines the image quality that Sharp will use when generating inline html
-					// image thumbnails.
 					imageQuality: 90,
-					// When this is true, any url's which are wrapped in '', '', or () and which
-					// contain /wp-content/uploads will be transformed into static files and the
-					// url's will be rewritten. 
 					createStaticFiles: true,
-					// When this is true, .webp images will be generated for images in html fields
-					// in addition to the images gatsby-image normally generates.
 					generateWebpImages: true,
-					// This can be either 'blurred' or 'dominantColor'. This is the type of
-					// placeholder image to be used in Gatsby Images in HTML fields.
 					placeholderType: 'blurred',
 				},
 				debug: {
@@ -112,20 +100,16 @@ module.exports = {
 			},
 		},
 		{
-			resolve: 'gatsby-plugin-react-css-modules',
-			options: {
-				// *.css files are included by default.
-				// To support another syntax (e.g. SCSS),
-				// add `postcss-scss` to your project's devDependencies
-				// and add the following option here:
-				filetypes: {
-					'.scss': { syntax: 'postcss-scss' },
-				},
-			
-				// Exclude global styles from the plugin using a RegExp:
-				exclude: '\/global\/',
-				// For all the options check babel-plugin-react-css-modules README link provided above
+			resolve: 'gatsby-plugin-sass',
+			cssLoaderOptions: {
+				camelCase: true,
 			},
 		},
-	],
+		{
+			resolve: 'gatsby-plugin-html-attributes',
+			options: {
+				lang: 'en'
+			}
+		}
+	]
 }
