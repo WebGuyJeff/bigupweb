@@ -1,7 +1,6 @@
 import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import Layout from '../components/Layout/Layout'
-import HeadMeta from '../components/HeadMeta'
 import SimpleBanner from '../components/SimpleBanner/SimpleBanner'
 
 const DefaultTemplate = ( wpPage ) => {
@@ -31,15 +30,6 @@ const DefaultTemplate = ( wpPage ) => {
 				</div>
 			</Layout>
 		</>
-	)
-}
-
-export function Head() {
-	return (
-		<HeadMeta
-			title={ data.wp.generalSettings.title }
-			description={ data.wp.generalSettings.description }
-		/>
 	)
 }
 

@@ -9,8 +9,10 @@ require( 'dotenv' ).config( {
 } )
 
 module.exports = {
+	trailingSlash: false,
 	siteMetadata: {
 		title: 'Bigup Web',
+		siteUrl: 'https://bigupweb.uk',
 		description: 'Exciting, Bold, and Downright Different Web Development',
 		author: 'Jefferson Real',
 		twitterUsername: 'bigupweb',
@@ -18,7 +20,6 @@ module.exports = {
 		instagramUsername: 'bigupweb',
 		linkedinUsername: 'bigupweb',
 		image: '/static/logo/bigup-web-logo-wide.png',
-		siteUrl: 'https://bigupweb.uk',
 		developerName: 'Jefferson Real',
 		developerUrl: 'https://jeffersonreal.uk',
 	},
@@ -59,14 +60,16 @@ module.exports = {
 					}
 				},
 				verbose: true,
-				//				searchAndReplace: [
-				//					{
-				//						// This is a regex search and replace rule to find any occurances of the
-				//						// WordPress source URL and replace it with the URL of the Gatsby site.
-				//						search: process.env.WP_SOURCE_BASE_URL,
-				//						replace: process.env.GATSBY_WEBSITE_URL,
-				//					},
-				//				],
+				/*
+				searchAndReplace: [
+					{
+					// This is a regex search and replace rule to find any occurances of the
+						// WordPress source URL and replace it with the URL of the Gatsby site.
+						search: process.env.WP_SOURCE_BASE_URL,
+						replace: process.env.GATSBY_WEBSITE_URL,
+					},
+				],
+				*/
 				html: {
 					useGatsbyImage: true,
 					imageQuality: 90,

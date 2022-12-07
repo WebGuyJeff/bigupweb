@@ -1,5 +1,17 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import HeadMeta from '../components/HeadMeta'
 import Layout from '../components/Layout/Layout'
+
+export const Head = ( { pageContext } ) => {
+	const { title, excerpt } = pageContext
+	return (
+		<HeadMeta
+			title={ title }
+			description={ excerpt }
+		/>
+	)
+}
 
 const NotFound = () => {
 	return (
@@ -20,6 +32,10 @@ const NotFound = () => {
 			<p>Apologies for any inconvenience.</p>
 		</Layout>
 	)
+}
+
+Head.propTypes = {
+	pageContext: PropTypes.object.isRequired,
 }
 
 export default NotFound

@@ -1,7 +1,6 @@
 import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import Layout from '../components/Layout/Layout'
-import HeadMeta from '../components/HeadMeta'
 import SimpleBanner from '../components/SimpleBanner/SimpleBanner'
 import WpPostFeed from '../components/Feeds/WpPostFeed'
 
@@ -39,14 +38,6 @@ const FeedTemplate = ( wpPage ) => {
 				</div>
 			</Layout>
 		</>
-	)
-}
-
-export function Head() {
-	return (
-		<HeadMeta
-			title={ pageTitle }
-		/>
 	)
 }
 

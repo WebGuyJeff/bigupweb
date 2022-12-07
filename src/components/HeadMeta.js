@@ -23,26 +23,24 @@ const HeadMeta = ( { title, description } ) => {
 		site.siteMetadata
 	return (
 		<>
-			<title>{ `${title} | ${siteTitle}` }</title>
+			<title id="title">{ `${title} | ${siteTitle}` }</title>
 
-			<meta name="description" content={ description || siteDesc } />
-			<meta name="image" content={ image } />
+			<meta id="meta-description" name="description" content={ description || siteDesc } />
+			<meta id="meta-image" name="image" content={ image } />
 
 			{ /* Facebook Card */ }
-			<meta property="og:url" content={ siteUrl } />
-			<meta property="og:type" content="website" />
-			<meta property="og:title" content={ siteTitle } />
-			<meta property="og:description" content={ siteDesc } />
-			<meta property="og:image" content={ `${siteUrl}${image}` } />
-			<meta property="og:image" content="400" />
-			<meta property="og:image:height" content="300" />
+			<meta id="meta-og-url" property="og:url" content={ siteUrl } />
+			<meta id="meta-og-type" property="og:type" content="website" />
+			<meta id="meta-og-title" property="og:title" content={ siteTitle } />
+			<meta id="meta-og-description" property="og:description" content={ siteDesc } />
+			<meta id="meta-og-image" property="og:image" content={ `${siteUrl}${image}` } />
 
 			{ /* Twitter Card */ }
-			<meta name="twitter:card" content="summary_large_image" />
-			<meta name="twitter:creator" content={ twitterUsername } />
-			<meta name="twitter:title" content={ siteTitle } />
-			<meta name="twitter:description" content={ siteDesc } />
-			<meta name="twitter:image" content={ `${siteUrl}${image}` } />
+			<meta id="meta-twitter-card" name="twitter:card" content="summary_large_image" />
+			<meta id="meta-twitter-creator" name="twitter:creator" content={ twitterUsername } />
+			<meta id="meta-twitter-title" name="twitter:title" content={ siteTitle } />
+			<meta id="meta-twitter-description" name="twitter:description" content={ siteDesc } />
+			<meta id="meta-twitter-image" name="twitter:image" content={ `${siteUrl}${image}` } />
 		</>
 	)
 }

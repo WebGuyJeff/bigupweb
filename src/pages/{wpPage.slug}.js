@@ -1,8 +1,19 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import HeadMeta from '../components/HeadMeta'
 import DefaultTemplate from '../templates/WpDefaultTemplate'
 import FeedTemplate from '../templates/WpFeedTemplate'
 import PropTypes from 'prop-types'
+
+export const Head = ( { pageContext } ) => {
+	const { title, excerpt } = pageContext
+	return (
+		<HeadMeta
+			title={ title }
+			description={ excerpt }
+		/>
+	)
+}
 
 const getPageTemplate = ( wpPage ) => {
 	const templateName = wpPage.template.templateName
@@ -15,16 +26,20 @@ const getPageTemplate = ( wpPage ) => {
 	}
 }
 
-getPageTemplate.propTypes = {
-	wpPage: PropTypes.object.isRequired,
-}
-
 const Page = ( { data: { wpPage } } ) => {
 	return <main>{ getPageTemplate( wpPage ) }</main>
 }
 
+getPageTemplate.propTypes = {
+	wpPage: PropTypes.object.isRequired,
+}
+
 Page.propTypes = {
 	data: PropTypes.object.isRequired,
+}
+
+Head.propTypes = {
+	pageContext: PropTypes.object.isRequired,
 }
 
 export const data = graphql`

@@ -1,9 +1,19 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Layout from '../components/Layout/Layout'
 import Section from '../components/Section/Section'
 import { useStaticQuery, graphql } from 'gatsby'
 import HeadMeta from '../components/HeadMeta'
 import parse from 'html-react-parser'
+
+export const Head = () => {
+	return (
+		<HeadMeta
+			title={ siteTitle }
+			description={ siteDesc }
+		/>
+	)
+}
 
 const siteData = useStaticQuery( graphql`
 	query {
@@ -18,10 +28,6 @@ const siteData = useStaticQuery( graphql`
 const { siteDesc, siteTitle } = siteData.siteMetadata
 
 const Home = () => {
-
-	console.log( '### TEST ###' )
-	console.log( siteDesc )
-
 	return (
 		<>
 			<Layout pageTitle={ siteTitle }>
@@ -50,13 +56,9 @@ const Home = () => {
 	)
 }
 
-export function Head() {
-	return (
-		<HeadMeta
-			title={ siteTitle }
-			description={ siteDesc }
-		/>
-	)
+siteData.propTypes = {
+	siteDesc: PropTypes.string.isRequired,
+	siteTitle: PropTypes.string.isRequired
 }
 
 export default Home

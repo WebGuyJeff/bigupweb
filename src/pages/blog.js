@@ -5,7 +5,15 @@ import HeadMeta from '../components/HeadMeta'
 import SimpleBanner from '../components/SimpleBanner/SimpleBanner'
 import WpPostFeed from '../components/Feeds/WpPostFeed'
 
-let pageTitle
+export const Head = ( { pageContext } ) => {
+	const { title, excerpt } = pageContext
+	return (
+		<HeadMeta
+			title={ title }
+			description={ excerpt }
+		/>
+	)
+}
 
 const PostsPage = ( wpPage ) => {
 	const { title, content, featuredImage } = wpPage
@@ -13,7 +21,6 @@ const PostsPage = ( wpPage ) => {
 		? getImage( featuredImage.node.localFile.childImageSharp.gatsbyImageData )
 		: null
 	const altText = featuredImage ? featuredImage.node.altText : null
-	pageTitle = title
 	return (
 		<>
 			<Layout>
@@ -33,12 +40,8 @@ const PostsPage = ( wpPage ) => {
 	)
 }
 
-export function Head() {
-	return (
-		<HeadMeta
-			title={ pageTitle }
-		/>
-	)
+Head.propTypes = {
+	pageContext: PropTypes.object.isRequired,
 }
 
 export default PostsPage
