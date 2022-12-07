@@ -7,6 +7,11 @@ import PropTypes from 'prop-types'
 
 export const Head = ( { pageContext } ) => {
 	const { title, excerpt } = pageContext
+
+	Head.propTypes = {
+		pageContext: PropTypes.object.isRequired,
+	}
+
 	return (
 		<HeadMeta
 			title={ title }
@@ -36,10 +41,6 @@ getPageTemplate.propTypes = {
 
 Page.propTypes = {
 	data: PropTypes.object.isRequired,
-}
-
-Head.propTypes = {
-	pageContext: PropTypes.object.isRequired,
 }
 
 export const data = graphql`

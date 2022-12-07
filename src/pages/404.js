@@ -5,12 +5,17 @@ import Layout from '../components/Layout/Layout'
 
 export const Head = ( { pageContext } ) => {
 	const { title, excerpt } = pageContext
+
 	return (
 		<HeadMeta
 			title={ title }
 			description={ excerpt }
 		/>
 	)
+}
+
+Head.propTypes = {
+	pageContext: PropTypes.object.isRequired,
 }
 
 const NotFound = () => {
@@ -32,10 +37,6 @@ const NotFound = () => {
 			<p>Apologies for any inconvenience.</p>
 		</Layout>
 	)
-}
-
-Head.propTypes = {
-	pageContext: PropTypes.object.isRequired,
 }
 
 export default NotFound

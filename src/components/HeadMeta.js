@@ -19,11 +19,10 @@ const getData = graphql`
 
 const HeadMeta = ( { title, description } ) => {
 	const { site } = useStaticQuery( getData )
-	const { siteDesc, siteTitle, siteUrl, image, twitterUsername } =
-		site.siteMetadata
+	const { siteDesc, siteTitle, siteUrl, image, twitterUsername } = site.siteMetadata
 	return (
 		<>
-			<title id="title">{ `${title} | ${siteTitle}` }</title>
+			<title id="meta-title">{ `${title} | ${siteTitle}` }</title>
 
 			<meta id="meta-description" name="description" content={ description || siteDesc } />
 			<meta id="meta-image" name="image" content={ image } />
