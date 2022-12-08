@@ -6,6 +6,11 @@ import { useStaticQuery, graphql } from 'gatsby'
 import HeadMeta from '../components/HeadMeta'
 import parse from 'html-react-parser'
 
+
+console.log( '### DEBUG ###' )
+console.log( JSON.stringify( siteData.site.siteMetadata ) )
+
+
 export const Head = () => {
 	return (
 		<HeadMeta
@@ -25,7 +30,7 @@ const siteData = useStaticQuery( graphql`
 		}
 	}
 ` )
-const { siteDesc, siteTitle } = siteData.siteMetadata
+const { siteDesc, siteTitle } = siteData.site.siteMetadata
 
 const Home = () => {
 	return (
