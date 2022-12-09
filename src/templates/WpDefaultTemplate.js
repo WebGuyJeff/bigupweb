@@ -1,5 +1,6 @@
 import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
+import PropTypes from 'prop-types'
 import Layout from '../components/Layout/Layout'
 import SimpleBanner from '../components/SimpleBanner/SimpleBanner'
 
@@ -10,7 +11,7 @@ const DefaultTemplate = ( wpPage ) => {
 		: ''
 	const altText = ( '' !== featuredImage )
 		? wpPage.featuredImage.node.altText
-		: null
+		: ''
 
 	const { title, content } = wpPage
 	return (
@@ -31,6 +32,10 @@ const DefaultTemplate = ( wpPage ) => {
 			</Layout>
 		</>
 	)
+}
+
+DefaultTemplate.propTypes = {
+	wpPage: PropTypes.node.isRequired
 }
 
 export default DefaultTemplate

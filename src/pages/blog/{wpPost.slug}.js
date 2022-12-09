@@ -15,6 +15,11 @@ export const Head = ( { pageContext } ) => {
 	)
 }
 
+Head.propTypes = {
+	pageContext: PropTypes.node.isRequired
+}
+
+
 const WpPost = ( { data: { wpPost } } ) => {
 	return (
 		<>
@@ -26,11 +31,7 @@ const WpPost = ( { data: { wpPost } } ) => {
 }
 
 WpPost.propTypes = {
-	data: PropTypes.object.isRequired
-}
-
-Head.propTypes = {
-	pageContext: PropTypes.object.isRequired,
+	data: PropTypes.node.isRequired
 }
 
 export const data = graphql`

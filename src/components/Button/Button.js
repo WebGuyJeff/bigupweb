@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { MdArrowForward as Arrow } from 'react-icons/md'
 import PropTypes from 'prop-types'
+import { MdArrowForward as Arrow } from 'react-icons/md'
 import { button } from './Button.module.scss'
 
 const Button = ( { text, to, arrow } ) => {
@@ -15,8 +15,7 @@ const Button = ( { text, to, arrow } ) => {
 Button.propTypes = {
 	text: PropTypes.string,
 	to: PropTypes.string,
-	as: PropTypes.string,
-	arrow: PropTypes.bool,
+	arrow: PropTypes.bool
 }
 
 export default Button

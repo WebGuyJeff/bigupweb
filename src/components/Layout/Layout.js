@@ -23,8 +23,8 @@ const Layout = ( { pageTitle, children } ) => {
 }
 
 Layout.propTypes = {
-	pageTitle: PropTypes.PropTypes.string,
-	children: PropTypes.PropTypes.node.isRequired,
+	pageTitle: PropTypes.string,
+	children: PropTypes.node.isRequired
 }
 
 export default Layout

@@ -13,7 +13,7 @@ const WpPostTemplate = ( { title, date, content } ) => {
 				<article className={ blogsingle }>
 					{ title && <h1 className={ blogsingle._title }>{ title }</h1> }
 					{ date && (
-						<p className="blogsingle_date">Posted on { date }</p>
+						<p className="blogsingle_date">Posted on { date || '' }</p>
 					) }
 					{ content && (
 						<div className="blogsingle_content">
@@ -38,8 +38,7 @@ const WpPostTemplate = ( { title, date, content } ) => {
 WpPostTemplate.propTypes = {
 	title: PropTypes.string.isRequired,
 	date: PropTypes.string,
-	excerpt: PropTypes.string,
-	content: PropTypes.string.isRequired,
+	content: PropTypes.string.isRequired
 }
 
 export default WpPostTemplate

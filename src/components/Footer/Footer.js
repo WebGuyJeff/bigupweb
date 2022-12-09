@@ -1,7 +1,6 @@
 import * as React from 'react'
-import { Link } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import { menuItems } from '../../constants/links'
-import { UseSiteMetadata } from '../../hooks/useSiteMetadata'
 import {
 	FaFacebookSquare as Facebook,
 	FaTwitterSquare as Twitter,
@@ -16,8 +15,33 @@ import {
 	copyright,
 } from './Footer.module.scss'
 
+const siteData = useStaticQuery(
+	graphql`
+		query {
+			site {
+				siteMetadata {
+					twitterUsername
+					facebookUsername
+					instagramUsername
+					linkedinUsername
+					developerUrl
+					developerName
+				}
+			}
+		}
+	`
+)
+
 const Footer = () => {
-	const siteMeta = UseSiteMetadata()
+	const {
+		twitterUsername,
+		facebookUsername,
+		instagramUsername,
+		linkedinUsername,
+		developerUrl,
+		developerName
+	} = siteData.site.siteMetadata
+
 	return (
 		<footer style={ { marginBottom: 0 } } className={ footer }>
 			<div className={ container }>
@@ -64,19 +88,19 @@ const Footer = () => {
 					</FooterMenuStyles>
 				)}
 */ }
-				{ siteMeta.twitterUsername ||
-				siteMeta.facebookUsername ||
-				siteMeta.instagramUsername ||
-				siteMeta.linkedinUsername ? (
+				{ twitterUsername ||
+				facebookUsername ||
+				instagramUsername ||
+				linkedinUsername ? (
 						<div className={ `${footer_menu} ${social}` }>
 							<h5>
 							Follow Bigup Web<span>.</span>
 							</h5>
 							<ul>
-								{ siteMeta.twitterUsername && (
+								{ twitterUsername && (
 									<li>
 										<a
-											href={ `https://www.twitter.com/${siteMeta.twitterUsername}` }
+											href={ `https://www.twitter.com/${twitterUsername}` }
 											target="_blank"
 											rel="nofollow noreferrer noopener"
 										>
@@ -84,10 +108,10 @@ const Footer = () => {
 										</a>
 									</li>
 								) }
-								{ siteMeta.facebookUsername && (
+								{ facebookUsername && (
 									<li>
 										<a
-											href={ `https://www.facebook.com/${siteMeta.facebookUsername}` }
+											href={ `https://www.facebook.com/${facebookUsername}` }
 											target="_blank"
 											rel="nofollow noreferrer noopener"
 										>
@@ -95,10 +119,10 @@ const Footer = () => {
 										</a>
 									</li>
 								) }
-								{ siteMeta.instagramUsername && (
+								{ instagramUsername && (
 									<li>
 										<a
-											href={ `https://www.instagram.com/${siteMeta.instagramUsername}` }
+											href={ `https://www.instagram.com/${instagramUsername}` }
 											target="_blank"
 											rel="nofollow noreferrer noopener"
 										>
@@ -106,10 +130,10 @@ const Footer = () => {
 										</a>
 									</li>
 								) }
-								{ siteMeta.linkedinUsername && (
+								{ linkedinUsername && (
 									<li>
 										<a
-											href={ `https://www.linkedin.com/${siteMeta.linkedinUsername}` }
+											href={ `https://www.linkedin.com/${linkedinUsername}` }
 											target="_blank"
 											rel="nofollow noreferrer noopener"
 										>
@@ -127,11 +151,11 @@ const Footer = () => {
 				<p>
 					Designed & developed by{ ' ' }
 					<a
-						href={ siteMeta.developerUrl }
+						href={ developerUrl }
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						{ siteMeta.developerName }
+						{ developerName }
 					</a>
 					<span>.</span>
 				</p>

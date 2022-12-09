@@ -1,5 +1,6 @@
 import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
+import PropTypes from 'prop-types'
 import Layout from '../components/Layout/Layout'
 import HeadMeta from '../components/HeadMeta'
 import SimpleBanner from '../components/SimpleBanner/SimpleBanner'
@@ -13,6 +14,10 @@ export const Head = ( { pageContext } ) => {
 			description={ excerpt }
 		/>
 	)
+}
+
+Head.propTypes = {
+	pageContext: PropTypes.node.isRequired
 }
 
 const PostsPage = ( wpPage ) => {
@@ -40,8 +45,8 @@ const PostsPage = ( wpPage ) => {
 	)
 }
 
-Head.propTypes = {
-	pageContext: PropTypes.object.isRequired,
+PostsPage.propTypes = {
+	wpPage: PropTypes.node.isRequired
 }
 
 export default PostsPage

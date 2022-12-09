@@ -15,7 +15,7 @@ export const Head = ( { pageContext } ) => {
 }
 
 Head.propTypes = {
-	pageContext: PropTypes.object.isRequired,
+	pageContext: PropTypes.node.isRequired
 }
 
 const NotFound = () => {

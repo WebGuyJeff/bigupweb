@@ -7,7 +7,7 @@ const PostItems = ( { children } ) => {
 }
 
 PostItems.propTypes = {
-	children: PropTypes.node.isRequired,
+	children: PropTypes.node.isRequired
 }
 
 export default PostItems

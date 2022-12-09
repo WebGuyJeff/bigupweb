@@ -1,7 +1,7 @@
 import * as React from 'react'
+import PropTypes from 'prop-types'
 import Button from '../../Button/Button'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import PropTypes from 'prop-types'
 import {
 	blogitem
 } from './WpPostItem.module.scss'
@@ -41,7 +41,7 @@ const WpPostItem = ( { node }, key ) => {
 }
 
 WpPostItem.propTypes = {
-	node: PropTypes.object,
+	node: PropTypes.node
 }
 
 export default WpPostItem

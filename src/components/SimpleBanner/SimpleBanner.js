@@ -1,5 +1,6 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import * as React from 'react'
+import PropTypes from 'prop-types'
 import {
 	simpleBanner,
 	bannerImage,
@@ -7,7 +8,6 @@ import {
 	gradient,
 	bannerContent,
 } from './SimpleBanner.module.scss'
-import PropTypes from 'prop-types'
 
 const SimpleBanner = ( { children, title, image, altText, content } ) => {
 	return (
@@ -46,7 +46,7 @@ SimpleBanner.propTypes = {
 	title: PropTypes.string,
 	image: PropTypes.string,
 	altText: PropTypes.string,
-	content: PropTypes.string,
+	content: PropTypes.string
 }
 
 export default SimpleBanner

@@ -1,10 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import PostItems from '../PostItems/PostItems'
 import WpPostItem from '../WpPostItem/WpPostItem'
 import useLatestWpPosts from '../../../hooks/useWpLatestPosts'
 import Button from '../../Button/Button'
-import PropTypes from 'prop-types'
 
 /**
  * WpLatestPosts Section
@@ -46,7 +46,7 @@ const WpLatestPosts = ( { title, introduction } ) => {
 
 WpLatestPosts.propTypes = {
 	title: PropTypes.string,
-	introduction: PropTypes.string,
+	introduction: PropTypes.string
 }
 
 export default WpLatestPosts

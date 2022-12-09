@@ -1,16 +1,12 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
 import HeadMeta from '../components/HeadMeta'
 import DefaultTemplate from '../templates/WpDefaultTemplate'
 import FeedTemplate from '../templates/WpFeedTemplate'
-import PropTypes from 'prop-types'
 
 export const Head = ( { pageContext } ) => {
 	const { title, excerpt } = pageContext
-
-	Head.propTypes = {
-		pageContext: PropTypes.object.isRequired,
-	}
 
 	return (
 		<HeadMeta
@@ -35,12 +31,16 @@ const Page = ( { data: { wpPage } } ) => {
 	return <main>{ getPageTemplate( wpPage ) }</main>
 }
 
+Head.propTypes = {
+	pageContext: PropTypes.node.isRequired
+}
+
 getPageTemplate.propTypes = {
-	wpPage: PropTypes.object.isRequired,
+	wpPage: PropTypes.node.isRequired
 }
 
 Page.propTypes = {
-	data: PropTypes.object.isRequired,
+	data: PropTypes.node.isRequired
 }
 
 export const data = graphql`
