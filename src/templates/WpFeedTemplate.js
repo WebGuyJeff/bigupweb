@@ -21,7 +21,7 @@ const FeedTemplate = ( wpPage ) => {
 	const headerImage = featuredImage
 		? getImage( featuredImage.node.localFile.childImageSharp.gatsbyImageData )
 		: null
-	const altText = featuredImage ? featuredImage.node.altText : null
+	const altText = featuredImage ? featuredImage.node.altText : ''
 	return (
 		<>
 			<Layout>
@@ -40,7 +40,7 @@ const FeedTemplate = ( wpPage ) => {
 }
 
 FeedTemplate.propTypes = {
-	wpPage: PropTypes.node.isRequired
+	wpPage: PropTypes.object.isRequired
 }
 
 export default FeedTemplate

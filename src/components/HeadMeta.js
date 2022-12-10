@@ -1,25 +1,14 @@
 import * as React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import PropTypes from 'prop-types'
 
-const siteData = useStaticQuery(
-	graphql`
-		query {
-			site {
-				siteMetadata {
-					title
-					description
-					image
-					siteUrl
-					twitterUsername
-				}
-			}
-		}
-	`
-)
-
 const HeadMeta = ( { passedTitle, passedDescription } ) => {
-	const { title, description, image, siteUrl, twitterUsername } = siteData.site.siteMetadata
+	const {
+		title,
+		description,
+		image, siteUrl,
+		twitterUsername
+	} = useSiteMetadata()
 	const metaTitle = passedTitle || title
 	const metaDesc  = passedDescription || description
 

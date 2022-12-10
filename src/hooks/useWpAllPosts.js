@@ -4,7 +4,7 @@ const useWpAllPosts = () => {
 	const {
 		allWpPost: { nodes },
 	} = useStaticQuery( graphql`
-		query wpLatestBlogLinksQuery {
+		query {
 			allWpPost(sort: {date: DESC}, limit: 3) {
 			nodes {
 				title

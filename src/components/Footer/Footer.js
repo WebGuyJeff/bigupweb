@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { Link } from 'gatsby'
+import { useSiteMetadata } from '../../hooks/useSiteMetadata'
 import { menuItems } from '../../constants/links'
 import {
 	FaFacebookSquare as Facebook,
@@ -15,23 +16,6 @@ import {
 	copyright,
 } from './Footer.module.scss'
 
-const siteData = useStaticQuery(
-	graphql`
-		query {
-			site {
-				siteMetadata {
-					twitterUsername
-					facebookUsername
-					instagramUsername
-					linkedinUsername
-					developerUrl
-					developerName
-				}
-			}
-		}
-	`
-)
-
 const Footer = () => {
 	const {
 		twitterUsername,
@@ -40,7 +24,7 @@ const Footer = () => {
 		linkedinUsername,
 		developerUrl,
 		developerName
-	} = siteData.site.siteMetadata
+	} = useSiteMetadata()
 
 	return (
 		<footer style={ { marginBottom: 0 } } className={ footer }>

@@ -1,28 +1,15 @@
 import React from 'react'
 import Layout from '../components/Layout/Layout'
 import Section from '../components/Section/Section'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import HeadMeta from '../components/HeadMeta'
 import parse from 'html-react-parser'
 
-const siteData = useStaticQuery(
-	graphql`
-		query {
-			site {
-				siteMetadata {
-					title
-					description
-				}
-			}
-		}
-	`
-)
-
-console.log( '### DEBUG ###' )
-const { title, description } = siteData.site.siteMetadata
-console.log( title + ' / ' + description )
-
 export const Head = () => {
+	const {
+		title,
+		description
+	} = useSiteMetadata()
 	return (
 		<HeadMeta
 			title={ title }
@@ -32,6 +19,9 @@ export const Head = () => {
 }
 
 const Home = () => {
+	const {
+		title
+	} = useSiteMetadata()
 	return (
 		<>
 			<Layout pageTitle={ title }>

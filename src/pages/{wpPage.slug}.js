@@ -30,17 +30,17 @@ const getPageTemplate = ( wpPage ) => {
 const Page = ( { data: { wpPage } } ) => {
 	return <main>{ getPageTemplate( wpPage ) }</main>
 }
-
+/* Why is 
 Head.propTypes = {
 	pageContext: PropTypes.node.isRequired
 }
-
+*/
 getPageTemplate.propTypes = {
 	wpPage: PropTypes.node.isRequired
 }
 
 Page.propTypes = {
-	data: PropTypes.node.isRequired
+	data: PropTypes.object.isRequired
 }
 
 export const data = graphql`

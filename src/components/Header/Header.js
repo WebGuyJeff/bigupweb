@@ -1,20 +1,12 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
-import {
-	useStaticQuery,
-	graphql
-} from 'gatsby'
-import {
-	header,
-	nav,
-	navLinks,
-	navLinkItem
-} from './Header.module.scss'
+import { useStaticQuery, graphql } from 'gatsby'
+import { header, nav, navLinks, navLinkItem } from './Header.module.scss'
 
 const Header = () => {
 	const data = useStaticQuery( graphql`
-		query QuerySiteTitle {
+		query {
 			wp {
 				generalSettings {
 					title
