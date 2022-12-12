@@ -28,9 +28,10 @@
 }
 
 .nav {
-	font-family: "Roboto Condensed", Arial, sans-serif;
+	font-family: 'Roboto FlexVariable', Arial, sans-serif;
 	font-size: 1.25em;
 	font-weight: 900;
+	font-variation-settings: 'wght' 900, 'wdth' 30;
 }
 	.nav-links {
 		display: flex;

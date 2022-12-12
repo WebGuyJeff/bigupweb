@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@fontsource/montserrat": "^4.5.13",
+    "@fontsource/roboto-flex": "^4.5.2",
     "dotenv": "^16.0.3",
     "gatsby": "5.2",
     "gatsby-cli": "5.2",

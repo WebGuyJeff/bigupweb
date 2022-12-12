@@ -1,0 +1,15 @@
+.logo {
+	text-decoration: none;
+	transition: color 0.3s ease;
+
+	&:hover,
+	&:focus {
+		color: rgba( var(--theme_primary), 1);
+	}
+
+	img {
+		height: 80px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+}

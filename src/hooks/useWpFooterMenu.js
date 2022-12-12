@@ -1,17 +1,21 @@
 import { graphql, useStaticQuery } from 'gatsby'
 
 const useWpFooterMenu = () => {
-	const { menu } = useStaticQuery( graphql`
-		wpMenu(name: {eq: "footerLinks"}) {
-			menuItems {
-				nodes {
-					uri
-					label
+	const {
+		wpMenu: { menuItems },
+	} = useStaticQuery( graphql`
+		query {
+			wpMenu(id: {eq: "dGVybToxNzM="}) {
+				menuItems {
+					nodes {
+						uri
+						label
+					}
 				}
 			}
 		}
 	` )
-	return menu.menuItems
+	return menuItems
 }
 
 export default useWpFooterMenu

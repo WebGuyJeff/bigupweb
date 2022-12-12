@@ -11,7 +11,7 @@
 }
 
 .main {
-	padding: 0;
+	padding: var(--gap) var(--borderSpacing) var(--gap) var(--borderSpacing);
 }
 
 .heading {

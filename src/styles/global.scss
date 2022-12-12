@@ -29,9 +29,10 @@
 	--theme_foreground: 36, 36, 36;
 	--theme_primary: 233, 0, 128;
 
-	font-family: 'MontserratVariable', Arial, sans-serif;
-	font-weight: 400;
+	font-family: 'Roboto FlexVariable', arial, sans-serif;
 	font-size: 1rem;
+	font-weight: 400;
+	font-variation-settings: 'wght' 400;
 }
 
 @media (min-width:1200px) {
@@ -94,7 +95,9 @@ h4,
 h5,
 h6 {
     font-weight: 900;
-	font-family: 'MontserratVariable', Arial, sans-serif;
+	text-transform: uppercase;
+	font-family: 'Roboto FlexVariable', Arial, sans-serif;
+	font-variation-settings: 'wght' 900, 'wdth' 130;
 }
 
 h1,
@@ -147,11 +150,13 @@ p {
 
 b,
 strong {
-  font-weight: 700;
+	font-weight: 700;
+	font-variation-settings: 'wght' 700;
 }
 
 i {
-  font-style: italic;
+  	font-style: italic;
+	font-variation-settings: 'slnt' -10;
 }
 
 .underline {
@@ -189,6 +194,7 @@ a {
 blockquote {
   font-size: var(--blockquote);
   font-style: italic;
+  font-variation-settings: 'slnt' -10;
   margin-left: 0;
   border-left: 2px solid rgba(var(--theme_primary), 1);
   padding-left: var(--gap);
@@ -281,8 +287,8 @@ blockquote {
 }
 
 .contentdescription {
-  font-style: italic;
-  font-size: 0.813rem;
-  text-align: center;
-  margin-top: calc(var(--gap) / 2);
+	font-variation-settings: 'slnt' -10;
+	font-size: 0.813rem;
+	text-align: center;
+	margin-top: calc(var(--gap) / 2);
 }
