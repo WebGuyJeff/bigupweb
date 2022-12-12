@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
+import useWpFooterMenu from '../../hooks/useWpFooterMenu'
 import { useSiteMetadata } from '../../hooks/useSiteMetadata'
-import { menuItems } from '../../constants/links'
 import {
 	FaFacebookSquare as Facebook,
 	FaTwitterSquare as Twitter,
@@ -25,6 +25,7 @@ const Footer = () => {
 		developerUrl,
 		developerName
 	} = useSiteMetadata()
+	const footerMenu  = useWpFooterMenu()
 
 	return (
 		<footer style={ { marginBottom: 0 } } className={ footer }>
@@ -32,14 +33,14 @@ const Footer = () => {
 				<div className={ footer_menu }>
 					<h5>Links</h5>
 					<ul>
-						{ menuItems.map( ( item, index ) => {
+						{ footerMenu.nodes.map( ( node, index ) => {
 							return (
 								<li key={ index }>
 									<Link
-										to={ item.path }
+										to={ node.uri }
 										activeClassName="menu_item--active"
 									>
-										{ item.text }
+										{ node.label }
 										<span>.</span>
 									</Link>
 								</li>
