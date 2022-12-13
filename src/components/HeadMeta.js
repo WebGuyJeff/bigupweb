@@ -2,15 +2,16 @@ import * as React from 'react'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import PropTypes from 'prop-types'
 
-const HeadMeta = ( { passedTitle, passedDescription } ) => {
+const HeadMeta = ( { pageTitle, pageDescription } ) => {
 	const {
 		title,
 		description,
-		image, siteUrl,
+		image,
+		siteUrl,
 		twitterUsername
 	} = useSiteMetadata()
-	const metaTitle = passedTitle || title
-	const metaDesc  = passedDescription || description
+	const metaTitle = pageTitle || title
+	const metaDesc  = pageDescription || description
 
 	return (
 		<>
@@ -34,9 +35,10 @@ const HeadMeta = ( { passedTitle, passedDescription } ) => {
 	)
 }
 
-HeadMeta.propTypes = {
-	passedTitle: PropTypes.string,
-	passedDescription: PropTypes.string
-}
-
 export default HeadMeta
+
+
+HeadMeta.propTypes = {
+	pageTitle: PropTypes.string.isRequired,
+	pageDescription: PropTypes.string.isRequired
+}

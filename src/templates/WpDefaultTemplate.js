@@ -13,13 +13,13 @@ const DefaultTemplate = ( wpPage ) => {
 		? wpPage.featuredImage.node.altText
 		: ''
 
-	const { title, content } = wpPage
+	const { title, excerpt, content } = wpPage
 	return (
 		<>
 			<Layout>
 				<SimpleBanner
 					title={ title }
-					content={ content }
+					content={ excerpt }
 					image={ featuredImage }
 					alt={ altText }
 				/>

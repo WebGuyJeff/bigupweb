@@ -5,21 +5,6 @@ import HeadMeta from '../../components/HeadMeta'
 import Layout from '../../components/Layout/Layout'
 import WpPostTemplate from '../../templates/WpPostTemplate'
 
-export const Head = ( { pageContext } ) => {
-	const { title, excerpt } = pageContext
-	return (
-		<HeadMeta
-			title={ title }
-			description={ excerpt }
-		/>
-	)
-}
-
-Head.propTypes = {
-	pageContext: PropTypes.node.isRequired
-}
-
-
 const WpPost = ( { data: { wpPost } } ) => {
 	return (
 		<>
@@ -28,10 +13,6 @@ const WpPost = ( { data: { wpPost } } ) => {
 			</Layout>
 		</>
 	)
-}
-
-WpPost.propTypes = {
-	data: PropTypes.node.isRequired
 }
 
 export const data = graphql`
@@ -45,4 +26,23 @@ export const data = graphql`
 	}
 `
 
+export const Head = ( { data: { wpPostQuery } } ) => {
+	const { title, excerpt } = wpPostQuery
+	return (
+		<HeadMeta
+			pageTitle={ title }
+			pageDescription={ excerpt }
+		/>
+	)
+} 
+
 export default WpPost
+
+
+WpPost.propTypes = {
+	data: PropTypes.node.isRequired
+}
+
+Head.propTypes = {
+	data: PropTypes.object.isRequired,
+}

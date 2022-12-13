@@ -5,13 +5,12 @@ import HeadMeta from '../components/HeadMeta'
 import DefaultTemplate from '../templates/WpDefaultTemplate'
 import FeedTemplate from '../templates/WpFeedTemplate'
 
-export const Head = ( { pageContext } ) => {
-	const { title, excerpt } = pageContext
 
+const headMeta = ( { data: { wpPage: { title, excerpt } } } ) => {
 	return (
 		<HeadMeta
-			title={ title }
-			description={ excerpt }
+			pageTitle={ title }
+			pageDescription={ excerpt }
 		/>
 	)
 }
@@ -30,18 +29,6 @@ const getPageTemplate = ( wpPage ) => {
 const Page = ( { data: { wpPage } } ) => {
 	return <main>{ getPageTemplate( wpPage ) }</main>
 }
-/* Why is 
-Head.propTypes = {
-	pageContext: PropTypes.node.isRequired
-}
-*/
-getPageTemplate.propTypes = {
-	wpPage: PropTypes.node.isRequired
-}
-
-Page.propTypes = {
-	data: PropTypes.object.isRequired
-}
 
 export const data = graphql`
 	query wpPageQuery($id: String) {
@@ -50,6 +37,7 @@ export const data = graphql`
 				templateName
 			}
 			title
+			excerpt
 			content
 			slug
 			featuredImage {
@@ -70,4 +58,19 @@ export const data = graphql`
 	}
 `
 
+export const Head = ( data ) => headMeta( data )
+
 export default Page
+
+
+headMeta.propTypes = {
+	data: PropTypes.object.isRequired,
+}
+
+getPageTemplate.propTypes = {
+	wpPage: PropTypes.node.isRequired
+}
+
+Page.propTypes = {
+	data: PropTypes.object.isRequired
+}

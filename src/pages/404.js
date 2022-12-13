@@ -1,22 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import HeadMeta from '../components/HeadMeta'
 import Layout from '../components/Layout/Layout'
 
-export const Head = ( { pageContext } ) => {
-	const { title, excerpt } = pageContext
-
-	return (
-		<HeadMeta
-			title={ title }
-			description={ excerpt }
-		/>
-	)
-}
-
-Head.propTypes = {
-	pageContext: PropTypes.node.isRequired
-}
 
 const NotFound = () => {
 	return (
@@ -36,6 +21,15 @@ const NotFound = () => {
 			</p>
 			<p>Apologies for any inconvenience.</p>
 		</Layout>
+	)
+}
+
+export const Head = () => {
+	return (
+		<HeadMeta
+			pageTitle="Page Not Found"
+			pageDescription="Oops! We couldn't find the page you were looking for."
+		/>
 	)
 }
 

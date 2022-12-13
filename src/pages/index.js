@@ -5,18 +5,6 @@ import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import HeadMeta from '../components/HeadMeta'
 import parse from 'html-react-parser'
 
-export const Head = () => {
-	const {
-		title,
-		description
-	} = useSiteMetadata()
-	return (
-		<HeadMeta
-			title={ title }
-			description={ description }
-		/>
-	)
-}
 
 const Home = () => {
 	const {
@@ -47,6 +35,19 @@ const Home = () => {
 				</Section>
 			</Layout>
 		</>
+	)
+}
+
+export const Head = () => {
+	const {
+		title,
+		description
+	} = useSiteMetadata()
+	return (
+		<HeadMeta
+			pageTitle={ title }
+			pageDescription={ description }
+		/>
 	)
 }
 
