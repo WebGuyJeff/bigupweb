@@ -14,6 +14,10 @@ const headMeta = ( { data: { wpPage: { title, excerpt } } } ) => {
 		/>
 	)
 }
+headMeta.propTypes = {
+	title: PropTypes.string.isRequired,
+	excerpt: PropTypes.string.isRequired
+}
 
 const getPageTemplate = ( wpPage ) => {
 	const templateName = wpPage.template.templateName
@@ -25,9 +29,15 @@ const getPageTemplate = ( wpPage ) => {
 		return <DefaultTemplate { ...wpPage } />
 	}
 }
+getPageTemplate.propTypes = {
+	wpPage: PropTypes.node.isRequired
+}
 
 const Page = ( { data: { wpPage } } ) => {
 	return <main>{ getPageTemplate( wpPage ) }</main>
+}
+Page.propTypes = {
+	data: PropTypes.object.isRequired
 }
 
 export const data = graphql`
@@ -61,16 +71,3 @@ export const data = graphql`
 export const Head = ( data ) => headMeta( data )
 
 export default Page
-
-
-headMeta.propTypes = {
-	data: PropTypes.object.isRequired,
-}
-
-getPageTemplate.propTypes = {
-	wpPage: PropTypes.node.isRequired
-}
-
-Page.propTypes = {
-	data: PropTypes.object.isRequired
-}
