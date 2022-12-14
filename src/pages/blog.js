@@ -6,6 +6,19 @@ import HeadMeta from '../components/HeadMeta'
 import SimpleBanner from '../components/SimpleBanner/SimpleBanner'
 import WpPostFeed from '../components/Feeds/WpPostFeed'
 
+const headMeta = ( { data: { wpPage: { title, excerpt } } } ) => {
+	return (
+		<HeadMeta
+			pageTitle={ title }
+			pageDescription={ excerpt }
+		/>
+	)
+}
+headMeta.propTypes = {
+	title: PropTypes.string.isRequired,
+	excerpt: PropTypes.string.isRequired
+}
+
 const PostsPage = ( wpPage ) => {
 	const { title, excerpt, content, featuredImage } = wpPage
 	const headerImage = featuredImage
@@ -21,9 +34,10 @@ const PostsPage = ( wpPage ) => {
 					image={ headerImage }
 					alt={ altText }
 				/>
-				<>
+				<section>
 					{ content }
-				</>
+				</section>
+				<div><span>ANOTHER TEST</span></div>
 				<div className="section">
 					<div className="feed">
 						<WpPostFeed { ...wpPage } />
@@ -33,25 +47,10 @@ const PostsPage = ( wpPage ) => {
 		</>
 	)
 }
-
-
-export const Head = ( wpPage ) => {
-	const { title, excerpt } = wpPage
-	return (
-		<HeadMeta
-			pageTitle={ title }
-			pageDescription={ excerpt }
-		/>
-	)
-} 
-
-export default PostsPage
-
-
-Head.propTypes = {
-	wpPage: PropTypes.object.isRequired,
-}
-
 PostsPage.propTypes = {
 	wpPage: PropTypes.node.isRequired
 }
+
+export const Head = ( data ) => headMeta( data )
+
+export default PostsPage
