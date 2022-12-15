@@ -1,21 +1,37 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
+import { graphql, useStaticQuery } from 'gatsby'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { useSiteMetadata } from '../../hooks/useSiteMetadata'
 import { logo } from './Logo.module.scss'
 
 const Logo = () => {
-	const { title }        = useSiteMetadata()
-	const logoRelativePath = '../../../static/logo/bigup-web-logo-wide.png'
-
+	const { wp: { siteLogo } } = useStaticQuery( graphql`
+		query {
+			wp {
+				siteLogo {
+					altText
+					sourceUrl
+					gatsbyImage(
+						formats: [AUTO, PNG]
+						height: 80
+						width: 270
+					)
+				}
+			}
+		}
+	` )
+	const {	altText } = siteLogo
+	const { title }   = useSiteMetadata()
+	const image       = getImage( siteLogo )
+	
 	return (
 		<Link to="/" className={ logo }>
-			<StaticImage
-				alt="Bigup Web Logo"
-				src={ logoRelativePath }
+			<GatsbyImage
+				alt={ altText }
+				image={ image }
 				loading="eager"
-				transformOptions={ { fit: 'inside' } }
-				height="80"
+				transformOptions={ { fit: 'cover' } }
 			/>
 			<span className="visuallyhidden">
 				{ title }
