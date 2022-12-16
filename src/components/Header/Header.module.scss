@@ -6,54 +6,5 @@
 	justify-content: space-between;
 	margin-bottom: var(--gap);
 	padding: var(--gap) var(--borderSpacing) 0 var(--borderSpacing);
-
-	a {
-		img {
-			height: 80px;
-			margin-top: 5px;
-			margin-bottom: 5px;
-		}
-
-		span {
-			clip: rect(0 0 0 0);
-			position: absolute;
-			margin: -1px;
-			border: 0;
-			padding: 0;
-			width: 1px;
-			height: 1px;
-			overflow: hidden;
-		}
-	}
+	gap: var(--gap);
 }
-
-.nav {
-	font-family: 'Roboto FlexVariable', Arial, sans-serif;
-	font-size: 1.25em;
-	font-weight: 900;
-	font-variation-settings: 'wght' 900, 'wdth' 30;
-}
-	.nav-links {
-		display: flex;
-		display: flex;
-		flex-flow: row wrap;
-		margin-bottom: var(--gap);
-		padding-left: 0;
-		list-style: none;
-	}
-		.nav-link-item {
-			transition: color 0.3s ease;
-			margin-top: 5px;
-			margin-bottom: 5px;
-			padding-right: 2rem;
-			text-transform: uppercase;
-			text-decoration: none;
-			color: #333;
-			color: var(--bodyColor);
-			font-weight: 700;
-
-			&:hover,
-			&:focus {
-				color: rgba( var(--theme_primary), 1);
-			}
-		}

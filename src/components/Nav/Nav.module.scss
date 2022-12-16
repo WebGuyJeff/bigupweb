@@ -1,0 +1,29 @@
+.nav {
+	display: flex;
+	flex-flow: row wrap;
+	margin-bottom: var(--gap);
+	font-family: 'Roboto FlexVariable', Arial, sans-serif;
+	font-size: 1.25em;
+	font-weight: 900;
+	font-variation-settings: 'wght' 900, 'wdth' 30;
+}
+		.nav-link-item {
+			transition: color 0.3s ease;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-right: 2rem;
+			text-transform: uppercase;
+			text-decoration: none;
+			color: #333;
+			color: var(--bodyColor);
+			font-weight: 700;
+
+			&:last-child {
+				padding-right: 0;
+			}
+
+			&:hover,
+			&:focus {
+				color: rgba( var(--theme_primary), 1);
+			}
+		}

@@ -12,26 +12,33 @@ const Logo = () => {
 				siteLogo {
 					altText
 					sourceUrl
-					gatsbyImage(
-						formats: [AUTO, PNG]
-						height: 80
-						width: 270
-					)
+					localFile {
+						childImageSharp {
+							gatsbyImageData(
+								formats: PNG
+								layout: CONSTRAINED
+								transformOptions: {fit: CONTAIN}
+								height: 80
+							)
+						}
+					}
 				}
 			}
 		}
 	` )
 	const {	altText } = siteLogo
 	const { title }   = useSiteMetadata()
-	const image       = getImage( siteLogo )
-	
+	const image       = getImage( siteLogo.localFile )
+
 	return (
-		<Link to="/" className={ logo }>
+		<Link to="/">
 			<GatsbyImage
-				alt={ altText }
+				className={ logo }
 				image={ image }
-				loading="eager"
-				transformOptions={ { fit: 'cover' } }
+				alt={ altText }
+				title={ title }
+				objectFit="contain"
+				objectPosition="left"
 			/>
 			<span className="visuallyhidden">
 				{ title }
