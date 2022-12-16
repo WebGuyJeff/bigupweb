@@ -25,7 +25,7 @@ const Footer = () => {
 		developerUrl,
 		developerName
 	} = useSiteMetadata()
-	const footerMenu  = useWpFooterMenu()
+	const footerLinks  = useWpFooterMenu()
 
 	return (
 		<footer style={ { marginBottom: 0 } } className={ footer }>
@@ -33,7 +33,7 @@ const Footer = () => {
 				<div className={ footer_menu }>
 					<h5>Links</h5>
 					<ul>
-						{ footerMenu.nodes.map( ( node, index ) => {
+						{ footerLinks.map( ( node, index ) => {
 							return (
 								<li key={ index }>
 									<Link
@@ -48,31 +48,6 @@ const Footer = () => {
 						} ) }
 					</ul>
 				</div>
-				{ /*
-				{allProduct.length > 0 && (
-					<FooterMenuStyles className="footer_menu products_menu">
-						<h5>
-							<Link to="/products">
-								All Products<span>.</span>
-							</Link>
-						</h5>
-						<ul>
-							{allProduct.map((item, index) => {
-								const { slug, name } = item
-								const gatsbyPath = `/products/` + slug
-								return (
-									<li key={index}>
-										<Link to={gatsbyPath}>
-											{name}
-											<span>.</span>
-										</Link>
-									</li>
-								)
-							})}
-						</ul>
-					</FooterMenuStyles>
-				)}
-*/ }
 				{ twitterUsername ||
 				facebookUsername ||
 				instagramUsername ||

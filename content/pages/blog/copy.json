@@ -2,9 +2,9 @@
 	"pages": {
 		"blog": {
 			"title": "Blog",
-			"excerpt": "This is the blog posts page",
-			"content": "This content forms the intro to the blog page",
-			"headerImageAlt": "Squid in the deep sea"
+			"headerImageAlt": "Squid in the deep sea",
+			"excerptHTML": "This is the blog posts page",
+			"contentHTML": "<p>This content forms the intro to the blog page</p>"
 		}
 	}
 }

@@ -4,12 +4,15 @@ import PropTypes from 'prop-types'
 import {
 	heroBanner,
 	bannerImage,
-	container,
-	gradient,
 	bannerContent,
+	gradient,
+	container
 } from './HeroBanner.module.scss'
 
-const HeroBanner = ( { children, title, image, altText, content } ) => {
+const HeroBanner = ( { image, altText, children } ) => {
+
+	console.log( children )
+
 	return (
 		<section className={ heroBanner }>
 			{ image && 
@@ -19,33 +22,20 @@ const HeroBanner = ( { children, title, image, altText, content } ) => {
 					alt={ altText }
 				/>
 			}
-			{ title && (
-				<div className={ container }>
-					<div className={ bannerContent }>
-						<h1>
-							{ title  }
-							<span style={ { color: 'var( --primary)' } }>.</span>
-						</h1>
-						{ content && (
-							<div
-								dangerouslySetInnerHTML={ { __html: content } }
-							/>
-						) }
-						{ children }
-					</div>
+			<div className={ container }>
+				<div className={ bannerContent }>
+					{ children }
 				</div>
-			) }
+			</div>
 			<div className={ gradient }></div>
 		</section>
 	)
 }
 
 HeroBanner.propTypes = {
-	children: PropTypes.node,
-	title: PropTypes.string,
 	image: PropTypes.string,
 	altText: PropTypes.string,
-	content: PropTypes.string
+	children: PropTypes.node
 }
 
 export default HeroBanner

@@ -1,5 +1,6 @@
 import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
+import parse from 'html-react-parser'
 import PropTypes from 'prop-types'
 import Layout from '../components/Layout/Layout'
 import HeroBanner from '../components/HeroBanner/HeroBanner'
@@ -17,20 +18,25 @@ const getFeedTemplate = ( wpPage ) => {
 }
 
 const FeedTemplate = ( wpPage ) => {
-	const { title, content, featuredImage } = wpPage
+	const { title, excerpt, featuredImage } = wpPage
 	const headerImage = featuredImage
 		? getImage( featuredImage.node.localFile.childImageSharp.gatsbyImageData )
 		: null
-	const altText = featuredImage ? featuredImage.node.altText : ''
+	const headerImageAlt = featuredImage ? featuredImage.node.altText : ''
 	return (
 		<>
 			<Layout>
-				<HeroBanner
-					title={ title }
-					content={ content }
-					image={ headerImage }
-					alt={ altText }
-				/>
+				<HeroBanner image={ headerImage } altText={ headerImageAlt }>
+					<h1>
+						{ title }
+						<span style={ { color: 'var( --colourPrimary )' } }>.</span>
+					</h1>
+					{ excerpt && (
+						<div className="bannerContent">
+							{ parse( excerpt ) }
+						</div>
+					) }
+				</HeroBanner>
 				<div className="section">
 					<div className="feed">{ getFeedTemplate( wpPage ) }</div>
 				</div>

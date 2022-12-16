@@ -1,8 +1,19 @@
 import { graphql, useStaticQuery } from 'gatsby'
 
+const noWpBinnedPages = ( menuNodes ) => {
+	let footerLinks = []
+	const regex     = new RegExp( /^\/\?/ )
+	menuNodes.map( ( node ) => {
+		if ( false === !! regex.test( node.uri ) ) {
+			footerLinks.push( node )
+		}
+	} )
+	return footerLinks
+}
+
 const useWpFooterMenu = () => {
 	const {
-		wpMenu: { menuItems },
+		wpMenu: { menuItems: { nodes } },
 	} = useStaticQuery( graphql`
 		query {
 			wpMenu(id: {eq: "dGVybToxNzM="}) {
@@ -15,7 +26,7 @@ const useWpFooterMenu = () => {
 			}
 		}
 	` )
-	return menuItems
+	return noWpBinnedPages( nodes )
 }
 
 export default useWpFooterMenu

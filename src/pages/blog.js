@@ -1,5 +1,6 @@
 import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
+import parse from 'html-react-parser'
 import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
 import Layout from '../components/Layout/Layout'
@@ -23,7 +24,7 @@ headMeta.propTypes = {
 }
 
 const Blog = () => {
-	const { title, excerpt, content, headerImageAlt } = JSONData.pages.blog
+	const { title, excerptHTML, contentHTML, headerImageAlt } = JSONData.pages.blog
 	const { allFile: { nodes } } = useStaticQuery( graphql`
 		query {
 			allFile( filter: { relativeDirectory: { eq: "pages/blog/headerImage" } }, limit: 1 ) {
@@ -41,15 +42,22 @@ const Blog = () => {
 	return (
 		<>
 			<Layout>
-				<HeroBanner
-					title={ title }
-					content={ excerpt }
-					image={ headerImage }
-					altText={ headerImageAlt }
-				/>
-				<section>
-					{ content }
-				</section>
+				<HeroBanner image={ headerImage } altText={ headerImageAlt }>
+					<h1>
+						{ title }
+						<span style={ { color: 'var( --colourPrimary )' } }>.</span>
+					</h1>
+					{ excerptHTML && (
+						<div className="bannerContent">
+							{ parse( excerptHTML ) }
+						</div>
+					) }
+				</HeroBanner>
+				{ contentHTML && (
+					<section>
+						{ parse( contentHTML ) }
+					</section>
+				) }
 				<div className="section">
 					<div className="feed">
 						<WpPostFeed />

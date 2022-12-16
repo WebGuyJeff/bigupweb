@@ -6,6 +6,7 @@ import Footer from '../Footer/Footer'
 import {
 	container,
 	main,
+	main_container,
 	heading
 } from './Layout.module.scss'
 

@@ -1,7 +1,8 @@
 .hero-banner {
-	height: 70vh;
+	height: 100vh;
 	position: relative;
 	padding: var(--gap) var(--borderSpacing);
+	color: #fff;
 }
 	.container {
 		height: 100%;
@@ -38,7 +39,7 @@
 			}
 
 			h1 {
-				font-size: var(--bannerTitle);
+				font-size: var(--display-1);
 				border-bottom: 2px solid rgba(255, 255, 255, 0.15);
 				display: inline-block;
 				text-shadow: var(--textShadow);
