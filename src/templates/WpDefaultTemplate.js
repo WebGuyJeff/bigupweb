@@ -2,7 +2,7 @@ import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Layout from '../components/Layout/Layout'
-import SimpleBanner from '../components/SimpleBanner/SimpleBanner'
+import HeroBanner from '../components/HeroBanner/HeroBanner'
 
 const DefaultTemplate = ( wpPage ) => {
 
@@ -17,7 +17,7 @@ const DefaultTemplate = ( wpPage ) => {
 	return (
 		<>
 			<Layout>
-				<SimpleBanner
+				<HeroBanner
 					title={ title }
 					content={ excerpt }
 					image={ featuredImage }

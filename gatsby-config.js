@@ -36,6 +36,13 @@ module.exports = {
 			},
 		},
 		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				name: 'content',
+				path: `${__dirname}/content`,
+			},
+		},
+		{
 			// See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
 			resolve: 'gatsby-plugin-manifest',
 			options: {

@@ -2,7 +2,7 @@ import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Layout from '../components/Layout/Layout'
-import SimpleBanner from '../components/SimpleBanner/SimpleBanner'
+import HeroBanner from '../components/HeroBanner/HeroBanner'
 import WpPostFeed from '../components/Feeds/WpPostFeed'
 
 const getFeedTemplate = ( wpPage ) => {
@@ -25,7 +25,7 @@ const FeedTemplate = ( wpPage ) => {
 	return (
 		<>
 			<Layout>
-				<SimpleBanner
+				<HeroBanner
 					title={ title }
 					content={ content }
 					image={ headerImage }

@@ -3,10 +3,6 @@ import useAllPost from '../../hooks/useWpAllPosts'
 import WpPostItem from '../Post/WpPostItem/WpPostItem'
 
 const WpPostFeed = () => {
-
-
-	console.log( 'WpPostFeed #####################################' )
-
 	const allPost = useAllPost()
 	return allPost.map( ( node, index ) => {
 		return <WpPostItem key={ index } node={ node } />

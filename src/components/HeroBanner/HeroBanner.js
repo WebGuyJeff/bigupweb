@@ -2,25 +2,23 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import {
-	simpleBanner,
+	heroBanner,
 	bannerImage,
 	container,
 	gradient,
 	bannerContent,
-} from './SimpleBanner.module.scss'
+} from './HeroBanner.module.scss'
 
-const SimpleBanner = ( { children, title, image, altText, content } ) => {
+const HeroBanner = ( { children, title, image, altText, content } ) => {
 	return (
-		<section className={ simpleBanner }>
-			{ image && (
+		<section className={ heroBanner }>
+			{ image && 
 				<GatsbyImage
 					className={ bannerImage }
 					image={ image }
 					alt={ altText }
 				/>
-			) }
-			{ children }
-
+			}
 			{ title && (
 				<div className={ container }>
 					<div className={ bannerContent }>
@@ -33,6 +31,7 @@ const SimpleBanner = ( { children, title, image, altText, content } ) => {
 								dangerouslySetInnerHTML={ { __html: content } }
 							/>
 						) }
+						{ children }
 					</div>
 				</div>
 			) }
@@ -41,7 +40,7 @@ const SimpleBanner = ( { children, title, image, altText, content } ) => {
 	)
 }
 
-SimpleBanner.propTypes = {
+HeroBanner.propTypes = {
 	children: PropTypes.node,
 	title: PropTypes.string,
 	image: PropTypes.string,
@@ -49,4 +48,4 @@ SimpleBanner.propTypes = {
 	content: PropTypes.string
 }
 
-export default SimpleBanner
+export default HeroBanner
