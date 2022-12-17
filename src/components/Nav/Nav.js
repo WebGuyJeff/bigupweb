@@ -2,12 +2,10 @@ import * as React from 'react'
 import { Link } from 'gatsby'
 import {
 	nav,
-	navLinks,
 	navLinkItem
 } from './Nav.module.scss'
 
 const Nav = () => {
-
 	return (
 		<nav className={ nav }>
 			<Link to="/" className={ navLinkItem }>

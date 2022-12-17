@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
-import useWpFooterMenu from '../../hooks/useWpFooterMenu'
-import { useSiteMetadata } from '../../hooks/useSiteMetadata'
+import useWpFooterMenu from 'hooks/useWpFooterMenu'
+import { useSiteMetadata } from 'hooks/useSiteMetadata'
 import {
 	FaFacebookSquare as Facebook,
 	FaTwitterSquare as Twitter,

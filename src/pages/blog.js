@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import Layout from '../components/Layout/Layout'
 import HeadMeta from '../components/HeadMeta'
 import HeroBanner from '../components/HeroBanner/HeroBanner'
-import WpPostFeed from '../components/Feeds/WpPostFeed'
+import WpPostFeed from 'components/WpPostFeed/WpPostFeed'
 import JSONData from '../../content/pages/blog/copy.json'
 
 const headMeta = () => {

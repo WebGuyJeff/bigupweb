@@ -1,6 +1,6 @@
 import * as React from 'react'
-import Logo from '../../components/Logo/Logo'
-import Nav from '../../components/Nav/Nav'
+import Logo from 'components/Logo/Logo'
+import Nav from 'components/Nav/Nav'
 import {
 	header
 } from './Header.module.scss'

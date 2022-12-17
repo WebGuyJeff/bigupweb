@@ -1,11 +1,11 @@
 import React from 'react'
-import useAllPost from '../../hooks/useWpAllPosts'
-import WpPostItem from '../Post/WpPostItem/WpPostItem'
+import useAllPost from 'hooks/useWpAllPosts'
+import PostItem from 'components/Post/PostItem/PostItem'
 
 const WpPostFeed = () => {
 	const allPost = useAllPost()
 	return allPost.map( ( node, index ) => {
-		return <WpPostItem key={ index } node={ node } />
+		return <PostItem key={ index } node={ node } />
 	} )
 }
 

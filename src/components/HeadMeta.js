@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import { useSiteMetadata } from 'hooks/useSiteMetadata'
 import PropTypes from 'prop-types'
 
 const HeadMeta = ( { pageTitle, pageDescription } ) => {

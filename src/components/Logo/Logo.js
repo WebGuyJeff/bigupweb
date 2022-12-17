@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Link } from 'gatsby'
 import { graphql, useStaticQuery } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import { useSiteMetadata } from '../../hooks/useSiteMetadata'
+import { useSiteMetadata } from 'hooks/useSiteMetadata'
 import { logo } from './Logo.module.scss'
 
 const Logo = () => {

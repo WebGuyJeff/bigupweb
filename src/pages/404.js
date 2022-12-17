@@ -1,6 +1,6 @@
 import React from 'react'
-import HeadMeta from '../components/HeadMeta'
-import Layout from '../components/Layout/Layout'
+import HeadMeta from 'components/HeadMeta'
+import Layout from 'components/Layout/Layout'
 
 
 const NotFound = () => {

@@ -1,8 +1,8 @@
 import React from 'react'
-import Layout from '../components/Layout/Layout'
-import Section from '../components/Section/Section'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
-import HeadMeta from '../components/HeadMeta'
+import Layout from 'components/Layout/Layout'
+import Section from 'components/Section/Section'
+import { useSiteMetadata } from 'hooks/useSiteMetadata'
+import HeadMeta from 'components/HeadMeta'
 import parse from 'html-react-parser'
 
 

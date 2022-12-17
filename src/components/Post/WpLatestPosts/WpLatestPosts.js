@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import PostItems from '../PostItems/PostItems'
-import WpPostItem from '../WpPostItem/WpPostItem'
-import useLatestWpPosts from '../../../hooks/useWpLatestPosts'
-import Button from '../../Button/Button'
+import PostItems from 'components/Post/PostItems/PostItems'
+import PostItem from 'components/Post/PostItem/PostItem'
+import useLatestWpPosts from 'hooks/useWpLatestPosts'
+import Button from 'components/Button/Button'
 
 /**
  * WpLatestPosts Section
@@ -33,7 +33,7 @@ const WpLatestPosts = ( { title, introduction } ) => {
 
 				<PostItems>
 					{ latestBlogPost.map( ( node, index ) => {
-						return <WpPostItem key={ index } node={ node } />
+						return <PostItem key={ index } node={ node } />
 					} ) }
 				</PostItems>
 				<div className="learn_more">

@@ -28,6 +28,7 @@ module.exports = {
 		'gatsby-plugin-sharp',
 		'gatsby-transformer-sharp',
 		'gatsby-plugin-offline',
+		'gatsby-plugin-root-import',
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
@@ -71,9 +72,9 @@ module.exports = {
 				searchAndReplace: [
 					{
 					// This is a regex search and replace rule to find any occurances of the
-						// WordPress source URL and replace it with the URL of the Gatsby site.
-						search: process.env.WP_SOURCE_BASE_URL,
-						replace: process.env.GATSBY_WEBSITE_URL,
+					// WordPress source URL and replace it with the URL of the Gatsby site.
+					search: process.env.WP_SOURCE_BASE_URL,
+					replace: process.env.GATSBY_WEBSITE_URL,
 					},
 				],
 				*/

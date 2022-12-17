@@ -2,9 +2,9 @@ import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import parse from 'html-react-parser'
 import PropTypes from 'prop-types'
-import Layout from '../components/Layout/Layout'
-import HeroBanner from '../components/HeroBanner/HeroBanner'
-import WpPostFeed from '../components/Feeds/WpPostFeed'
+import Layout from 'components/Layout/Layout'
+import HeroBanner from 'components/HeroBanner/HeroBanner'
+import WpPostFeed from 'components/WpPostFeed/WpPostFeed'
 
 const getFeedTemplate = ( wpPage ) => {
 	const templateName = wpPage.slug.includes( 'products' ) ? 'products' : ''
