@@ -11,8 +11,6 @@ import {
 
 const HeroBanner = ( { image, altText, children } ) => {
 
-	console.log( children )
-
 	return (
 		<section className={ heroBanner }>
 			{ image && 
@@ -33,7 +31,7 @@ const HeroBanner = ( { image, altText, children } ) => {
 }
 
 HeroBanner.propTypes = {
-	image: PropTypes.string,
+	image: PropTypes.object,
 	altText: PropTypes.string,
 	children: PropTypes.node
 }

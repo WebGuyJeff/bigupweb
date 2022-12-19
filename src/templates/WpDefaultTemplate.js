@@ -5,16 +5,14 @@ import PropTypes from 'prop-types'
 import Layout from 'components/Layout/Layout'
 import HeroBanner from 'components/HeroBanner/HeroBanner'
 
-const DefaultTemplate = ( wpPage ) => {
-
-	const headerImage = ( null !== wpPage.featuredImage )
-		? getImage( wpPage.featuredImage.node.localFile.childImageSharp )
+const DefaultTemplate = ( { title, excerpt, content, featuredImage } ) => {
+	const headerImage = ( null !== featuredImage )
+		? getImage( featuredImage.node.localFile.childImageSharp )
 		: ''
 	const headerImageAlt = ( '' !== headerImage )
-		? wpPage.featuredImage.node.altText
+		? featuredImage.node.altText
 		: ''
 
-	const { title, excerpt, content } = wpPage
 	return (
 		<>
 			<Layout>
@@ -41,7 +39,10 @@ const DefaultTemplate = ( wpPage ) => {
 }
 
 DefaultTemplate.propTypes = {
-	wpPage: PropTypes.node.isRequired
+	title: PropTypes.string.isRequired,
+	excerpt: PropTypes.string.isRequired,
+	content: PropTypes.string.isRequired,
+	featuredImage: PropTypes.object.isRequired
 }
 
 export default DefaultTemplate

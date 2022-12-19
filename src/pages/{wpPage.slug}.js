@@ -20,6 +20,7 @@ headMeta.propTypes = {
 }
 
 const getPageTemplate = ( wpPage ) => {
+
 	const templateName = wpPage.template.templateName
 	switch ( templateName ) {
 	case 'Feed':
