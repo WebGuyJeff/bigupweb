@@ -1,8 +1,20 @@
 
 .header {
 	display: flex;
+	flex-flow: row wrap;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: var(--gap);
+	z-index: 10;
+	margin-bottom: var(--gap);
+	padding: var(--gap) var(--borderSpacing) 0 var(--borderSpacing);
+	width: 100%;
+}
+
+.headerAbsolute {
 	position: absolute;
 	top: 0;
+	display: flex;
 	flex-flow: row wrap;
 	align-items: flex-start;
 	justify-content: space-between;

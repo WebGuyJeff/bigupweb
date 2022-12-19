@@ -1,6 +1,12 @@
-:root {
-	--colourPrimary: yellow;
+@use "sass:map";
+@import "styles/variables";
 
+/*
+Sass Map syntax:
+map.get( $colours, "pinkred" )
+*/
+
+:root {
 	--borderSpacing: 30px;
 	--menuWidth: 100vw;
 	--blockquote: 20px;
@@ -25,12 +31,6 @@
 	--h6: 1rem;
 	--small: 0.85rem;
 	--xsmall: 0.7rem;
-
-	/* use as rgba(var(--theme), 1) */
-	--theme_background: 255, 255, 255;
-	--theme_foreground: 36, 36, 36;
-	--theme_primary: 233, 0, 128;
-
 	font-family: 'Roboto FlexVariable', arial, sans-serif;
 	font-size: 1rem;
 	font-weight: 400;
@@ -73,10 +73,10 @@ html,
 body {
 	min-height: 100%;
     margin: 0;
-    background-color: rgba(var(--theme_background), 1);
+    background-color: map.get( $colours, "yellow" );
 	min-height: 100%;
     overflow-x: hidden;
-    color: rgba(var(--theme_foreground), 1);
+    color: map.get( $colours, "black" );
 }
 
 /* screenreader friendly hiding */
@@ -164,7 +164,7 @@ i {
 .underline {
   text-decoration: underline;
   text-underline-position: under;
-  text-decoration-color: rgba(var(--theme_primary), 0.25);
+  text-decoration-color: map.get( $colours, "pinkred" );
   text-decoration-thickness: 0.125rem;
 }
 
@@ -179,11 +179,11 @@ blockquote {
 hr {
   border: none; 
   height: 2px;
-  background-color: rgba(var(--theme_foreground), 1);
+  background-color: map.get( $colours, "black" );
 }
 
 a {
-  color: rgba(var(--theme_primary), 1);
+  color: map.get( $colours, "pinkred" );
   transition: color 0.3s ease;
   cursor: pointer;
 
@@ -198,7 +198,7 @@ blockquote {
   font-style: italic;
   font-variation-settings: 'slnt' -10;
   margin-left: 0;
-  border-left: 2px solid rgba(var(--theme_primary), 1);
+  border-left: 2px solid map.get( $colours, "pinkred" );
   padding-left: var(--gap);
 }
 
@@ -209,7 +209,6 @@ blockquote {
   &_tight {
     max-width: 1400px;
   }
-
   &_scroll {
     overflow-x: scroll;
     display: flex;
@@ -220,11 +219,11 @@ blockquote {
       height: 4px;
     }
     &::-webkit-scrollbar-thumb {
-      background: rgba(var(--theme_primary), 1);
+      background: map.get( $colours, "pinkred" );
       border-radius: 0px;
     }
     &::-webkit-scrollbar-thumb:hover {
-      background: rgba(var(--theme_primary), 1);
+      background: map.get( $colours, "pinkred" );
     }
     &::-webkit-scrollbar-track {
       background: #000;
@@ -235,17 +234,6 @@ blockquote {
       overflow-x: visible;
     }
   }
-}
-
-.section {
-    margin-top: var(--sectionMargin);
-    margin-bottom: var(--sectionMargin);
-    padding: 0 var(--borderSpacing);
-
-    &_padding {
-        padding-top: var(--sectionMargin);
-        padding-bottom: var(--sectionMargin);
-    }
 }
 
 .intro_area {
@@ -260,27 +248,6 @@ blockquote {
 
 .learn_more {
   margin-top: calc(var(--gap) * 2);
-}
-
-.feed {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap);
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1400px;
-
-  >* {
-    flex: 0 0 100%;
-
-    @media(min-width:414px) {
-      flex-basis: calc(50% - (calc(var(--gap) / 2)));
-    }
-
-    @media(min-width:1024px) {
-      flex-basis: calc(33.333% - 27px);
-    }
-  }
 }
 
 .contentimg {

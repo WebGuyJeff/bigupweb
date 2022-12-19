@@ -1,3 +1,6 @@
+@use "sass:map";
+@import "styles/variables";
+
 .button {
 	color: inherit;
 	background-color: transparent;
@@ -22,18 +25,18 @@
 		left: 0;
 		right: 0;
 		bottom: 8px;
-		background-color: rgba( var(--theme_primary), 1);
+		background-color: map.get( $colours, "pinkred" );
 		transition: left 0.3s ease;
 	}
 
 	&:focus {
-		color: rgba( var(--theme_primary), 1);
+		color: map.get( $colours, "pinkred" );
 	}
 
 	@media (hover: hover) {
 		&:hover {
 			cursor: pointer;
-			color: rgba( var(--theme_primary), 1);
+			color: map.get( $colours, "pinkred" );
 
 			&::after {
 				left: 100%;

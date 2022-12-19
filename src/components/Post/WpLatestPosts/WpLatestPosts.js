@@ -1,23 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+import Section from 'components/containers/Section/Section'
 import PostItems from 'components/Post/PostItems/PostItems'
 import PostItem from 'components/Post/PostItem/PostItem'
 import useLatestWpPosts from 'hooks/useWpLatestPosts'
 import Button from 'components/Button/Button'
+Section
 
-/**
- * WpLatestPosts Section
- *
- * @param {string} title (passed in context)
- * @param {string} introduction (passed in context)
- * @returns Latest posts section component.
- *
- */
 const WpLatestPosts = ( { title, introduction } ) => {
 	const latestBlogPost = useLatestWpPosts()
 	return (
-		<section>
+		<Section>
 			<div className="container container_tight">
 				{ title || introduction ? (
 					<div className="intro_area">
@@ -40,7 +34,7 @@ const WpLatestPosts = ( { title, introduction } ) => {
 					<Button text="All Blog Posts" as={ Link } to="/blog" />
 				</div>
 			</div>
-		</section>
+		</Section>
 	)
 }
 

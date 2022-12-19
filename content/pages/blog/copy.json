@@ -3,7 +3,7 @@
 		"blog": {
 			"title": "Blog",
 			"headerImageAlt": "Squid in the deep sea",
-			"excerptHTML": "This is the blog posts page",
+			"excerptHTML": "<p>This is the blog posts page<p>",
 			"contentHTML": "<p>This content forms the intro to the blog page</p>"
 		}
 	}

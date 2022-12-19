@@ -1,11 +1,10 @@
 import React from 'react'
 import HeadMeta from 'components/HeadMeta'
-import Layout from 'components/Layout/Layout'
-
+import DefaultLayout from 'components/Layout/DefaultLayout/DefaultLayout'
 
 const NotFound = () => {
 	return (
-		<Layout pageTitle="Page Not Found">
+		<DefaultLayout pageTitle="Page Not Found">
 			<title>Page Not Found</title>
 			<br />
 			<br />
@@ -20,7 +19,7 @@ const NotFound = () => {
 				<a href="mailto:info@bigupweb.uk">send us an email</a>.
 			</p>
 			<p>Apologies for any inconvenience.</p>
-		</Layout>
+		</DefaultLayout>
 	)
 }
 

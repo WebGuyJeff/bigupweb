@@ -10,8 +10,8 @@ const HeadMeta = ( { pageTitle, pageDescription } ) => {
 		siteUrl,
 		twitterUsername
 	} = useSiteMetadata()
-	const metaTitle = pageTitle || title
-	const metaDesc  = pageDescription || description
+	const metaTitle = pageTitle.replace( /<[^>]+>/g, '' ) || title
+	const metaDesc  = pageDescription.replace( /<[^>]+>/g, '' ) || description
 
 	return (
 		<>

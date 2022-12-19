@@ -1,13 +1,12 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import Button from '../../Button/Button'
+import Button from 'components/Button/Button'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import {
 	blogitem
 } from './WpPostItem.module.scss'
 
-const WpPostItem = ( { node }, key ) => {
-	const { title, slug, excerpt, date, featuredImage } = node
+const WpPostItem = ( { node: { title, slug, excerpt, date, featuredImage } }, key ) => {
 	const uri = '/blog/' + slug
 	const image = featuredImage
 		? getImage( featuredImage.node.localFile.childImageSharp )
@@ -41,7 +40,7 @@ const WpPostItem = ( { node }, key ) => {
 }
 
 WpPostItem.propTypes = {
-	node: PropTypes.node
+	node: PropTypes.object.isRequired
 }
 
 export default WpPostItem

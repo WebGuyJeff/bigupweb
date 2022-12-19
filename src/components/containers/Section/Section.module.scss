@@ -1,0 +1,9 @@
+@use "sass:map";
+@import "styles/variables";
+
+.section {
+	margin-top: var(--sectionMargin);
+	margin-bottom: var(--sectionMargin);
+	padding-left: var(--borderSpacing);
+	padding-right: var(--borderSpacing);
+}

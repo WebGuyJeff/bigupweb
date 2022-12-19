@@ -4,6 +4,8 @@
  * @link https://www.gatsbyjs.org/docs/gatsby-config/
  */
 
+const path = require( 'path' )
+
 require( 'dotenv' ).config( {
 	path: '.env.development',
 } )
@@ -41,6 +43,12 @@ module.exports = {
 			options: {
 				name: 'content',
 				path: `${__dirname}/content`,
+			},
+		},
+		{
+			resolve: 'gatsby-plugin-root-import',
+			options: {
+				root: __dirname,
 			},
 		},
 		{

@@ -1,4 +1,5 @@
-
+@use "sass:map";
+@import "styles/variables";
 
 .blogsingle {
 	padding: var(--sectionMargin) var(--borderSpacing) 0 var(--borderSpacing);
@@ -13,7 +14,7 @@
 	}
 
 	&_content {
-		border-top: 2px solid rgba( var(--theme_primary), 1);
+		border-top: 2px solid map.get( $colours, "pinkred" );
 		padding-top: calc(var(--gap));
 	}
 

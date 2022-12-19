@@ -1,0 +1,6 @@
+@use "sass:map";
+@import "styles/variables";
+
+.fullstop {
+	color: map.get( $colours, "pinkred" );
+}

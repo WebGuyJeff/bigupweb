@@ -1,10 +1,9 @@
 import React from 'react'
-import Layout from 'components/Layout/Layout'
-import Section from 'components/Section/Section'
+import DefaultLayout from 'components/Layout/DefaultLayout/DefaultLayout'
+import Section from 'components/containers/Section/Section'
 import { useSiteMetadata } from 'hooks/useSiteMetadata'
 import HeadMeta from 'components/HeadMeta'
 import parse from 'html-react-parser'
-
 
 const Home = () => {
 	const {
@@ -12,7 +11,7 @@ const Home = () => {
 	} = useSiteMetadata()
 	return (
 		<>
-			<Layout pageTitle={ title }>
+			<DefaultLayout pageTitle={ title }>
 				<Section>
 					{ parse( `
 						<p>
@@ -33,7 +32,7 @@ const Home = () => {
 						</p>
 					` ) }
 				</Section>
-			</Layout>
+			</DefaultLayout>
 		</>
 	)
 }

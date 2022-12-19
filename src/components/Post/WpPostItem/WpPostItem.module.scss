@@ -1,3 +1,6 @@
+@use "sass:map";
+@import "styles/variables";
+
 .blogitem {
 	display: flex;
 	position: relative;
@@ -103,7 +106,7 @@
 
 	&:hover {
 		color: #fff;
-		border-color: rgba(var(--theme_primary), 1);
+		border-color: map.get( $colours, "pinkred" );
 		background-color: #151515;
 		box-shadow: var(--boxShadow);
 

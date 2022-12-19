@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 import useWpFooterMenu from 'hooks/useWpFooterMenu'
+import Fullstop from 'components/Fullstop/Fullstop'
 import { useSiteMetadata } from 'hooks/useSiteMetadata'
 import {
 	FaFacebookSquare as Facebook,
@@ -41,7 +42,7 @@ const Footer = () => {
 										activeClassName="menu_item--active"
 									>
 										{ node.label }
-										<span>.</span>
+										<Fullstop />
 									</Link>
 								</li>
 							)

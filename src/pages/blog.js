@@ -3,18 +3,20 @@ import * as React from 'react'
 import parse from 'html-react-parser'
 import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
-import Layout from '../components/Layout/Layout'
-import HeadMeta from '../components/HeadMeta'
-import HeroBanner from '../components/HeroBanner/HeroBanner'
-import WpPostFeed from 'components/WpPostFeed/WpPostFeed'
-import JSONData from '../../content/pages/blog/copy.json'
+import DefaultLayout from 'components/Layout/DefaultLayout/DefaultLayout'
+import HeadMeta from 'components/HeadMeta'
+import HeroBanner from 'components/HeroBanner/HeroBanner'
+import Fullstop from 'components/Fullstop/Fullstop'
+import Section from 'components/containers/Section/Section'
+import PostFeed from 'components/Feeds/PostFeed/PostFeed'
+import JSONData from 'root/content/pages/blog/copy.json'
 
 const headMeta = () => {
-	const { title, excerpt } = JSONData.pages.blog
+	const { title, excerptHTML } = JSONData.pages.blog
 	return (
 		<HeadMeta
 			pageTitle={ title }
-			pageDescription={ excerpt }
+			pageDescription={ excerptHTML }
 		/>
 	)
 }
@@ -41,11 +43,11 @@ const Blog = () => {
 	const headerImage = getImage( nodes[ 0 ] )
 	return (
 		<>
-			<Layout>
+			<DefaultLayout>
 				<HeroBanner image={ headerImage } altText={ headerImageAlt }>
 					<h1>
 						{ title }
-						<span style={ { color: 'var( --colourPrimary )' } }>.</span>
+						<Fullstop />
 					</h1>
 					{ excerptHTML && (
 						<div className="bannerContent">
@@ -54,16 +56,14 @@ const Blog = () => {
 					) }
 				</HeroBanner>
 				{ contentHTML && (
-					<section>
+					<Section>
 						{ parse( contentHTML ) }
-					</section>
+					</Section>
 				) }
-				<div className="section">
-					<div className="feed">
-						<WpPostFeed />
-					</div>
-				</div>
-			</Layout>
+				<Section>
+					<PostFeed />
+				</Section>
+			</DefaultLayout>
 		</>
 	)
 }

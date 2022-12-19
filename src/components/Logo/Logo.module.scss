@@ -1,5 +1,5 @@
 @use "sass:map";
-@import "../../styles/variables";
+@import "styles/variables";
 
 .logo {
 	text-decoration: none;
@@ -15,7 +15,7 @@
 
 	&:hover,
 	&:focus {
-		color: rgba( var(--theme_primary), 1);
+		color: map.get( $colours, "pinkred" );
 	}
 
 	img {

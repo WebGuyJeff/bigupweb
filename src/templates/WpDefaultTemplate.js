@@ -2,8 +2,9 @@ import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import parse from 'html-react-parser'
 import PropTypes from 'prop-types'
-import Layout from 'components/Layout/Layout'
+import DefaultLayout from 'components/Layout/DefaultLayout/DefaultLayout'
 import HeroBanner from 'components/HeroBanner/HeroBanner'
+import Fullstop from 'components/Fullstop/Fullstop'
 
 const DefaultTemplate = ( { title, excerpt, content, featuredImage } ) => {
 	const headerImage = ( null !== featuredImage )
@@ -15,11 +16,11 @@ const DefaultTemplate = ( { title, excerpt, content, featuredImage } ) => {
 
 	return (
 		<>
-			<Layout>
+			<DefaultLayout>
 				<HeroBanner image={ headerImage } altText={ headerImageAlt }>
 					<h1>
 						{ title }
-						<span style={ { color: 'var( --colourPrimary )' } }>.</span>
+						<Fullstop />
 					</h1>
 					{ excerpt && (
 						<div className="bannerContent">
@@ -33,7 +34,7 @@ const DefaultTemplate = ( { title, excerpt, content, featuredImage } ) => {
 						dangerouslySetInnerHTML={ { __html: content } }
 					/>
 				</div>
-			</Layout>
+			</DefaultLayout>
 		</>
 	)
 }

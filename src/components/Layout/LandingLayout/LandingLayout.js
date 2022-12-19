@@ -6,14 +6,14 @@ import Footer from 'components/Footer/Footer'
 import {
 	container,
 	main,
-	main_container,
 	heading
-} from './Layout.module.scss'
+} from './LandingLayout.module.scss'
 
-const Layout = ( { pageTitle, children } ) => {
+const LandingLayout = ( { pageTitle, children } ) => {
 	return (
 		<div className={ container }>
-			<Header />
+			<Header position="absolute" />
+			
 			<main className={ main }>
 				{ pageTitle && <h1 className={ heading }>{ parse( pageTitle ) }</h1> }
 				{ children }
@@ -23,9 +23,9 @@ const Layout = ( { pageTitle, children } ) => {
 	)
 }
 
-Layout.propTypes = {
+LandingLayout.propTypes = {
 	pageTitle: PropTypes.string,
 	children: PropTypes.node.isRequired
 }
 
-export default Layout
+export default LandingLayout

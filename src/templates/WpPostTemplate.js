@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import Section from 'components/containers/Section/Section'
 import Button from 'components/Button/Button'
 import WpLatestPosts from 'components/Post/WpLatestPosts/WpLatestPosts'
 import PropTypes from 'prop-types'
@@ -9,7 +10,7 @@ import { blogsingle } from './WpPostTemplate.module.scss'
 const WpPostTemplate = ( { title, date, content } ) => {
 	return (
 		<>
-			<section>
+			<Section>
 				<article className={ blogsingle }>
 					{ title && <h1 className={ blogsingle._title }>{ title }</h1> }
 					{ date && (
@@ -29,7 +30,7 @@ const WpPostTemplate = ( { title, date, content } ) => {
 						</div>
 					) }
 				</article>
-			</section>
+			</Section>
 			<WpLatestPosts title="Further reading from WordPress" />
 		</>
 	)
