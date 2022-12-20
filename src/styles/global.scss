@@ -202,54 +202,6 @@ blockquote {
   padding-left: var(--gap);
 }
 
-.container {
-  margin-left: auto;
-  margin-right: auto;
-
-  &_tight {
-    max-width: 1400px;
-  }
-  &_scroll {
-    overflow-x: scroll;
-    display: flex;
-    scroll-snap-type: x mandatory;
-
-    &::-webkit-scrollbar {
-      width: 14px;
-      height: 4px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: map.get( $colours, "pinkred" );
-      border-radius: 0px;
-    }
-    &::-webkit-scrollbar-thumb:hover {
-      background: map.get( $colours, "pinkred" );
-    }
-    &::-webkit-scrollbar-track {
-      background: #000;
-      border-radius: 0px;
-    }
-
-    @media (min-width: 1200px) {
-      overflow-x: visible;
-    }
-  }
-}
-
-.intro_area {
-  margin-bottom: calc(var(--gap) * 2);
-  max-width: 700px;
-
-  h2 {
-    display: inline-block;
-    border-bottom: 2px solid rgba(255,255,255,0.15);
-  }
-}
-
-.learn_more {
-  margin-top: calc(var(--gap) * 2);
-}
-
 .contentimg {
   margin-top: var(--gap);
   margin-bottom: var(--gap);

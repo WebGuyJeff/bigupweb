@@ -3,12 +3,12 @@ import * as React from 'react'
 import parse from 'html-react-parser'
 import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
+import useWpAllPost from 'hooks/useWpAllPosts'
 import HeadMeta from 'components/HeadMeta'
 import LandingLayout from 'components/Layout/LandingLayout/LandingLayout'
 import HeroBanner from 'components/HeroBanner/HeroBanner'
 import Fullstop from 'components/Fullstop/Fullstop'
 import Section from 'components/containers/Section/Section'
-import RowWrap from 'components/containers/RowWrap/RowWrap'
 import PostFeed from 'components/Feeds/PostFeed/PostFeed'
 import JSONData from 'root/content/pages/blog/copy.json'
 
@@ -62,9 +62,7 @@ const Blog = () => {
 					</Section>
 				) }
 				<Section>
-					<RowWrap>
-						<PostFeed />
-					</RowWrap>
+					<PostFeed posts={ useWpAllPost() }/>
 				</Section>
 			</LandingLayout>
 		</>

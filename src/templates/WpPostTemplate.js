@@ -1,10 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import parse from 'html-react-parser'
 import { Link } from 'gatsby'
 import Section from 'components/containers/Section/Section'
 import Button from 'components/Button/Button'
 import LatestPosts from 'components/post/LatestPosts/LatestPosts'
-import PropTypes from 'prop-types'
-import parse from 'html-react-parser'
 import { blogsingle } from './WpPostTemplate.module.scss'
 
 const WpPostTemplate = ( { title, date, content } ) => {
@@ -31,7 +31,7 @@ const WpPostTemplate = ( { title, date, content } ) => {
 					) }
 				</article>
 			</Section>
-			<LatestPosts title="Further reading from WordPress" />
+			<LatestPosts title="Further reading from the blog" />
 		</>
 	)
 }

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import DefaultLayout from 'components/Layout/DefaultLayout/DefaultLayout'
 import HeroBanner from 'components/HeroBanner/HeroBanner'
 import Fullstop from 'components/Fullstop/Fullstop'
+import MaxWidth from 'components/containers/MaxWidth/MaxWidth'
 
 const DefaultTemplate = ( { title, excerpt, content, featuredImage } ) => {
 	const headerImage = ( null !== featuredImage )
@@ -28,12 +29,9 @@ const DefaultTemplate = ( { title, excerpt, content, featuredImage } ) => {
 						</div>
 					) }
 				</HeroBanner>
-				<div className="wpPageContent">
-					<div
-						className="container container_tight"
-						dangerouslySetInnerHTML={ { __html: content } }
-					/>
-				</div>
+				<MaxWidth
+					dangerouslySetInnerHTML={ { __html: content } }
+				/>
 			</DefaultLayout>
 		</>
 	)

@@ -2,11 +2,11 @@ import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import parse from 'html-react-parser'
 import PropTypes from 'prop-types'
+import useWpAllPost from 'hooks/useWpAllPosts'
 import DefaultLayout from 'components/Layout/DefaultLayout/DefaultLayout'
 import HeroBanner from 'components/HeroBanner/HeroBanner'
 import Fullstop from 'components/Fullstop/Fullstop'
 import Section from 'components/containers/Section/Section'
-import RowWrap from 'components/containers/RowWrap/RowWrap'
 import PostFeed from 'components/Feeds/PostFeed/PostFeed'
 
 const FeedTemplate = ( wpPage ) => {
@@ -30,9 +30,7 @@ const FeedTemplate = ( wpPage ) => {
 					) }
 				</HeroBanner>
 				<Section>
-					<RowWrap>
-						<PostFeed />
-					</RowWrap>
+					<PostFeed nodes={ useWpAllPost() } />
 				</Section>
 			</DefaultLayout>
 		</>

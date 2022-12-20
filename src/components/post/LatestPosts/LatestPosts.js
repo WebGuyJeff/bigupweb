@@ -3,17 +3,20 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import useWpLatestPosts from 'hooks/useWpLatestPosts'
 import Section from 'components/containers/Section/Section'
-import RowWrap from 'components/containers/RowWrap/RowWrap'
-import PostItem from 'components/post/PostItem/PostItem'
+import MaxWidth from 'components/containers/MaxWidth/MaxWidth'
+import PostFeed from 'components/Feeds/PostFeed/PostFeed'
 import Button from 'components/Button/Button'
+import {
+	learnMore,
+	introArea
+} from './LatestPosts.module.scss'
 
 const LatestPosts = ( { title, introduction } ) => {
-	const wpLatestPosts = useWpLatestPosts()
 	return (
 		<Section>
-			<div className="container container_tight">
+			<MaxWidth>
 				{ title || introduction ? (
-					<div className="intro_area">
+					<div className={ introArea } >
 						{ title && (
 							<h2>
 								{ title }
@@ -23,15 +26,15 @@ const LatestPosts = ( { title, introduction } ) => {
 						{ introduction && <p>{ introduction }</p> }
 					</div>
 				) : null }
-				<RowWrap>
-					{ wpLatestPosts.map( ( node, index ) => {
-						return <PostItem key={ index } node={ node } />
-					} ) }
-				</RowWrap>
-				<div className="learn_more">
-					<Button text="All Blog Posts" as={ Link } to="/blog" />
+				<PostFeed posts={ useWpLatestPosts() }/>
+				<div className={ learnMore } >
+					<Link
+						to="/blog"
+					>
+						<Button text="All Blog Posts" />
+					</Link>
 				</div>
-			</div>
+			</MaxWidth>
 		</Section>
 	)
 }
