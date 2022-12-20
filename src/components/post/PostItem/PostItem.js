@@ -1,19 +1,20 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
 import Button from 'components/Button/Button'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import {
 	blogitem
-} from './WpPostItem.module.scss'
+} from './PostItem.module.scss'
 
-const WpPostItem = ( { node: { title, slug, excerpt, date, featuredImage } }, key ) => {
+const PostItem = ( { node: { title, slug, excerpt, date, featuredImage } }, key ) => {
 	const uri = '/blog/' + slug
 	const image = featuredImage
 		? getImage( featuredImage.node.localFile.childImageSharp )
 		: null
 	const altText = featuredImage ? featuredImage.node.altText : ''
 	return (
-		<div
+		<Link
 			className={ blogitem }
 			key={ key }
 			to={ uri }
@@ -31,16 +32,19 @@ const WpPostItem = ( { node: { title, slug, excerpt, date, featuredImage } }, ke
 					<div dangerouslySetInnerHTML={ { __html: excerpt } } />
 				) }
 				<div className="blogitem_meta">
-					<Button as="span" text="Read More" arrow={ true } />
+					<Button
+						text="Read More"
+						arrow={ true }
+					/>
 					<p>{ date }</p>
 				</div>
 			</div>
-		</div>
+		</Link>
 	)
 }
 
-WpPostItem.propTypes = {
+PostItem.propTypes = {
 	node: PropTypes.object.isRequired
 }
 
-export default WpPostItem
+export default PostItem

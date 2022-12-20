@@ -1,15 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+import useWpLatestPosts from 'hooks/useWpLatestPosts'
 import Section from 'components/containers/Section/Section'
-import PostItems from 'components/Post/PostItems/PostItems'
-import PostItem from 'components/Post/PostItem/PostItem'
-import useLatestWpPosts from 'hooks/useWpLatestPosts'
+import RowWrap from 'components/containers/RowWrap/RowWrap'
+import PostItem from 'components/post/PostItem/PostItem'
 import Button from 'components/Button/Button'
-Section
 
-const WpLatestPosts = ( { title, introduction } ) => {
-	const latestBlogPost = useLatestWpPosts()
+const LatestPosts = ( { title, introduction } ) => {
+	const wpLatestPosts = useWpLatestPosts()
 	return (
 		<Section>
 			<div className="container container_tight">
@@ -24,12 +23,11 @@ const WpLatestPosts = ( { title, introduction } ) => {
 						{ introduction && <p>{ introduction }</p> }
 					</div>
 				) : null }
-
-				<PostItems>
-					{ latestBlogPost.map( ( node, index ) => {
+				<RowWrap>
+					{ wpLatestPosts.map( ( node, index ) => {
 						return <PostItem key={ index } node={ node } />
 					} ) }
-				</PostItems>
+				</RowWrap>
 				<div className="learn_more">
 					<Button text="All Blog Posts" as={ Link } to="/blog" />
 				</div>
@@ -38,9 +36,9 @@ const WpLatestPosts = ( { title, introduction } ) => {
 	)
 }
 
-WpLatestPosts.propTypes = {
+LatestPosts.propTypes = {
 	title: PropTypes.string,
 	introduction: PropTypes.string
 }
 
-export default WpLatestPosts
+export default LatestPosts

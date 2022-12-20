@@ -5,16 +5,6 @@ import HeadMeta from 'components/HeadMeta'
 import DefaultLayout from 'components/Layout/DefaultLayout/DefaultLayout'
 import WpPostTemplate from 'templates/WpPostTemplate'
 
-const WpPost = ( { data: { wpPost } } ) => {
-	return (
-		<>
-			<DefaultLayout>
-				<WpPostTemplate { ...wpPost } />
-			</DefaultLayout>
-		</>
-	)
-}
-
 export const data = graphql`
 	query wpPostQuery($id: String) {
 		wpPost(id: { eq: $id }) {
@@ -26,23 +16,32 @@ export const data = graphql`
 	}
 `
 
-export const Head = ( { data: { wpPostQuery } } ) => {
-	const { title, excerpt } = wpPostQuery
+const headMeta = ( { data: { wpPost: { title, excerpt } } } ) => {
 	return (
 		<HeadMeta
 			pageTitle={ title }
 			pageDescription={ excerpt }
 		/>
 	)
-} 
-
-export default WpPost
-
-
-WpPost.propTypes = {
-	data: PropTypes.node.isRequired
+}
+headMeta.propTypes = {
+	title: PropTypes.string.isRequired,
+	excerpt: PropTypes.string.isRequired
 }
 
-Head.propTypes = {
-	data: PropTypes.object.isRequired,
+const Post = ( { data: { wpPost } } ) => {
+	return (
+		<>
+			<DefaultLayout>
+				<WpPostTemplate { ...wpPost } />
+			</DefaultLayout>
+		</>
+	)
 }
+Post.propTypes = {
+	data: PropTypes.object.isRequired
+}
+
+export const Head = ( data ) => headMeta( data )
+
+export default Post

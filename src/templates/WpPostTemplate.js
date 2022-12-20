@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import Section from 'components/containers/Section/Section'
 import Button from 'components/Button/Button'
-import WpLatestPosts from 'components/Post/WpLatestPosts/WpLatestPosts'
+import LatestPosts from 'components/post/LatestPosts/LatestPosts'
 import PropTypes from 'prop-types'
 import parse from 'html-react-parser'
 import { blogsingle } from './WpPostTemplate.module.scss'
@@ -21,17 +21,17 @@ const WpPostTemplate = ( { title, date, content } ) => {
 							<div className="blogsingle_back">
 								{ parse( content ) }
 
-								<Button
+								<Link
 									to="/blog"
-									text="Back to Blog"
-									as={ Link }
-								/>
+								>
+									<Button text="Back to Blog" />
+								</Link>
 							</div>
 						</div>
 					) }
 				</article>
 			</Section>
-			<WpLatestPosts title="Further reading from WordPress" />
+			<LatestPosts title="Further reading from WordPress" />
 		</>
 	)
 }

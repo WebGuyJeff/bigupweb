@@ -1,21 +1,18 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import parse from 'html-react-parser'
 import Header from 'components/Header/Header'
 import Footer from 'components/Footer/Footer'
 import {
-	container,
+	layout,
 	main,
 	heading
 } from './LandingLayout.module.scss'
 
-const LandingLayout = ( { pageTitle, children } ) => {
+const LandingLayout = ( { children } ) => {
 	return (
-		<div className={ container }>
+		<div className={ layout }>
 			<Header position="absolute" />
-			
 			<main className={ main }>
-				{ pageTitle && <h1 className={ heading }>{ parse( pageTitle ) }</h1> }
 				{ children }
 			</main>
 			<Footer />

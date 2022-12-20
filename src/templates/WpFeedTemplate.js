@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 import DefaultLayout from 'components/Layout/DefaultLayout/DefaultLayout'
 import HeroBanner from 'components/HeroBanner/HeroBanner'
 import Fullstop from 'components/Fullstop/Fullstop'
+import Section from 'components/containers/Section/Section'
+import RowWrap from 'components/containers/RowWrap/RowWrap'
 import PostFeed from 'components/Feeds/PostFeed/PostFeed'
 
 const FeedTemplate = ( wpPage ) => {
@@ -27,7 +29,11 @@ const FeedTemplate = ( wpPage ) => {
 						</div>
 					) }
 				</HeroBanner>
-				<PostFeed />
+				<Section>
+					<RowWrap>
+						<PostFeed />
+					</RowWrap>
+				</Section>
 			</DefaultLayout>
 		</>
 	)

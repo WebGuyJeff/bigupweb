@@ -2,9 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import HeadMeta from 'components/HeadMeta'
-import DefaultTemplate from 'templates/WpDefaultTemplate'
 import FeedTemplate from 'templates/WpFeedTemplate'
-
+import DefaultTemplate from 'templates/WpDefaultTemplate'
 
 const headMeta = ( { data: { wpPage: { title, excerpt } } } ) => {
 	return (

@@ -32,7 +32,10 @@ const Footer = () => {
 		<footer style={ { marginBottom: 0 } } className={ footer }>
 			<div className={ container }>
 				<div className={ footer_menu }>
-					<h5>Links</h5>
+					<h5>
+						Links
+						<Fullstop />
+					</h5>
 					<ul>
 						{ footerLinks.map( ( node, index ) => {
 							return (
@@ -55,7 +58,8 @@ const Footer = () => {
 				linkedinUsername ? (
 						<div className={ `${footer_menu} ${social}` }>
 							<h5>
-							Follow Bigup Web<span>.</span>
+								Follow Bigup Web
+								<Fullstop />
 							</h5>
 							<ul>
 								{ twitterUsername && (

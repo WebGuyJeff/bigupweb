@@ -7,7 +7,7 @@ import {
 	headerAbsolute
 } from './Header.module.scss'
 
-const Header = ( position ) => {
+const Header = ( { position } ) => {
 	const classes = ( 'absolute' === position ) ? headerAbsolute : header
 	return (
 		<header className={ classes }>

@@ -3,11 +3,12 @@ import * as React from 'react'
 import parse from 'html-react-parser'
 import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
-import DefaultLayout from 'components/Layout/DefaultLayout/DefaultLayout'
 import HeadMeta from 'components/HeadMeta'
+import LandingLayout from 'components/Layout/LandingLayout/LandingLayout'
 import HeroBanner from 'components/HeroBanner/HeroBanner'
 import Fullstop from 'components/Fullstop/Fullstop'
 import Section from 'components/containers/Section/Section'
+import RowWrap from 'components/containers/RowWrap/RowWrap'
 import PostFeed from 'components/Feeds/PostFeed/PostFeed'
 import JSONData from 'root/content/pages/blog/copy.json'
 
@@ -43,7 +44,7 @@ const Blog = () => {
 	const headerImage = getImage( nodes[ 0 ] )
 	return (
 		<>
-			<DefaultLayout>
+			<LandingLayout >
 				<HeroBanner image={ headerImage } altText={ headerImageAlt }>
 					<h1>
 						{ title }
@@ -61,9 +62,11 @@ const Blog = () => {
 					</Section>
 				) }
 				<Section>
-					<PostFeed />
+					<RowWrap>
+						<PostFeed />
+					</RowWrap>
 				</Section>
-			</DefaultLayout>
+			</LandingLayout>
 		</>
 	)
 }

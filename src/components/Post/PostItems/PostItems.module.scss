@@ -1,9 +1,0 @@
-.posts {
-	display: flex;
-	flex-wrap: wrap;
-	width: 100%;
-	gap: calc(var(--gap) / 2);
-	@media (min-width: 1200px) {
-		gap: var(--gap);
-	}
-}
