@@ -1,8 +1,8 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import Button from 'components/Button/Button'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import Button from 'components/Button/Button'
 import {
 	blogitem
 } from './PostItem.module.scss'

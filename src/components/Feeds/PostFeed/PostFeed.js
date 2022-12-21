@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import PostItem from 'components/post/PostItem/PostItem'
 import RowWrap from 'components/containers/RowWrap/RowWrap'
+import PostItem from 'components/post/PostItem/PostItem'
 
 const PostFeed = ( data ) => {
 	const { posts } = data
