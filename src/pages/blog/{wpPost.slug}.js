@@ -3,15 +3,29 @@ import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import HeadMeta from 'components/HeadMeta'
 import DefaultLayout from 'components/Layout/DefaultLayout/DefaultLayout'
-import WpPostTemplate from 'templates/WpPostTemplate'
+import WpPostTemplate from 'templates/WpPostTemplate/WpPostTemplate'
 
 export const data = graphql`
 	query wpPostQuery($id: String) {
-		wpPost(id: { eq: $id }) {
+		wpPost(id: {eq: $id}) {
 			title
 			excerpt
 			content
 			date(formatString: "DD MMMM, YYYY")
+			featuredImage {
+				node {
+					altText
+					localFile {
+						childImageSharp {
+							gatsbyImageData(
+								layout: FULL_WIDTH
+								formats: [AUTO, WEBP, AVIF]
+								placeholder: BLURRED
+							)
+						}
+					}
+				}
+			}
 		}
 	}
 `

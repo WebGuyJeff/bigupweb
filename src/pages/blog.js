@@ -6,8 +6,7 @@ import PropTypes from 'prop-types'
 import useWpAllPost from 'hooks/useWpAllPosts'
 import HeadMeta from 'components/HeadMeta'
 import LandingLayout from 'components/Layout/LandingLayout/LandingLayout'
-import HeroBanner from 'components/HeroBanner/HeroBanner'
-import Fullstop from 'components/Fullstop/Fullstop'
+import HeroBanner from 'components/banners/HeroBanner/HeroBanner'
 import Section from 'components/containers/Section/Section'
 import PostFeed from 'components/Feeds/PostFeed/PostFeed'
 import JSONData from 'root/content/pages/blog/copy.json'
@@ -45,17 +44,12 @@ const Blog = () => {
 	return (
 		<>
 			<LandingLayout >
-				<HeroBanner image={ headerImage } altText={ headerImageAlt }>
-					<h1>
-						{ title }
-						<Fullstop />
-					</h1>
-					{ excerptHTML && (
-						<div className="bannerContent">
-							{ parse( excerptHTML ) }
-						</div>
-					) }
-				</HeroBanner>
+				<HeroBanner
+					title={ title }
+					subheading={ excerptHTML }
+					image={ headerImage }
+					altText={ headerImageAlt }
+				/>
 				{ contentHTML && (
 					<Section>
 						{ parse( contentHTML ) }

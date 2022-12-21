@@ -1,0 +1,27 @@
+.titleBanner {
+	position: relative;
+	padding: var(--gap) var(--borderSpacing);
+}
+	.titleBanner_flex {
+		height: 100%;
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-start;
+	}
+		.titleBanner_content {
+			position: relative;
+			z-index: 2;
+			width: 100%;
+
+			@media (min-width: 768px) {
+				width: 66vw;
+			}
+
+			h1 {
+				font-size: var(--display-1);
+				border-bottom: 2px solid rgb(0, 0, 0);
+				display: inline-block;
+			}
+		}
+		.titleBanner_date {
+		}

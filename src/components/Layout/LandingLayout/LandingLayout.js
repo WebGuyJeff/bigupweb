@@ -3,16 +3,14 @@ import PropTypes from 'prop-types'
 import Header from 'components/Header/Header'
 import Footer from 'components/Footer/Footer'
 import {
-	layout,
-	main,
-	heading
+	layout
 } from './LandingLayout.module.scss'
 
 const LandingLayout = ( { children } ) => {
 	return (
 		<div className={ layout }>
 			<Header position="absolute" />
-			<main className={ main }>
+			<main>
 				{ children }
 			</main>
 			<Footer />

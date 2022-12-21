@@ -1,0 +1,13 @@
+@use "sass:map";
+@import "styles/variables";
+
+.pageContent {
+	background: #fff;
+	border-radius: 2em;
+	padding: 2em;
+	margin: 2em 0.5em;
+
+	img {
+		border: 0.25em solid;
+	}
+}

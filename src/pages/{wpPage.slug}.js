@@ -2,8 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import HeadMeta from 'components/HeadMeta'
-import FeedTemplate from 'templates/WpFeedTemplate'
-import WpDefaultTemplate from 'templates/WpDefaultTemplate'
+import DefaultLayout from 'components/Layout/DefaultLayout/DefaultLayout'
+import WpPageTemplate from 'templates/WpPageTemplate/WpPageTemplate'
 
 const headMeta = ( { data: { wpPage: { title, excerpt } } } ) => {
 	return (
@@ -18,23 +18,12 @@ headMeta.propTypes = {
 	excerpt: PropTypes.string.isRequired
 }
 
-const getPageTemplate = ( wpPage ) => {
-
-	const templateName = wpPage.template.templateName
-	switch ( templateName ) {
-	case 'Feed':
-		return <FeedTemplate { ...wpPage } />
-
-	default:
-		return <WpDefaultTemplate { ...wpPage } />
-	}
-}
-getPageTemplate.propTypes = {
-	wpPage: PropTypes.node.isRequired
-}
-
 const Page = ( { data: { wpPage } } ) => {
-	return <main>{ getPageTemplate( wpPage ) }</main>
+	return (
+		<DefaultLayout>
+			<WpPageTemplate { ...wpPage } />
+		</DefaultLayout>
+	)
 }
 Page.propTypes = {
 	data: PropTypes.object.isRequired

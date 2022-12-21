@@ -9,12 +9,11 @@ import {
 	heading
 } from './DefaultLayout.module.scss'
 
-const DefaultLayout = ( { pageTitle, children } ) => {
+const DefaultLayout = ( { children } ) => {
 	return (
 		<div className={ layout }>
 			<Header />
 			<main className={ main }>
-				{ pageTitle && <h1 className={ heading }>{ parse( pageTitle ) }</h1> }
 				{ children }
 			</main>
 			<Footer />
