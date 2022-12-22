@@ -26,7 +26,8 @@
 
 .container {
 	display: flex;
-	flex-direction: column;
+	flex-flow: column;
+	justify-content: flex-end;
 	gap: var(--gap);
 
 	@media (min-width: 768px) {
