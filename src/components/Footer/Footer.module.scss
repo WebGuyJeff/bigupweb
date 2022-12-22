@@ -7,12 +7,16 @@
 	justify-content: flex-end;
 	padding: 0 var(--borderSpacing) var(--gap) var(--borderSpacing);
 	margin-top: var(--gap);
+	font-weight: 700;
+	font-variation-settings: "wght" 700;
 
 	ul {
 		list-style: none;
 		padding: 0;
 		margin: 0;
 		li {
+			width: fit-content;
+
 			a {
 				transition: color 0.3s ease;
 			}
@@ -45,11 +49,6 @@
 		margin-top: 0;
 		display: inline-block;
 		border-bottom: 2px solid;
-
-		a {
-			color: #fff;
-			text-decoration: none;
-		}
 	}
 	ul {
 		margin-bottom: var(--gap);
@@ -58,27 +57,22 @@
 			display: flex;
 			flex-direction: column;
 		}
-	}
 
-	li {
-		margin-top: 5px;
-		margin-bottom: 5px;
-
-		a {
-			color: var(--bodyColor);
-			text-decoration: none;
-			text-transform: capitalize;
-			font-weight: 700;
-
-			span {
-				color: map.get( $colours, "pinkred" );
-			}
-		}
-
-		:hover,
-		:focus {
+		li {
+			margin-top: 5px;
+			margin-bottom: 5px;
+	
 			a {
-				color: map.get( $colours, "pinkred" );
+				color: map.get( $colours, "black" );
+				text-decoration: none;
+				text-transform: capitalize;
+			}
+
+			&:hover,
+			&:focus {
+				a {
+					color: map.get( $colours, "pinkred" );
+				}
 			}
 		}
 	}
@@ -104,13 +98,13 @@
 			}
 
 			a {
-				color: map.get( $colours, "pinkred" );
+				color: map.get( $colours, "black" );
 			}
 
 			&:hover,
 			&:focus {
 				a {
-					color: #fff;
+					color: map.get( $colours, "pinkred" );
 				}
 			}
 		}
@@ -127,7 +121,6 @@
 		a {
 			display: inline-block;
 			color: map.get( $colours, "pinkred" );
-			font-weight: 700;
 			text-decoration: none;
 
 			&:hover,
