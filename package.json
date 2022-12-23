@@ -36,8 +36,10 @@
     "node": "19.x"
   },
   "dependencies": {
+    "@fontsource/fira-code": "^4.5.12",
     "@fontsource/montserrat": "^4.5.13",
     "@fontsource/roboto-flex": "^4.5.2",
+    "babel-plugin-prismjs": "^2.1.0",
     "dotenv": "^16.0.3",
     "gatsby": "5.3",
     "gatsby-cli": "5.3",
@@ -55,6 +57,7 @@
     "gatsby-source-wordpress": "^7.3.2",
     "gatsby-transformer-sharp": "^5.3.1",
     "html-react-parser": "^3.0.4",
+    "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1"
@@ -62,6 +65,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
+    "babel-preset-gatsby": "^3.3.1",
     "eslint": "^8.30.0",
     "eslint-plugin-react": "^7.31.11",
     "sass": "^1.57.0"

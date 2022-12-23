@@ -1,0 +1,166 @@
+/* This should include any WordPress classes that need to be supported like those in post content */
+
+/*---- 1. WORDPRESS CORE CLASSES ----*/
+
+.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: 5px auto 5px auto;
+}
+
+.alignright {
+    float:right;
+    margin: 5px 0 20px 20px;
+}
+
+.alignleft {
+    float: left;
+    margin: 5px 20px 20px 0;
+}
+
+a img.alignright {
+    float: right;
+    margin: 5px 0 20px 20px;
+}
+
+a img.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+a img.alignleft {
+    float: left;
+    margin: 5px 20px 20px 0;
+}
+
+a img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wp-caption {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    max-width: 96%; /* Image does not overflow the content area */
+    padding: 5px 3px 10px;
+    text-align: center;
+}
+
+.wp-caption.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignleft {
+    margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignright {
+    margin: 5px 0 20px 20px;
+}
+
+.wp-caption img {
+    border: 0 none;
+    height: auto;
+    margin: 0;
+    max-width: 98.5%;
+    padding: 0;
+    width: auto;
+}
+
+.wp-caption p.wp-caption-text {
+    font-size: 11px;
+    line-height: 17px;
+    margin: 0;
+    padding: 0 4px 5px;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+    background-color: #eee;
+    clip: auto !important;
+    clip-path: none;
+    color: #444;
+    display: block;
+    font-size: 1em;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+}
+
+
+/*---- 2. WORDPRESS CUSTOM CLASSES ----*/
+
+
+pre {
+	font-family: 'Fira Code',monospace;
+	clear: both;
+	color: #fff;
+	background: #1b1b1b;
+	padding: 0;
+	tab-size: 2;
+	word-break: normal;
+	hyphens: none;
+	position: relative;
+	line-height: 28px;
+	border-radius: 8px;
+	overflow: hidden;
+  }
+
+  pre code {
+	scrollbar-color: #666 #201c29;
+	background: none;
+	white-space: pre;
+	-webkit-overflow-scrolling: touch;
+	overflow-x: scroll;
+	display: block;
+	max-width: 100%;
+	min-width: 100px;
+	font-size: 16px;
+	padding: 15px 20px 12px 22px;
+	line-height: 1.5;
+
+	@media (max-width: 800px) {
+		padding: 15px 20px 10px 14px;
+	}
+  }
+
+
+/* all <code> */
+code {
+	font-family: 'Fira Code', monospace;
+	font-size: inherit;
+}
+  
+/* Code in text */
+p > code,
+li > code,
+dd > code,
+td > code {
+	background: #ffeff0;
+	word-wrap: break-word;
+	box-decoration-break: clone;
+	padding: .1rem .3rem .2rem;
+	border-radius: .2rem;
+}

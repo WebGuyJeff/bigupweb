@@ -1,0 +1,23 @@
+{
+	"plugins": [
+		[
+			"prismjs",
+			{
+				"languages": [ "html", "css", "javascript", "php" ],
+				"plugins": [ "line-numbers", "show-language" ],
+				"theme": "twilight",
+				"css": true
+			}
+		]
+	],
+	"presets": [
+		[
+			"babel-preset-gatsby",
+			{
+				"targets": {
+				"browsers": [">0.25%", "not dead"]
+				}
+			}
+		]
+	]
+}
