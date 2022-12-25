@@ -5,9 +5,6 @@ import { useSiteMetadata } from 'hooks/useSiteMetadata'
 import HeadMeta from 'components/HeadMeta'
 import parse from 'html-react-parser'
 
-import Prism from 'prismjs'
-Prism.highlightAll()
-
 const Home = () => {
 	const {
 		title

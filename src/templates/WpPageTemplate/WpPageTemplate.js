@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import TitleBanner from 'components/banners/TitleBanner/TitleBanner'
 import MaxWidth from 'components/containers/MaxWidth/MaxWidth'
 import { pageContent } from './WpPageTemplate.module.scss'
-import Prism from 'prismjs'
-Prism.highlightAll()
 
 const WpPageTemplate = ( { title, excerpt, content } ) => {
 

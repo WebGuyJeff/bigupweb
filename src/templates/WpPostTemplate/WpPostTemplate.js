@@ -7,8 +7,6 @@ import Section from 'components/containers/Section/Section'
 import Button from 'components/Button/Button'
 import LatestPosts from 'components/post/LatestPosts/LatestPosts'
 import { blogsingle } from './WpPostTemplate.module.scss'
-import Prism from 'prismjs'
-Prism.highlightAll()
 
 const WpPostTemplate = ( { title, date, content } ) => {
 
