@@ -2,23 +2,23 @@
 @import "styles/variables";
 
 .blogsingle {
-	padding: var(--sectionMargin) var(--borderSpacing) 0 var(--borderSpacing);
+	padding: map.get( $spaces, "xxxl" ) map.get( $spaces, "xl" ) 0 map.get( $spaces, "xl" );
 	max-width: 750px;
 	margin: 0 auto;
 	box-sizing: content-box;
 
 
 	&_title {
-		font-size: var(--h2);
+		font-size: map.get( $fontsizes, "h2" );
 		font-weight: 700;
 	}
 
 	&_content {
-		border-top: 2px solid map.get( $colours, "pinkred" );
-		padding-top: calc(var(--gap));
+		border-top: map.get( $borders, "default" ) solid map.get( $colours, "pinkred" );
+		padding-top: calc(map.get( $spaces, "xxl" ));
 	}
 
 	&_back {
-		padding-top: var(--gap);
+		padding-top: map.get( $spaces, "xxl" );
 	}
 }

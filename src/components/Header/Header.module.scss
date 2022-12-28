@@ -1,13 +1,16 @@
+@use "sass:map";
+@import "styles/variables";
 
 .header {
+	grid-area: header;
 	display: flex;
 	flex-flow: row wrap;
 	align-items: flex-start;
 	justify-content: space-between;
-	gap: var(--gap);
+	gap: map.get( $spaces, "xxl" );
 	z-index: 10;
-	margin-bottom: var(--gap);
-	padding: var(--gap) var(--borderSpacing) 0 var(--borderSpacing);
+	margin-bottom: map.get( $spaces, "xxl" );
+	padding: map.get( $spaces, "xxl" ) map.get( $spaces, "xl" ) 0 map.get( $spaces, "xl" );
 	width: 100%;
 }
 
@@ -18,9 +21,9 @@
 	flex-flow: row wrap;
 	align-items: flex-start;
 	justify-content: space-between;
-	gap: var(--gap);
+	gap: map.get( $spaces, "xxl" );
 	z-index: 10;
-	margin-bottom: var(--gap);
-	padding: var(--gap) var(--borderSpacing) 0 var(--borderSpacing);
+	margin-bottom: map.get( $spaces, "xxl" );
+	padding: map.get( $spaces, "xxl" ) map.get( $spaces, "xl" ) 0 map.get( $spaces, "xl" );
 	width: 100%;
 }

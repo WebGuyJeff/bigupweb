@@ -1,0 +1,27 @@
+@use "sass:map";
+@import "styles/variables";
+
+.layout {
+	display: grid;
+	grid-template:
+		"header"
+		"sidebar"
+		"main"
+		"footer";
+    margin: 0 auto;
+    max-width: 100%;
+	min-height: 100%;
+
+	@media ( min-width: map.get( $breakpoints, "lg" ) ) {
+		grid-template:
+			"header  header"
+			"sidebar main"
+			"footer  footer";
+	}
+}
+
+.main {
+	grid-area: main;
+	padding: 0;
+	max-width: 100%;
+}

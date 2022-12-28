@@ -7,52 +7,13 @@ map.get( $colours, "pinkred" )
 */
 
 :root {
-	--borderSpacing: 30px;
-	--menuWidth: 100vw;
-	--blockquote: 20px;
-	--inActive: #555;
-	--boxShadow: 0px 15px 22px 3px rgba(0, 0, 0, 0.55);
-	--textShadow: 0px 0px 5px rgba(0, 0, 0, 1);
-	--gap: 40px;
-	--sectionMargin: 60px;
-
-	/* Font sizes */
-	--display-1: calc(1.625rem + 4.5vw);
-	--display-2: calc(1.575rem + 3.9vw);
-	--display-3: calc(1.525rem + 3.3vw);
-	--display-4: calc(1.475rem + 2.7vw);
-	--display-5: calc(1.425rem + 2.1vw);
-	--display-6: calc(1.375rem + 1.5vw);
-	--h1: calc(1.375rem + 1.5vw);
-	--h2: calc(1.325rem + .9vw);
-	--h3: calc(1.3rem + .6vw);
-	--h4: calc(1.275rem + .3vw);
-	--h5: 1.25rem;
-	--h6: 1rem;
-	--small: 0.85rem;
-	--xsmall: 0.7rem;
 	font-family: 'Roboto FlexVariable', arial, sans-serif;
 	font-size: 1rem;
 	font-weight: 400;
 	font-variation-settings: 'wght' 400;
 }
 
-@media (min-width:1200px) {
-	:root {
-		--display-1: 5rem;
-		--display-2: 4.5rem;
-		--display-3: 4rem;
-		--display-4: 3.5rem;
-		--display-5: 3rem;
-		--display-6: 2.5rem;
-		--h1: 2.5rem;
-		--h2: 2rem;
-		--h3: 1.75rem;
-		--h4: 1.5rem;
-	}
-}
-
-@media (min-width:1536px) {
+@media ( min-width:1536px ) {
 	:root {
 		font-size: 1.125rem;
   	}
@@ -122,27 +83,27 @@ h6 {
 }
 
 h1 {
-    font-size: var(--h1);
+    font-size: map.get( $fontsizes, "h1" );
 }
 
 h2 {
-    font-size: var(--h2);
+    font-size: map.get( $fontsizes, "h2" );
 }
 
 h3 {
-  font-size: var(--h3);
+  font-size: map.get( $fontsizes, "h3" );
 }
 
 h4 {
-  font-size: var(--h4);
+  font-size: map.get( $fontsizes, "h4" );
 }
 
 h5 {
-  font-size: var(--h5);
+  font-size: map.get( $fontsizes, "h5" );
 }
 
 h6 {
-  font-size: var(--h6);
+  font-size: map.get( $fontsizes, "h6" );
 }
 
 p {
@@ -172,8 +133,8 @@ hr,
 ol,
 ul,
 blockquote {
-  margin-top: calc(var(--sectionMargin) / 2);
-  margin-bottom: calc(var(--sectionMargin) / 2);
+  margin-top: calc(map.get( $spaces, "xxxl" ) / 2);
+  margin-bottom: calc(map.get( $spaces, "xxxl" ) / 2);
 }
 
 hr {
@@ -183,7 +144,7 @@ hr {
 }
 
 a {
-  color: map.get( $colours, "pinkred" );
+  color: inherit;
   transition: color 0.3s ease;
   cursor: pointer;
 
@@ -194,22 +155,79 @@ a {
 }
 
 blockquote {
-  font-size: var(--blockquote);
-  font-style: italic;
-  font-variation-settings: 'slnt' -10;
-  margin-left: 0;
-  border-left: 2px solid map.get( $colours, "pinkred" );
-  padding-left: var(--gap);
-}
-
-.contentimg {
-  margin-top: var(--gap);
-  margin-bottom: var(--gap);
-}
-
-.contentdescription {
-	font-variation-settings: 'slnt' -10;
-	font-size: 0.813rem;
+	margin-left: 0;
+	border-top: map.get( $borders, "default" ) solid map.get( $colours, "pinkred" );
+	border-bottom: map.get( $borders, "default" ) solid map.get( $colours, "pinkred" );
+	padding: map.get( $spaces, "xxl" );
 	text-align: center;
-	margin-top: calc(var(--gap) / 2);
+	font-size: map.get( $fontsizes, "h2" );
+	font-weight: 700;
+	font-style: italic;
+	font-variation-settings: 'slnt' -10, 'wght' 700;
+
+	& cite {
+		font-size: map.get( $fontsizes, "h6" );
+		font-weight: 400;
+		font-variation-settings: 'slnt' -10, 'wght' 400;
+	}
+}
+
+figure {
+	margin: map.get( $spaces, "sm" );
+}
+
+figcaption {
+	margin: 0 0 map.get( $spaces, "sm" );
+	color: map.get( $colours, "inactive" );
+	font-weight: 300;
+	font-variation-settings: 'wght' 300;
+}
+
+pre {
+	font-family: 'Fira Code',monospace;
+	clear: both;
+	color: #fff;
+	background: #1b1b1b;
+	padding: map.get( $spaces, "md" ) map.get( $spaces, "lg" );
+	tab-size: 2;
+	word-break: normal;
+	hyphens: none;
+	position: relative;
+	line-height: 1.5;
+	border-radius: map.get( $borderradius, "sm" );
+	overflow: hidden;
+
+	@media (max-width: 800px) {
+		padding: map.get( $spaces, "sm" ) map.get( $spaces, "md" );
+	}
+
+	code {
+		scrollbar-color: #666 #201c29;
+		background: none;
+		white-space: pre;
+		-webkit-overflow-scrolling: touch;
+		overflow-x: scroll;
+		display: block;
+		max-width: 100%;
+		min-width: 100px;
+		font-size: 16px;
+		line-height: 1.5;
+	}
+}
+
+code {
+	font-family: 'Fira Code', monospace;
+	font-size: inherit;
+}
+  
+/* Code in text */
+p > code,
+li > code,
+dd > code,
+td > code {
+	background: #ffeff0;
+	word-wrap: break-word;
+	box-decoration-break: clone;
+	padding: .1rem .3rem .2rem;
+	border-radius: map.get( $borderradius, "xs" );
 }

@@ -4,7 +4,7 @@
 .nav {
 	display: flex;
 	flex-flow: row wrap;
-	margin-bottom: var(--gap);
+	margin-bottom: map.get( $spaces, "xxl" );
 	font-family: 'Roboto FlexVariable', Arial, sans-serif;
 	font-size: 1.25em;
 	font-weight: 900;

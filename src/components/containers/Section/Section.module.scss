@@ -2,8 +2,11 @@
 @import "styles/variables";
 
 .section {
-	margin-top: var(--sectionMargin);
-	margin-bottom: var(--sectionMargin);
-	padding-left: var(--borderSpacing);
-	padding-right: var(--borderSpacing);
+	margin-top: map.get( $spaces, "xxxl" );
+	margin-bottom: map.get( $spaces, "xxxl" );
+
+	@media ( min-width: map.get( $breakpoints, "md" ) ) {
+		padding-left: map.get( $spaces, "xl" );
+		padding-right: map.get( $spaces, "xl" );
+	}
 }

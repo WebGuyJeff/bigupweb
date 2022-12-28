@@ -1,0 +1,15 @@
+@use 'sass:map';
+@import 'styles/variables';
+@import 'src/styles/wordpress.scss';
+
+.wPContent {
+	max-width: 750px;
+	background: #fff;
+	border-radius: map.get( $borderradius, 'lg' );
+	padding: map.get( $spaces, 'md' ) map.get( $spaces, 'xs' );
+	margin: map.get( $spaces, 'xl' ) map.get( $spaces, 'xs' );
+
+	@media ( min-width: map.get( $breakpoints, 'md' ) ) {
+		padding: map.get( $spaces, 'xl' );
+	}
+}

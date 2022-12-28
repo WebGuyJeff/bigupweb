@@ -1,14 +1,16 @@
+@use "sass:map";
+@import "styles/variables";
 
 .learnMore {
-	margin-top: calc(var(--gap) * 2);
+	margin-top: calc(map.get( $spaces, "xxl" ) * 2);
 }
 
 .introArea {
-	margin-bottom: calc(var(--gap) * 2);
+	margin-bottom: calc(map.get( $spaces, "xxl" ) * 2);
 	max-width: 700px;
   
 	h2 {
 	  display: inline-block;
-	  border-bottom: 2px solid rgba(255,255,255,0.15);
+	  border-bottom: map.get( $borders, "default" ) solid rgba(255,255,255,0.15);
 	}
   }

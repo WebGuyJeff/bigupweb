@@ -19,7 +19,6 @@ const LandingLayout = ( { children } ) => {
 }
 
 LandingLayout.propTypes = {
-	pageTitle: PropTypes.string,
 	children: PropTypes.node.isRequired
 }
 

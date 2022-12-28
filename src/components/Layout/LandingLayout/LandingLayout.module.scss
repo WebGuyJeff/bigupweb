@@ -1,6 +1,9 @@
 .layout {
 	display: grid;
-	grid-template-rows: auto 1fr auto;
+	grid-template:
+		"header" auto
+		"main"   1fr
+		"footer" auto;
     margin: 0 auto;
     max-width: 100vw;
 	min-height: 100%;
@@ -9,6 +12,7 @@
     font-weight: 300;
 
 	main {
+		grid-area: main;
 		padding: 0;
 		max-width: 100vw;
 	}

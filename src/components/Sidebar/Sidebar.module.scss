@@ -2,6 +2,20 @@
 @import "styles/variables";
 
 .sidebar {
-	max-width: 400px;
-	height: 100%;
+	grid-area: sidebar;
+
+
+	/* temp */
+	border: solid 1px;
+
+
+
+	@media ( min-width: map.get( $breakpoints, "lg" ) ) {
+		width: 300px;
+	}
+
+	@media ( min-width: map.get( $breakpoints, "xl" ) ) {
+		width: 400px;
+		max-width: 400px;
+	}
 }

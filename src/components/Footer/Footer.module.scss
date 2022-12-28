@@ -2,8 +2,9 @@
 @import "styles/variables";
 
 .footer {
-	padding: 0 var(--borderSpacing) var(--gap) var(--borderSpacing);
-	margin-top: var(--gap);
+	grid-area: footer;
+	padding: 0 map.get( $spaces, "xl" ) map.get( $spaces, "xxl" ) map.get( $spaces, "xl" );
+	margin-top: map.get( $spaces, "xxxl" );
 	font-weight: 700;
 	font-variation-settings: "wght" 700;
 
@@ -25,20 +26,20 @@
 	display: flex;
 	flex-flow: column;
 	justify-content: flex-end;
-	gap: var(--gap);
+	gap: map.get( $spaces, "xl" );
 
 	@media (min-width: 768px) {
 		align-items: flex-start;
 		flex-direction: row;
 	}
 
-	@media (min-width: 1200px) {
-		gap: calc(var(--gap) * 2);
+	@media (min-width: map.get( $breakpoints, "xl" )) {
+		gap: map.get( $spaces, "xxxl" );
 	}
 }
 
 .footer_menu {
-	@media (min-width: 768px) {
+	@media ( min-width: map.get( $breakpoints, "md" ) ) {
 		flex-grow: 1;
 		width: 33.333%;
 	}
@@ -46,19 +47,19 @@
 	h5 {
 		margin-top: 0;
 		display: inline-block;
-		border-bottom: 2px solid;
+		border-bottom: map.get( $borders, "default" ) solid;
 	}
 	ul {
-		margin-bottom: var(--gap);
+		margin-bottom: map.get( $spaces, "xxxl" );
 
-		@media (min-width: 768px) {
+		@media ( min-width: map.get( $breakpoints, "md" ) ) {
 			display: flex;
 			flex-direction: column;
 		}
 
 		li {
-			margin-top: 5px;
-			margin-bottom: 5px;
+			margin-bottom: map.get( $spaces, "xs" );
+			margin-top: map.get( $spaces, "xs" );
 	
 			a {
 				color: map.get( $colours, "black" );
@@ -77,22 +78,22 @@
 }
 
 .social {
-	margin-bottom: var(--gap);
+	margin-bottom: map.get( $spaces, "xxl" );
 
 	ul {
 		display: flex;
 
-		@media (min-width: 768px) {
+		@media ( min-width: map.get( $breakpoints, "md" ) ) {
 			flex-direction: row;
 		}
 
 		li {
-			font-size: var(--h4);
-			margin-right: 8px;
+			font-size: map.get( $fontsizes, "h4" );
+			margin-right: map.get( $spaces, "xs" );
 
-			@media (min-width: 768px) {
-				margin-left: 5px;
-				margin-right: 5px;
+			@media ( min-width: map.get( $breakpoints, "md" ) ) {
+				margin-left: map.get( $spaces, "xs" );
+				margin-right: map.get( $spaces, "xs" );
 			}
 
 			a {
@@ -111,7 +112,7 @@
 
 .copyright {
 	font-size: 13px;
-	padding-top: var(--gap);
+	padding-top: map.get( $spaces, "xxl" );
 
 	p {
 		margin: 0;

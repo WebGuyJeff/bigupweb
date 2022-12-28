@@ -1,7 +1,10 @@
+@use "sass:map";
+@import "styles/variables";
+
 .hero-banner {
 	height: 100vh;
 	position: relative;
-	padding: var(--gap) var(--borderSpacing);
+	padding: map.get( $spaces, "xxl" ) map.get( $spaces, "xl" );
 	color: #fff;
 }
 	.container {
@@ -39,9 +42,9 @@
 			}
 
 			h1 {
-				font-size: var(--display-1);
-				border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+				font-size: map.get( $fontsizes, "display-1" );
+				border-bottom: map.get( $borders, "default" ) solid rgba(255, 255, 255, 0.15);
 				display: inline-block;
-				text-shadow: var(--textShadow);
+				text-shadow: map.get( $decorations, "textshadow" );
 			}
 		}

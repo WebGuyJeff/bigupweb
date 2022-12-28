@@ -1,17 +1,20 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import parse from 'html-react-parser'
 import Header from 'components/Header/Header'
+import Sidebar from 'components/Sidebar/Sidebar'
 import Footer from 'components/Footer/Footer'
 import {
 	layout,
 	main
-} from './DefaultLayout.module.scss'
+} from './SidebarLayout.module.scss'
 
-const DefaultLayout = ( { children } ) => {
+const SidebarLayout = ( { children } ) => {
 	return (
 		<div className={ layout }>
 			<Header />
+			<Sidebar>
+				<h2>This is a sidebar</h2>
+			</Sidebar>
 			<main className={ main }>
 				{ children }
 			</main>
@@ -20,8 +23,8 @@ const DefaultLayout = ( { children } ) => {
 	)
 }
 
-DefaultLayout.propTypes = {
+SidebarLayout.propTypes = {
 	children: PropTypes.node.isRequired
 }
 
-export default DefaultLayout
+export default SidebarLayout

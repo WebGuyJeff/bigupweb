@@ -7,8 +7,8 @@
 	position: relative;
 	flex: 0 0 100%;
 	flex-direction: column;
-	border: 3px solid #000;
-	border-radius: 6px;
+	border: map.get( $borders, "default" ) solid #000;
+	border-radius: map.get( $borderradius, "sm" );
 	min-height: 408px;
 	overflow: hidden;
 	text-decoration: none;
@@ -71,7 +71,7 @@
 		left: 0px;
 		z-index: 2;
 		margin-top: auto;
-		padding: 20px 10px;
+		padding: map.get( $spaces, "lg" ) map.get( $spaces, "sm" );
 		width: 100%;
 		background: linear-gradient(
 			6deg,
@@ -80,28 +80,24 @@
 		);
 	
 		@media (min-width: 768px) {
-			padding: 20px;
+			padding: map.get( $spaces, "lg" );
 		}
 	
 		@media (min-width: 1024px) {
-			padding: 40px 20px;
+			padding: map.get( $spaces, "xl" ) map.get( $spaces, "lg" );
 		}
 	
 		@media (min-width: 1200px) {
-			padding: 50px 30px;
+			padding: map.get( $spaces, "xxl" ) map.get( $spaces, "xl" );
 		}
 	
 		h4,
 		p {
-			text-shadow: var(--textShadow);
-		}
-	
-		p {
-			font-size: var(--p);
+			text-shadow: map.get( $decorations, "textshadow" );
 		}
 	
 		> p {
-			margin-bottom: var(--gap);
+			margin-bottom: map.get( $spaces, "xxl" );
 		}
 	
 		a {
@@ -111,7 +107,7 @@
 	}
 
 	&_meta {
-		gap: calc(var(--gap) / 2);
+		gap: calc(map.get( $spaces, "xxl" ) / 2);
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;

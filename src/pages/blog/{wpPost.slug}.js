@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import HeadMeta from 'components/HeadMeta'
-import DefaultLayout from 'components/Layout/DefaultLayout/DefaultLayout'
+import SidebarLayout from 'components/Layout/SidebarLayout/SidebarLayout'
 import WpPostTemplate from 'templates/WpPostTemplate/WpPostTemplate'
 
 export const data = graphql`
@@ -46,9 +46,9 @@ headMeta.propTypes = {
 const Post = ( { data: { wpPost } } ) => {
 	return (
 		<>
-			<DefaultLayout>
+			<SidebarLayout>
 				<WpPostTemplate { ...wpPost } />
-			</DefaultLayout>
+			</SidebarLayout>
 		</>
 	)
 }

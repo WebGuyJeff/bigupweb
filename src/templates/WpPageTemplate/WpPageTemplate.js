@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import TitleBanner from 'components/banners/TitleBanner/TitleBanner'
 import MaxWidth from 'components/containers/MaxWidth/MaxWidth'
-import { pageContent } from './WpPageTemplate.module.scss'
+import WPContent from 'components/containers/WPContent/WPContent'
 
 const WpPageTemplate = ( { title, excerpt, content } ) => {
 
@@ -35,11 +35,9 @@ const WpPageTemplate = ( { title, excerpt, content } ) => {
 						{ code }
 					</code>
 				</pre>
-				<div className={ pageContent }>
-					{ excerpt && (
-						<div dangerouslySetInnerHTML={ { __html: content } } />
-					) }
-				</div>
+				{ content && (
+					<WPContent content={ content } />
+				) }
 			</MaxWidth>
 		</>
 	)

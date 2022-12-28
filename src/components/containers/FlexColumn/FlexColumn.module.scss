@@ -4,13 +4,13 @@
 .flexColumn {
 	display: flex;
 	flex-flow: column;
-	gap: var(--gap);
+	gap: map.get( $spaces, "xxl" );
 
 	> * {
 		flex: 0 0 100%;
 
 		@media(min-width:414px) {
-			flex-basis: calc(50% - (calc(var(--gap) / 2)));
+			flex-basis: calc(50% - (calc(map.get( $spaces, "xxl" ) / 2)));
 		}
 
 		@media(min-width:1024px) {
