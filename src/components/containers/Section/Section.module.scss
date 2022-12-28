@@ -4,9 +4,4 @@
 .section {
 	margin-top: map.get( $spaces, "xxxl" );
 	margin-bottom: map.get( $spaces, "xxxl" );
-
-	@media ( min-width: map.get( $breakpoints, "md" ) ) {
-		padding-left: map.get( $spaces, "xl" );
-		padding-right: map.get( $spaces, "xl" );
-	}
 }

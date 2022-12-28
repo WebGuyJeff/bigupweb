@@ -1,16 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import FlexRow from 'components/containers/FlexRow/FlexRow'
 import PostItem from 'components/post/PostItem/PostItem'
+import MaxWidth from 'components/containers/MaxWidth/MaxWidth'
+import {
+	postFeed
+} from './PostFeed.module.scss'
+
 
 const PostFeed = ( data ) => {
 	const { posts } = data
 	return (
-		<FlexRow>
-			{ posts.map( ( node, index ) => {
-				return <PostItem node={ node } key={ index } />
-			} ) }
-		</FlexRow>
+		<MaxWidth>
+			<div className={ postFeed }>
+				{ posts.map( ( node, index ) => {
+					return <PostItem node={ node } key={ index } />
+				} ) }
+			</div>
+		</MaxWidth>
 	)
 }
 PostFeed.propTypes = {

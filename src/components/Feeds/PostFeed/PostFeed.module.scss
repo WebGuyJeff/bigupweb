@@ -1,0 +1,26 @@
+@use "sass:map";
+@import "styles/variables";
+
+.postFeed {
+	display: grid;
+	grid-template: 1fr / auto;
+	margin: map.get( $spaces, "sm" );
+	gap: map.get( $spaces, "sm" );
+
+	@media ( min-width: map.get( $breakpoints, "sm" ) ) {
+		grid-template-columns: 1fr 1fr;
+		margin: map.get( $spaces, "lg" );
+		gap: map.get( $spaces, "lg" );
+	}
+
+	@media ( min-width: map.get( $breakpoints, "md" ) ) {
+		margin: map.get( $spaces, "xl" );
+		gap: map.get( $spaces, "xl" );
+	}
+
+	@media ( min-width: map.get( $breakpoints, "xl" ) ) {
+		grid-template-columns: 1fr 1fr 1fr;
+		margin: map.get( $spaces, "xxl" );
+		gap: map.get( $spaces, "xxl" );
+	}
+}
