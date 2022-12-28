@@ -2,9 +2,6 @@
 @import "styles/variables";
 
 .footer {
-	display: flex;
-	flex-flow: column;
-	justify-content: flex-end;
 	padding: 0 var(--borderSpacing) var(--gap) var(--borderSpacing);
 	margin-top: var(--gap);
 	font-weight: 700;
@@ -24,7 +21,7 @@
 	}
 }
 
-.container {
+.footer_inner {
 	display: flex;
 	flex-flow: column;
 	justify-content: flex-end;

@@ -12,7 +12,7 @@ import {
 } from 'react-icons/fa'
 import {
 	footer,
-	container,
+	footer_inner,
 	footer_menu,
 	social,
 	copyright,
@@ -32,7 +32,7 @@ const Footer = () => {
 	return (
 		<footer style={ { marginBottom: 0 } } className={ footer }>
 			<MaxWidth width="tight">
-				<div className={ container }>
+				<div className={ footer_inner }>
 					<div className={ footer_menu }>
 						<h5>
 							Links
