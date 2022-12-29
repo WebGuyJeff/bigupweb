@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Link } from 'gatsby'
 import { graphql, useStaticQuery } from 'gatsby'
 import { useSiteMetadata } from 'hooks/useSiteMetadata'
@@ -22,9 +22,12 @@ const Logo = () => {
 	const url                    = siteLogo.localFile.publicURL
 
 	return (
-		<Link to="/">
+		<Link
+			to="/"
+			className={ logoSVG }
+			id="headerLogo"
+		>
 			<img
-				className={ logoSVG }
 				src={ url }
 				title={ title }
 				alt={ altText }

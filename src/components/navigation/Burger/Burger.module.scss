@@ -1,0 +1,64 @@
+@use "sass:map";
+@import "styles/variables";
+
+.burger {
+	width: 2rem;
+	height: 2rem;
+	z-index: 20;
+	display: none;
+	transition: top 0.5s ease-in-out,
+	            left 0.5s ease-in-out;
+
+	@media ( max-width: map.get( $breakpoints, "md" ) ) {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: space-around;
+	}
+
+	div {
+		width: 2rem;
+		height: 0.25rem;
+		background-color: map.get( $colours, "black" );
+		border-radius: 10px;
+		transform-origin: 1px;
+		transition: all 0.3s linear;
+
+		&:nth-child(1) {
+			transform: rotate(0);
+		}
+
+		&:nth-child(2) {
+			transform: translateX(0);
+			opacity: 1;
+		}
+
+		&:nth-child(3) {
+			transform: rotate(0);
+		}
+	}
+
+	&[aria-expanded=true] {
+		div {
+	
+			&:nth-child(1) {
+				transform: rotate(45deg);
+			}
+	
+			&:nth-child(2) {
+				transform: translateX(100%);
+				opacity: 0;
+			}
+	
+			&:nth-child(3) {
+				transform: rotate(-45deg);
+			}
+		}
+
+		@media ( max-width: map.get( $breakpoints, "md" ) ) {
+			position: fixed;
+			top: map.get( $spaces, "xl" );
+			right: map.get( $spaces, "xl" );
+		}
+	}
+
+}

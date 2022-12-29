@@ -1,0 +1,31 @@
+@use "sass:map";
+@import "styles/variables";
+
+.menuSlider {
+	display: contents;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	right: 0;
+	transform: translateX( 200% ) translateY( -200% );
+	transition: transform 0.3s ease-in-out;
+	background-color: map.get( $colours, "yellow" );
+	padding-top: 3.5rem;
+	width: 100vw;
+	height: 100vh;
+
+	&[aria-hidden=false] {
+		transform: translateX( 0 ) translateY( 0 );
+	}
+
+	@media ( max-width: map.get( $breakpoints, "md" ) ) {
+		display: flex;
+
+		nav {
+			font-size: map.get( $fontsizes, "h1" );
+			flex-flow: column;
+		}
+	}
+}

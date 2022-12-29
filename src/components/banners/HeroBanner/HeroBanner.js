@@ -1,5 +1,5 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
-import * as React from 'react'
+import React from 'react'
 import parse from 'html-react-parser'
 import PropTypes from 'prop-types'
 import Fullstop from 'components/Fullstop/Fullstop'

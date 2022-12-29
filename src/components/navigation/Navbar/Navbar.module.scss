@@ -1,7 +1,7 @@
 @use "sass:map";
 @import "styles/variables";
 
-.nav {
+.navbar {
 	display: flex;
 	flex-flow: row wrap;
 	margin-bottom: map.get( $spaces, "xxl" );
@@ -12,8 +12,6 @@
 
 	a {
 		transition: color 0.3s ease;
-		margin-top: 0;
-		margin-bottom: 5px;
 		padding-right: 2rem;
 		text-transform: uppercase;
 		text-decoration: none;

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import TitleBanner from 'components/banners/TitleBanner/TitleBanner'
 import MaxWidth from 'components/containers/MaxWidth/MaxWidth'

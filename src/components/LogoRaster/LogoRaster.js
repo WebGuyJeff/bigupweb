@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Link } from 'gatsby'
 import { graphql, useStaticQuery } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
@@ -31,9 +31,12 @@ const LogoRaster = () => {
 	const image       = getImage( siteLogo.localFile )
 
 	return (
-		<Link to="/">
+		<Link
+			to="/"
+			className={ logo }
+			id="headerLogo"
+		>
 			<GatsbyImage
-				className={ logo }
 				image={ image }
 				alt={ altText }
 				title={ title }

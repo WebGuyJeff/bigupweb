@@ -1,5 +1,5 @@
 import { getImage } from 'gatsby-plugin-image'
-import * as React from 'react'
+import React from 'react'
 import parse from 'html-react-parser'
 import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
