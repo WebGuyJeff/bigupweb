@@ -5,24 +5,6 @@ import MaxWidth from 'components/containers/MaxWidth/MaxWidth'
 import WPContent from 'components/containers/WPContent/WPContent'
 
 const WpPageTemplate = ( { title, excerpt, content } ) => {
-
-	//DEBUG
-	const code = `// This is a code block
-	const getData = graphql
-		query {
-			site {
-				siteMetadata {
-					siteTitle: title
-					siteDesc: description
-					image
-					author
-					siteUrl
-					twitterUsername
-				}
-			}
-		}
-	`
-
 	return (
 		<>
 			<TitleBanner
@@ -30,11 +12,6 @@ const WpPageTemplate = ( { title, excerpt, content } ) => {
 				subheading={ excerpt }
 			/>
 			<MaxWidth width="tight">
-				<pre>
-					<code className="language-javascript">
-						{ code }
-					</code>
-				</pre>
 				{ content && (
 					<WPContent content={ content } />
 				) }

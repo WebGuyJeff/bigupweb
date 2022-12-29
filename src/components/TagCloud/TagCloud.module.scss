@@ -1,0 +1,33 @@
+@use "sass:map";
+@import "styles/variables";
+
+.tagCloud {
+	margin-top: map.get( $spaces, "xxxl" );
+	padding: 0 map.get( $spaces, "xl" ) map.get( $spaces, "xxl" ) map.get( $spaces, "xl" );
+	max-width: 100%;
+
+	div {
+		display: flex;
+		flex-flow: row wrap;
+		font-size: map.get( $fontsizes, "small" );
+		font-weight: 700;
+		font-variation-settings: "wght" 700;
+		gap: 5px;
+
+		a {
+			display: block;
+			margin: map.get( $spaces, "xxs" );
+			background: map.get( $colours, "black" );
+			padding: map.get( $spaces, "xxs" );
+			text-decoration: none;
+			color: map.get( $colours, "yellow" );
+			border-radius: map.get( $borderradius, "xs" );
+			transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+
+			&:hover {
+				background: map.get( $colours, "yellow" );
+				color: map.get( $colours, "black" );
+			}
+		}
+	}
+}

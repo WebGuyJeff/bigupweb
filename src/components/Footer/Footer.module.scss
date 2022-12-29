@@ -7,6 +7,7 @@
 	margin-top: map.get( $spaces, "xxxl" );
 	font-weight: 700;
 	font-variation-settings: "wght" 700;
+	max-width: 100vw;
 
 	ul {
 		list-style: none;

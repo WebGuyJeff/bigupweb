@@ -1,20 +1,19 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 import {
-	nav,
-	navLinkItem
+	nav
 } from './Nav.module.scss'
 
 const Nav = () => {
 	return (
 		<nav className={ nav }>
-			<Link to="/" className={ navLinkItem }>
+			<Link to="/">
 				Home
 			</Link>
-			<Link to="/about" className={ navLinkItem }>
+			<Link to="/about">
 				About
 			</Link>
-			<Link to="/blog" className={ navLinkItem }>
+			<Link to="/blog">
 				Blog
 			</Link>
 		</nav>

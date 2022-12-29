@@ -3,7 +3,7 @@
 @import 'src/styles/wordpress.scss';
 
 .wPContent {
-	max-width: 750px;
+	max-width: 1024px;
 	background: #fff;
 	border-radius: map.get( $borderradius, 'lg' );
 	padding: map.get( $spaces, 'md' ) map.get( $spaces, 'xs' );
@@ -11,5 +11,26 @@
 
 	@media ( min-width: map.get( $breakpoints, 'md' ) ) {
 		padding: map.get( $spaces, 'xl' );
+	}
+
+	@media ( min-width: 1024px ) {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	& > *:not( pre[class*="language-"] ) {
+		max-width: 750px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	p a {
+		text-decoration: map.get( $colours, 'pinkred' ) underline;
+		text-decoration-thickness: 3px;
+		transition: text-decoration-thickness 0.2s ease-in-out;
+	}
+
+	p a:hover {
+		text-decoration-thickness: 6px;
 	}
 }

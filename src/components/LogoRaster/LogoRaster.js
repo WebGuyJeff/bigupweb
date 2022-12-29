@@ -3,9 +3,9 @@ import { Link } from 'gatsby'
 import { graphql, useStaticQuery } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { useSiteMetadata } from 'hooks/useSiteMetadata'
-import { logo } from './Logo.module.scss'
+import { logo } from './LogoRaster.module.scss'
 
-const Logo = () => {
+const LogoRaster = () => {
 	const { wp: { siteLogo } } = useStaticQuery( graphql`
 		query {
 			wp {
@@ -47,4 +47,4 @@ const Logo = () => {
 	)
 }
 
-export default Logo
+export default LogoRaster

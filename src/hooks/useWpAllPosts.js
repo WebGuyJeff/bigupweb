@@ -5,7 +5,7 @@ const useWpAllPosts = () => {
 		allWpPost: { nodes },
 	} = useStaticQuery( graphql`
 		query {
-			allWpPost(sort: {date: DESC}, limit: 3) {
+			allWpPost( sort: {date: DESC} ) {
 				nodes {
 					title
 					slug

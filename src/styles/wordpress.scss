@@ -227,3 +227,22 @@ a img.aligncenter {
 	max-width: 100%;
 	border-radius: map.get( $borderradius, "sm" );
 }
+
+.wp-block-pullquote blockquote {
+	margin-left: 0;
+	border-top: map.get( $borders, "default" ) solid map.get( $colours, "pinkred" );
+	border-bottom: map.get( $borders, "default" ) solid map.get( $colours, "pinkred" );
+	border-left: none;
+	padding: map.get( $spaces, "xxl" );
+	text-align: center;
+	font-size: map.get( $fontsizes, "h2" );
+	font-weight: 700;
+	font-style: italic;
+	font-variation-settings: 'slnt' -10, 'wght' 700;
+
+	& cite {
+		font-size: map.get( $fontsizes, "h6" );
+		font-weight: 400;
+		font-variation-settings: 'slnt' -10, 'wght' 400;
+	}
+}

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import Logo from 'components/Logo/Logo'
+import LogoSVG from 'components/LogoSVG/LogoSVG'
 import Nav from 'components/Nav/Nav'
 import {
 	header,
@@ -11,7 +11,7 @@ const Header = ( { position } ) => {
 	const classes = ( 'absolute' === position ) ? headerAbsolute : header
 	return (
 		<header className={ classes }>
-			<Logo />
+			<LogoSVG />
 			<Nav />
 		</header>
 	)

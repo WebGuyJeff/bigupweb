@@ -156,10 +156,9 @@ a {
 
 blockquote {
 	margin-left: 0;
-	border-top: map.get( $borders, "default" ) solid map.get( $colours, "pinkred" );
-	border-bottom: map.get( $borders, "default" ) solid map.get( $colours, "pinkred" );
-	padding: map.get( $spaces, "xxl" );
-	text-align: center;
+	border-left: map.get( $borders, "heavy" ) solid map.get( $colours, "pinkred" );
+	padding: map.get( $spaces, "sm" ) map.get( $spaces, "xxl" );
+	text-align: start;
 	font-size: map.get( $fontsizes, "h2" );
 	font-weight: 700;
 	font-style: italic;

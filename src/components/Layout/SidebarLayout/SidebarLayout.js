@@ -2,6 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import Header from 'components/Header/Header'
 import Sidebar from 'components/Sidebar/Sidebar'
+import TagCloud from 'components/TagCloud/TagCloud'
 import Footer from 'components/Footer/Footer'
 import {
 	layout,
@@ -13,7 +14,7 @@ const SidebarLayout = ( { children } ) => {
 		<div className={ layout }>
 			<Header />
 			<Sidebar>
-				<h2>This is a sidebar</h2>
+				<TagCloud />
 			</Sidebar>
 			<main className={ main }>
 				{ children }

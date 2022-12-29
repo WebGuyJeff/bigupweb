@@ -9,10 +9,10 @@
 	font-size: 1.25em;
 	font-weight: 900;
 	font-variation-settings: 'wght' 900, 'wdth' 30;
-}
-	.nav-link-item {
+
+	a {
 		transition: color 0.3s ease;
-		margin-top: 5px;
+		margin-top: 0;
 		margin-bottom: 5px;
 		padding-right: 2rem;
 		text-transform: uppercase;
@@ -29,3 +29,4 @@
 			color: map.get( $colours, "pinkred" );
 		}
 	}
+}
