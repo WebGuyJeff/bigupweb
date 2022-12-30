@@ -3,7 +3,7 @@
 
 .menuSlider {
 	display: contents;
-	flex-flow: column nowrap;
+	grid-template-rows: 1fr auto;
 	justify-content: center;
 	align-items: center;
 	position: fixed;
@@ -20,12 +20,20 @@
 		transform: translateX( 0 ) translateY( 0 );
 	}
 
+	ul {
+		display: none;
+	}
+
 	@media ( max-width: map.get( $breakpoints, "md" ) ) {
-		display: flex;
+		display: grid;
 
 		nav {
-			font-size: map.get( $fontsizes, "h1" );
+			font-size: map.get( $fontsizes, "display-1" );
 			flex-flow: column;
+		}
+
+		ul {
+			display: flex;
 		}
 	}
 }

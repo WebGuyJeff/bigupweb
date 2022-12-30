@@ -51,54 +51,16 @@
 		border-bottom: map.get( $borders, "default" ) solid;
 	}
 	ul {
-		margin-bottom: map.get( $spaces, "xxxl" );
-
-		@media ( min-width: map.get( $breakpoints, "md" ) ) {
-			display: flex;
-			flex-direction: column;
-		}
+		margin-bottom: map.get( $spaces, "xxl" );
 
 		li {
-			margin-bottom: map.get( $spaces, "xs" );
-			margin-top: map.get( $spaces, "xs" );
+			margin-bottom: map.get( $spaces, "sm" );
+			margin-top: map.get( $spaces, "sm" );
 	
 			a {
 				color: map.get( $colours, "black" );
 				text-decoration: none;
 				text-transform: capitalize;
-			}
-
-			&:hover,
-			&:focus {
-				a {
-					color: map.get( $colours, "pinkred" );
-				}
-			}
-		}
-	}
-}
-
-.social {
-	margin-bottom: map.get( $spaces, "xxl" );
-
-	ul {
-		display: flex;
-
-		@media ( min-width: map.get( $breakpoints, "md" ) ) {
-			flex-direction: row;
-		}
-
-		li {
-			font-size: map.get( $fontsizes, "h4" );
-			margin-right: map.get( $spaces, "xs" );
-
-			@media ( min-width: map.get( $breakpoints, "md" ) ) {
-				margin-left: map.get( $spaces, "xs" );
-				margin-right: map.get( $spaces, "xs" );
-			}
-
-			a {
-				color: map.get( $colours, "black" );
 			}
 
 			&:hover,

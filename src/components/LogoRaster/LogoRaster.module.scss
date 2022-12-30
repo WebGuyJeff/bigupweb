@@ -4,10 +4,9 @@
 .logo {
 	text-decoration: none;
 	transition: color 0.3s ease;
-	max-height: 60px;
+	height: 60px;
+	max-height: 100%;
 	max-width: 100%;
-	margin-top: 5px;
-	margin-bottom: 5px;
 
 	@media ( min-width: map.get( $breakpoints, "md" ) ) {
 		max-height: 80px;

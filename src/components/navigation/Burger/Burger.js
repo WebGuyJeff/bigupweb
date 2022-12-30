@@ -30,6 +30,7 @@ const Burger = () => {
 				aria-controls="menuSlider"
 				aria-label="Menu"
 				aria-expanded={ open }
+				tabIndex="0"
 			>
 				<div />
 				<div />

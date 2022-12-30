@@ -1,0 +1,33 @@
+@use "sass:map";
+@import "styles/variables";
+
+.socialLinks {
+	gap: map.get( $spaces, "sm" );
+	display: flex;
+	flex-direction: row;
+	margin: map.get( $spaces, "xs" );
+	padding: 0;
+	list-style: none;
+	font-size: 32px;
+
+	@media ( min-width: map.get( $breakpoints, "md" ) ) {
+		gap: map.get( $spaces, "md" );
+		flex-direction: row;
+	}
+
+	li {
+		margin-bottom: 0;
+		margin-top: 0;
+
+		a {
+			color: map.get( $colours, "black" );
+		}
+
+		&:hover,
+		&:focus {
+			a {
+				color: map.get( $colours, "pinkred" );
+			}
+		}
+	}
+}
