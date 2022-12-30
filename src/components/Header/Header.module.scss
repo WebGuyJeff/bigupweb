@@ -10,7 +10,7 @@
 	gap: map.get( $spaces, "xxl" );
 	z-index: 10;
 	margin-bottom: map.get( $spaces, "xxl" );
-	padding: map.get( $spaces, "xxl" ) map.get( $spaces, "xl" ) 0 map.get( $spaces, "xl" );
+	padding: map.get( $spaces, "xxl" ) map.get( $spaces, "padx-content" ) 0;
 	width: 100%;
 	transition: all .5s ease-in-out;
 	top: 0;

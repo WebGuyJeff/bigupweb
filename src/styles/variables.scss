@@ -1,5 +1,5 @@
 $breakpoints: (
-	"xs": 0,
+	"xs": 320px,
 	"sm": 576px,
 	"md": 768px,
 	"lg": 992px,
@@ -28,6 +28,7 @@ $spaces: (
 	"xl": 32px,
 	"xxl": 48px,
 	"xxxl": 80px,
+	"padx-content": clamp( 16px, calc( 10px + 1.6vw ), 52px )
 );
 
 $borders: (
@@ -45,41 +46,21 @@ $borderradius: (
 );
 
 $fontsizes: (
-	"display-1": calc(1.625rem + 4.5vw),
-	"display-2": calc(1.575rem + 3.9vw),
-	"display-3": calc(1.525rem + 3.3vw),
-	"display-4": calc(1.475rem + 2.7vw),
-	"display-5": calc(1.425rem + 2.1vw),
-	"display-6": calc(1.375rem + 1.5vw),
-	"h1": calc(1.375rem + 1.5vw),
-	"h2": calc(1.325rem + .9vw),
-	"h3": calc(1.3rem + .6vw),
-	"h4": calc(1.275rem + .3vw),
+	"display-1": clamp( 0rem, calc(1.625rem + 4.5vw), 5rem),
+	"display-2": clamp( 0rem, calc(1.575rem + 3.9vw), 4.5rem),
+	"display-3": clamp( 0rem, calc(1.525rem + 3.3vw), 4rem),
+	"display-4": clamp( 0rem, calc(1.475rem + 2.7vw), 3.5rem),
+	"display-5": clamp( 0rem, calc(1.425rem + 2.1vw), 3rem),
+	"display-6": clamp( 0rem, calc(1.375rem + 1.5vw), 2.5rem),
+	"h1": clamp( 0rem, calc(1.375rem + 1.5vw), 2.5rem),
+	"h2": clamp( 0rem, calc(1.325rem + .9vw), 2rem),
+	"h3": clamp( 0rem, calc(1.3rem + .6vw), 1.75rem),
+	"h4": clamp( 0rem, calc(1.275rem + .3vw), 1.5rem),
 	"h5": 1.25rem,
 	"h6": 1rem,
 	"small": 0.85rem,
 	"xsmall": 0.7rem,
 );
-
-
-@media (min-width:1200px) {
-	$fontsizes: (
-		"display-1": 5rem,
-		"display-2": 4.5rem,
-		"display-3": 4rem,
-		"display-4": 3.5rem,
-		"display-5": 3rem,
-		"display-6": 2.5rem,
-		"h1": 2.5rem,
-		"h2": 2rem,
-		"h3": 1.75rem,
-		"h4": 1.5rem,
-		"h5": 1.25rem,
-		"h6": 1rem,
-		"small": 0.85rem,
-		"xsmall": 0.7rem,
-	);
-}
 
 $decorations: (
 	"textshadow": 0px 0px 5px rgba(0, 0, 0, 1),

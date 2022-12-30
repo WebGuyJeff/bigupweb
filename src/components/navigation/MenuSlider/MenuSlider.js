@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Navbar from 'src/components/navigation/Navbar/Navbar'
+import SocialLinks from 'components/navigation/SocialLinks/SocialLinks'
 import {
 	menuSlider
 } from './MenuSlider.module.scss'
@@ -15,6 +16,7 @@ const MenuSlider = ( { open } ) => {
 			aria-hidden={ !open }
 		>
 			<Navbar />
+			<SocialLinks />
 		</div>
 	)
 }

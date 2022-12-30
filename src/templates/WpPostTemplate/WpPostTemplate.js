@@ -6,12 +6,14 @@ import Section from 'components/containers/Section/Section'
 import Button from 'components/Button/Button'
 import LatestPosts from 'components/post/LatestPosts/LatestPosts'
 import WPContent from 'components/containers/WPContent/WPContent'
+import {
+	wpPostTemplate
+} from './WpPostTemplate.module.scss'
 
 const WpPostTemplate = ( { title, date, content } ) => {
-
 	return (
 		<>
-			<article>
+			<article className={ wpPostTemplate }>
 				<TitleBanner
 					title={ title }
 					date={ date }
@@ -22,9 +24,9 @@ const WpPostTemplate = ( { title, date, content } ) => {
 							<Link
 								to="/blog"
 							>
-								<Button text="Back to Blog" />
 							</Link>
 						</WPContent>
+						<Button text="Back to Blog" />
 					</Section>
 				) }
 			</article>

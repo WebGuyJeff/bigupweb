@@ -1,0 +1,9 @@
+@use "sass:map";
+@import "styles/variables";
+
+.wpPostTemplate {
+
+	button {
+		margin: 0 map.get( $spaces, "padx-content" );
+	}
+}

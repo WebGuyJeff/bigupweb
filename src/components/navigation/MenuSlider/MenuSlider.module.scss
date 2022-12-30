@@ -3,16 +3,16 @@
 
 .menuSlider {
 	display: contents;
-	flex-flow: column nowrap;
-	justify-content: center;
-	align-items: center;
 	position: fixed;
 	top: 0;
 	right: 0;
+	grid-template-rows: 1fr auto;
+	align-items: center;
+	justify-content: center;
 	transform: translateX( 200% ) translateY( -200% );
 	transition: transform 0.3s ease-in-out;
 	background-color: map.get( $colours, "yellow" );
-	padding-top: 3.5rem;
+	padding: map.get( $spaces, "xxl" ) map.get( $spaces, "xl" );
 	width: 100vw;
 	height: 100vh;
 
@@ -20,12 +20,20 @@
 		transform: translateX( 0 ) translateY( 0 );
 	}
 
+	ul {
+		display: none;
+	}
+
 	@media ( max-width: map.get( $breakpoints, "md" ) ) {
-		display: flex;
+		display: grid;
 
 		nav {
-			font-size: map.get( $fontsizes, "h1" );
+			font-size: map.get( $fontsizes, "display-1" );
 			flex-flow: column;
+		}
+
+		ul {
+			display: flex;
 		}
 	}
 }

@@ -3,10 +3,12 @@
 
 .learnMore {
 	margin-top: calc(map.get( $spaces, "xxl" ) * 2);
+	padding: 0 map.get( $spaces, "padx-content" );
 }
 
 .introArea {
-	margin-bottom: calc(map.get( $spaces, "xxl" ) * 2);
+	margin-bottom: map.get( $spaces, "xxl" );
+	padding: 0 map.get( $spaces, "padx-content" );
 	max-width: 700px;
   
 	h2 {

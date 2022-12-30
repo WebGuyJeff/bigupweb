@@ -2,8 +2,7 @@
 @import "styles/variables";
 
 .tagCloud {
-	margin-top: map.get( $spaces, "xxxl" );
-	padding: 0 map.get( $spaces, "xl" ) map.get( $spaces, "xxl" ) map.get( $spaces, "xl" );
+	margin: map.get( $spaces, "xl" ) 0;
 	max-width: 100%;
 
 	div {

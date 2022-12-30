@@ -4,21 +4,10 @@
 .postFeed {
 	display: grid;
 	grid-template-columns: repeat( auto-fit, minmax( 280px, 1fr ) );
-	margin: map.get( $spaces, "sm" );
-	gap: map.get( $spaces, "sm" );
+	padding: 0 map.get( $spaces, "padx-content" );
+	gap: map.get( $spaces, "lg" );
 
-	@media ( min-width: map.get( $breakpoints, "sm" ) ) {
-		margin: map.get( $spaces, "lg" );
-		gap: map.get( $spaces, "lg" );
-	}
-
-	@media ( min-width: map.get( $breakpoints, "md" ) ) {
-		margin: map.get( $spaces, "xl" );
+	@media ( min-width: map.get( $breakpoints, "lg" ) ) {
 		gap: map.get( $spaces, "xl" );
-	}
-
-	@media ( min-width: map.get( $breakpoints, "xl" ) ) {
-		margin: map.get( $spaces, "xxl" );
-		gap: map.get( $spaces, "xxl" );
 	}
 }

@@ -230,6 +230,7 @@ a img.aligncenter {
 
 .wp-block-pullquote blockquote {
 	margin-left: 0;
+	margin-right: 0;
 	border-top: map.get( $borders, "default" ) solid map.get( $colours, "pinkred" );
 	border-bottom: map.get( $borders, "default" ) solid map.get( $colours, "pinkred" );
 	border-left: none;

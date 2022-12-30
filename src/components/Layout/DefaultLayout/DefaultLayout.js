@@ -11,7 +11,7 @@ import {
 const DefaultLayout = ( { children } ) => {
 	return (
 		<div className={ layout }>
-			<Header />
+			<Header sticky />
 			<main className={ main }>
 				{ children }
 			</main>

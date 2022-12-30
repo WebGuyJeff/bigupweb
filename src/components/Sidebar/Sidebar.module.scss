@@ -3,7 +3,7 @@
 
 .sidebar {
 	grid-area: sidebar;
-
+	padding: 0 map.get( $spaces, "padx-content" );
 
 	/* temp */
 	border: solid 1px;

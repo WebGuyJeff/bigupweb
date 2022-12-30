@@ -3,7 +3,7 @@
 
 .titleBanner {
 	position: relative;
-	padding: map.get( $spaces, "xxl" ) map.get( $spaces, "xl" );
+	padding: 0 map.get( $spaces, "padx-content" ) map.get( $spaces, "xxl" );
 }
 	.titleBanner_flex {
 		height: 100%;

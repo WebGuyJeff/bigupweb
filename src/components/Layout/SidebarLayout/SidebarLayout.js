@@ -12,7 +12,7 @@ import {
 const SidebarLayout = ( { children } ) => {
 	return (
 		<div className={ layout }>
-			<Header />
+			<Header sticky />
 			<Sidebar>
 				<TagCloud />
 			</Sidebar>

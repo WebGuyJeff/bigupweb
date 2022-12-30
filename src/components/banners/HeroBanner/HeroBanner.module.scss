@@ -4,7 +4,7 @@
 .hero-banner {
 	height: 100vh;
 	position: relative;
-	padding: map.get( $spaces, "xxl" ) map.get( $spaces, "xl" );
+	padding: map.get( $spaces, "xxl" ) map.get( $spaces, "padx-content" );
 	color: #fff;
 }
 	.container {
