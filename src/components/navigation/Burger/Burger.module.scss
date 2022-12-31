@@ -54,7 +54,7 @@
 		@media ( max-width: map.get( $breakpoints, "md" ) ) {
 			position: fixed;
 			top: map.get( $spaces, "xxl" );
-			right: map.get( $spaces, "xl" );
+			right: map.get( $spaces, "padx-content" );
 		}
 
 	}

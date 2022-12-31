@@ -43,7 +43,7 @@
 	position: fixed;
 	top: 0;
 	background: map.get( $colours, "yellow" );
-	padding: map.get( $spaces, "xs" ) map.get( $spaces, "xl" );
+	padding: map.get( $spaces, "xs" ) map.get( $spaces, "padx-content" );
 
 	[id=headerLogo] {
 		height: 30px;

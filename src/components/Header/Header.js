@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import LogoSVG from 'components/LogoSVG/LogoSVG'
-import Navbar from 'components/navigation/Navbar/Navbar'
 import Burger from 'src/components/navigation/Burger/Burger'
 import {
 	header,

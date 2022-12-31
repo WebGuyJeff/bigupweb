@@ -1,7 +1,6 @@
 import React from 'react'
 import DefaultLayout from 'components/Layout/DefaultLayout/DefaultLayout'
 import Section from 'components/containers/Section/Section'
-import MaxWidth from 'components/containers/MaxWidth/MaxWidth'
 import Intro from 'components/Intro/Intro'
 import { useSiteMetadata } from 'hooks/useSiteMetadata'
 import HeadMeta from 'components/HeadMeta'
@@ -14,9 +13,7 @@ const Home = () => {
 		<>
 			<DefaultLayout pageTitle={ title }>
 				<Section>
-					<MaxWidth width="tight" >
-						<Intro />
-					</MaxWidth>
+					<Intro />
 				</Section>
 			</DefaultLayout>
 		</>

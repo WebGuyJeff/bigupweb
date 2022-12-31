@@ -45,11 +45,9 @@ headMeta.propTypes = {
 
 const Post = ( { data: { wpPost } } ) => {
 	return (
-		<>
-			<SidebarLayout>
-				<WpPostTemplate { ...wpPost } />
-			</SidebarLayout>
-		</>
+		<SidebarLayout>
+			<WpPostTemplate { ...wpPost } />
+		</SidebarLayout>
 	)
 }
 Post.propTypes = {

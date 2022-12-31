@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import TitleBanner from 'components/banners/TitleBanner/TitleBanner'
-import MaxWidth from 'components/containers/MaxWidth/MaxWidth'
+import Container from 'components/containers/Container/Container'
 import WPContent from 'components/containers/WPContent/WPContent'
 
 const WpPageTemplate = ( { title, excerpt, content } ) => {
@@ -11,11 +11,11 @@ const WpPageTemplate = ( { title, excerpt, content } ) => {
 				title={ title }
 				subheading={ excerpt }
 			/>
-			<MaxWidth width="tight">
+			<Container width="tight" centre pad>
 				{ content && (
 					<WPContent content={ content } />
 				) }
-			</MaxWidth>
+			</Container>
 		</>
 	)
 }

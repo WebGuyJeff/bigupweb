@@ -1,0 +1,16 @@
+{
+	"pages": {
+		"blog": {
+			"title": "Blog",
+			"headerImageAlt": "Squid in the deep sea",
+			"excerptHTML": "<p>This is the blog posts page<p>",
+			"contentHTML": "<p>This content forms the intro to the blog page</p>"
+		},
+		"contact": {
+			"title": "Contact",
+			"headerImageAlt": "Some alt text",
+			"excerptHTML": "<p>Contact Bigup Web using the contact form on this page.<p>",
+			"contentHTML": "<p>Complete the form below to get in contact. We're always working on somebody's project, but we'll get back to you as soon as we can.</p>"
+		}
+	}
+}

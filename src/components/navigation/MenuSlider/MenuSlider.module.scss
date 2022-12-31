@@ -12,7 +12,7 @@
 	transform: translateX( 200% ) translateY( -200% );
 	transition: transform 0.3s ease-in-out;
 	background-color: map.get( $colours, "yellow" );
-	padding: map.get( $spaces, "xxl" ) map.get( $spaces, "xl" );
+	padding: map.get( $spaces, "xxl" ) map.get( $spaces, "padx-content" );
 	width: 100vw;
 	height: 100vh;
 
@@ -30,6 +30,11 @@
 		nav {
 			font-size: map.get( $fontsizes, "display-1" );
 			flex-flow: column;
+			margin: 0 auto;
+
+			a {
+				padding-right: 0;
+			}
 		}
 
 		ul {

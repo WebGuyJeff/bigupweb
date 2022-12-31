@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import useWpLatestPosts from 'hooks/useWpLatestPosts'
 import Section from 'components/containers/Section/Section'
-import MaxWidth from 'components/containers/MaxWidth/MaxWidth'
+import Container from 'components/containers/Container/Container'
 import PostFeed from 'components/Feeds/PostFeed/PostFeed'
 import Button from 'components/Button/Button'
 import {
@@ -14,7 +14,7 @@ import {
 const LatestPosts = ( { title, introduction } ) => {
 	return (
 		<Section>
-			<MaxWidth>
+			<Container>
 				{ title || introduction ? (
 					<div className={ introArea } >
 						{ title && (
@@ -34,7 +34,7 @@ const LatestPosts = ( { title, introduction } ) => {
 						<Button text="All Blog Posts" />
 					</Link>
 				</div>
-			</MaxWidth>
+			</Container>
 		</Section>
 	)
 }

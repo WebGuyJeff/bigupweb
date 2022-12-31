@@ -1,19 +1,17 @@
-import { getImage } from 'gatsby-plugin-image'
 import React from 'react'
 import parse from 'html-react-parser'
+import { getImage } from 'gatsby-plugin-image'
 import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
-import useWpAllPost from 'hooks/useWpAllPosts'
-import HeadMeta from 'components/HeadMeta'
 import LandingLayout from 'components/Layout/LandingLayout/LandingLayout'
 import HeroBanner from 'components/banners/HeroBanner/HeroBanner'
 import Container from 'components/containers/Container/Container'
-import Section from 'components/containers/Section/Section'
-import PostFeed from 'components/Feeds/PostFeed/PostFeed'
+import ContactForm from 'components/forms/ContactForm/ContactForm'
+import HeadMeta from 'components/HeadMeta'
 import JSONData from 'root/content/language/english.json'
 
 const headMeta = () => {
-	const { title, excerptHTML } = JSONData.pages.blog
+	const { title, excerptHTML } = JSONData.pages.contact
 	return (
 		<HeadMeta
 			pageTitle={ title }
@@ -23,14 +21,14 @@ const headMeta = () => {
 }
 headMeta.propTypes = {
 	title: PropTypes.string.isRequired,
-	excerpt: PropTypes.string.isRequired
+	description: PropTypes.string.isRequired
 }
 
-const Blog = () => {
-	const { title, excerptHTML, contentHTML, headerImageAlt } = JSONData.pages.blog
+const Contact = () => {
+	const { title, excerptHTML, contentHTML, headerImageAlt } = JSONData.pages.contact
 	const { allFile: { nodes } } = useStaticQuery( graphql`
 		query {
-			allFile( filter: { relativeDirectory: { eq: "pages/blog/headerImage" } }, limit: 1 ) {
+			allFile( filter: { relativeDirectory: { eq: "pages/contact/headerImage" } }, limit: 1 ) {
 				nodes {
 					childImageSharp {
 						gatsbyImageData(
@@ -55,13 +53,15 @@ const Blog = () => {
 					{ parse( contentHTML ) }
 				</Container>
 			) }
-			<Section>
-				<PostFeed posts={ useWpAllPost() }/>
-			</Section>
+			<Container width="tight" pad centre>
+				<ContactForm />
+			</Container>
 		</LandingLayout>
 	)
 }
+Contact.propTypes = {
+	title: PropTypes.string.isRequired,
+	description: PropTypes.string.isRequired
+}
 
-export const Head = ( data ) => headMeta( data )
-
-export default Blog
+export default Contact

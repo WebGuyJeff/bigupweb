@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import PostItem from 'components/post/PostItem/PostItem'
-import MaxWidth from 'components/containers/MaxWidth/MaxWidth'
+import Container from 'components/containers/Container/Container'
 import {
 	postFeed
 } from './PostFeed.module.scss'
@@ -10,13 +10,13 @@ import {
 const PostFeed = ( data ) => {
 	const { posts } = data
 	return (
-		<MaxWidth>
+		<Container>
 			<div className={ postFeed }>
 				{ posts.map( ( node, index ) => {
 					return <PostItem node={ node } key={ index } />
 				} ) }
 			</div>
-		</MaxWidth>
+		</Container>
 	)
 }
 PostFeed.propTypes = {

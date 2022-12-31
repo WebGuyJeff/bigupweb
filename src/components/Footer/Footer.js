@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import useWpFooterMenu from 'hooks/useWpFooterMenu'
-import MaxWidth from 'components/containers/MaxWidth/MaxWidth'
+import Container from 'components/containers/Container/Container'
 import SocialLinks from 'components/navigation/SocialLinks/SocialLinks'
 import Fullstop from 'components/Fullstop/Fullstop'
 import { useSiteMetadata } from 'hooks/useSiteMetadata'
@@ -21,7 +21,7 @@ const Footer = () => {
 
 	return (
 		<footer style={ { marginBottom: 0 } } className={ footer }>
-			<MaxWidth width="tight">
+			<Container width="tight">
 				<div className={ footer_inner }>
 					<div className={ footer_menu }>
 						<h5>
@@ -65,7 +65,7 @@ const Footer = () => {
 						<span>.</span>
 					</p>
 				</div>
-			</ MaxWidth>
+			</ Container>
 		</footer>
 	)
 }

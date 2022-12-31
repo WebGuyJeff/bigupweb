@@ -1,13 +1,11 @@
 import React from 'react'
 import parse from 'html-react-parser'
-import {
-	intro
-} from './Intro.module.scss'
+import Container from 'components/containers/Container/Container'
 
 const Intro = () => {
 
 	return (
-		<div className={ intro }>
+		<Container width="tight" pad centre>
 			{ parse( `
 				<p>
 					Welcome to Bigup Web where we specialise in making memorable web sites and web
@@ -26,7 +24,7 @@ const Intro = () => {
 					🔗 Bookmark this page to see our new home come to life over the coming weeks.
 				</p>
 			` ) }
-		</div>
+		</Container>
 	)
 }
 
