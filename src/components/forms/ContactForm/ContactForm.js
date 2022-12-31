@@ -1,10 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Button from 'components/Button/Button'
 import {
 	form
 } from './ContactForm.module.scss'
 
 const ContactForm = ( { files } ) => {
+
+
+
 
 	return (
 		<form className={ form } method="post" acceptCharset="utf-8" autoComplete="on">
@@ -18,7 +22,8 @@ const ContactForm = ( { files } ) => {
 			</header>
 			<fieldset className="form_section">
 				<input
-					className="form_input saveTheBees"
+					style={ { display: 'none' } }
+					id="saveTheBees"
 					name="required_field"
 					type="text"
 					autoComplete="off"
@@ -32,8 +37,8 @@ const ContactForm = ( { files } ) => {
 						title="Name"
 						required aria-label="Name"
 						placeholder="Name (required)"
-						onFocus="this.placeholder=''"
-						onBlur="this.placeholder='Name (required)'"
+						onFocus={ ( e ) => e.target.placeholder='' }
+						onBlur={ ( e ) => e.target.placeholder='Name (required)' }
 					/>
 					<span className="form_flag form_flag-hover"></span>
 					<span className="form_flag form_flag-focus"></span>
@@ -45,8 +50,8 @@ const ContactForm = ( { files } ) => {
 						maxLength="100" title="Email"
 						required aria-label="Email"
 						placeholder="Email (required)"
-						onFocus="this.placeholder=''"
-						onBlur="this.placeholder='Email (required)'"
+						onFocus={ ( e ) => e.target.placeholder='' }
+						onBlur={ ( e ) => e.target.placeholder='Email (required)' }
 					/>
 					<span className="form_flag form_flag-hover"></span>
 					<span className="form_flag form_flag-focus"></span>
@@ -60,8 +65,8 @@ const ContactForm = ( { files } ) => {
 						rows="8"
 						aria-label="Message"
 						placeholder="Type your message here..."
-						onFocus="this.placeholder=''"
-						onBlur="this.placeholder='Type your message...'"
+						onFocus={ ( e ) => e.target.placeholder='' }
+						onBlur={ ( e ) => e.target.placeholder='Type your message...' }
 					>
 					</textarea>
 					<span className="form_flag form_flag-hover"></span>
@@ -70,9 +75,8 @@ const ContactForm = ( { files } ) => {
 
 				{ files && (
 					<div className="customFileUpload">
-						<label className="customFileUpload_label">
+						<label>
 							<input
-								className="customFileUpload_input"
 								title="Attach a File"
 								type="file"
 								name="files"
@@ -89,14 +93,12 @@ const ContactForm = ( { files } ) => {
 						<div className="customFileUpload_fileList"></div>
 					</div>
 				) }
-				<button
-					className="button form_submit"
-					type="submit"
-					value="Submit">
-					<span>
-						Submit
-					</span>
-				</button>
+				<Button
+					type={ 'submit' }
+					text='submit'
+				>
+					Submit
+				</Button>
 			</fieldset>
 			<footer className="form_section">
 				<div className="form_output" style={ { display: 'none', opacity: 0 } }></div>

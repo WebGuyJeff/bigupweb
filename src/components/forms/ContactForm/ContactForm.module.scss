@@ -1,4 +1,4 @@
- .form {
+.form {
     --bigup_white: #fff;
     --bigup_black: #262626;
     --bigup_orange: #ffb908;
@@ -8,10 +8,11 @@
     --bigup_lightGrey: #eee;
     --bigup_radius-small: 0.6em;
     --bigup_border: solid 0.1em;
+    --bigup_shadow-inset: inset -0.1em 0.2em 0.5em 0.2em #000c;
+	--bigup_border: solid 0.2em var(--bigup_black);
     position: relative;
+	padding: 1em;
 	width: clamp(10em, 100%, 34em);
-	text-align: inherit;
-	font: inherit;
 
 	header {
 		p {
@@ -38,14 +39,59 @@
 			transition: 0.2s;
 			margin: 0.5em auto 0.5em 0;
 			border: var( --bigup_border );
+			border-radius: var(--bigup_radius-small);
+			box-shadow: var(--bigup_shadow-inset);
+			background: var(--bigup_black);
 			width: 80%;
 			min-width: 8em;
 			min-height: fit-content;
 			overflow: hidden;
 			resize: none;
+
+			[class~=form_input] {
+				display: block;
+				outline: none;
+				border: none;
+				background: #0000;
+				padding: 0.5em;
+				width: 100%;
+				height: 100%;
+				resize: vertical;
+				text-shadow: 0 0 white;
+				color: var(--bigup_white);
+			}
+
+			[class~=form_input]:not([class~=form_section]:disabled > [class~=form_input]):hover {
+				cursor: text;
+			}
+
+			[class~=form_flag] {
+				display: flex;
+				position: absolute;
+				top: -1.5em;
+				right: 0;
+				align-items: center;
+				justify-content: center;
+				transition: top 0.15s;
+				border-radius: 0 0 0 1em;
+				box-shadow: inset -0.3em 0.4em 0.5em 0 #000c;
+				width: 1.5em;
+				height: 1.5em;
+			}
+
+
+			[class~=form_flag-hover] {
+				background: var(--bigup_orange);
+			}
+
+			[class~=form_flag-focus] {
+				background: var(--bigup_green);
+			}
+
 		}
 		
 		[class~=form_inputWrap-wide] {
+			width: 100%;
 			max-width: 100%;
 		}
 
@@ -54,131 +100,55 @@
 				width: 65%;
 			}
 		}
-	}
-}
 
-
-				.form_input {
-					display: block;
-					outline: none;
-					border: none;
-					background: #0000;
-					padding: 0.5em;
-					width: 100%;
-					height: 100%;
-					resize: vertical;
-					color: inherit;
-				}
-				.form_input:not(.form_section:disabled > .form_input):hover {
-					cursor: text;
-				}
-					.form_flag {
-						display: flex;
-						position: absolute;
-						top: -1.5em;
-						right: 0.2em;
-						align-items: center;
-						justify-content: center;
-						transition: top 0.15s;
-						border-radius: 0 0 0 2em;
-						width: 1.5em;
-						height: 1.5em;
-					}
-					.form_flag-hover {
-						background: var(--bigup_orange);
-					}
-					.form_flag-focus {
-						background: var(--bigup_green);
-					}
-					.form_inputWrap:not(.form_section:disabled > .form_inputWrap):hover .form_flag-hover,
-					.form_inputWrap:not(.form_section:disabled > .form_inputWrap):focus-within .form_flag-focus {
-						top: 0.2em;
-					}
-					.customFileUpload {
-						display: block;
-						margin: 0.5em auto 0.5em 0;
-					}
-						.customFileUpload_label {
-							display: block;
-							border: 1px solid #ccc;
-							cursor: pointer;
-							padding: 6px 12px;
-							width: fit-content;
-						}
-							.customFileUpload_input {
-								display: none;
-							}
-							.customFileUpload_icon {
-								vertical-align: middle;
-							}
-						.customFileUpload_fileList ul {
-							margin-left: 0;
-						}
-					.form_output {
-						position: absolute;
-						top: 0;
-						right: 0;
-						bottom: 0;
-						left: 0;
-						flex-flow: column nowrap;
-						align-items: center;
-						justify-content: center;
-						transition: opacity 150ms ease-in-out;
-					}
-						.form-popout {
-							box-shadow: 1px 3px 6px 1px #000a;
-						}
-
-/* Widget overrides */
-.widget .form_message {
-	margin: 1em 0;
-	font-size: 0.8em;
-}
-	.widget .form_inputWrap {
-		margin: 0.5em auto 0 0;
-		width: 100%;
-	}
-
-/* Theme overrides */
-.form_section:disabled button:hover,
-.form_section:disabled .button:hover,
-.form_section:disabled .btn:hover {
-    pointer-events: none !important;
-}
-
-
-/* =============================================================== Dark Theme (.form-dark) */
-
-
-
-.form.form-dark  {
-    --bigup_shadow-inset: inset -0.1em 0.2em 0.5em 0.2em #000c;
-	--bigup_border: solid 0.2em var(--bigup_lightGrey);
-	padding: 1em;
-	text-align: center;
-}
-	.form-dark .form_inputWrap {
-		border: var( --bigup_border );
-		border-radius: var(--bigup_radius-small);
-		box-shadow: var(--bigup_shadow-inset);
-		background: var(--bigup_black);
-	}
-	.form-dark .form_inputWrap-wide {
-		width: 100%;
-	}
-		.form-dark .form_input {
-			text-shadow: 0 0 white;
-			color: var(--bigup_white);
+		[class~=form_inputWrap]:not([class~=form_section]:disabled > [class~=form_inputWrap]):hover [class~=form_flag-hover],
+		[class~=form_inputWrap]:not([class~=form_section]:disabled > [class~=form_inputWrap]):focus-within [class~=form_flag-focus] {
+			top: 0;
 		}
-			.form-dark .form_flag {
-				right: 0;
-				border-radius: 0 0 0 1em;
-				box-shadow: inset -0.3em 0.4em 0.5em 0 #000c;
+
+		[class~=customFileUpload] {
+			display: block;
+			margin: 0.5em auto 0.5em 0;
+
+			label {
+				display: block;
+				border: 1px solid #ccc;
+				cursor: pointer;
+				padding: 6px 12px;
+				width: fit-content;
+
+				input {
+					display: none;
+				}
+				span {
+					vertical-align: middle;
+				}
+
 			}
-			.form-dark .form_inputWrap:not(.form_section:disabled > .form_inputWrap):hover .form_flag-hover,
-			.form-dark .form_inputWrap:not(.form_section:disabled > .form_inputWrap):focus-within .form_flag-focus {
-				top: 0;
+			div {
+				margin-left: 0;
 			}
+		}
+	}
+
+	footer {
+		div {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			flex-flow: column nowrap;
+			align-items: center;
+			justify-content: center;
+			transition: opacity 150ms ease-in-out;
+
+			[class~=form-popout] {
+				box-shadow: 1px 3px 6px 1px #000a;
+			}
+		}
+	}
+}
 
 
 /* ================================================================================= Alert Popups */
