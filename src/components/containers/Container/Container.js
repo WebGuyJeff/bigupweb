@@ -9,9 +9,9 @@ import {
 
 const Container = ( { children, width, centre, pad } ) => {
 	let classes = container
-	classes += `${ ( 'tight' === width ) ? ' ' + widthTight : '' }`
-	classes += `${ centre ? ' ' + centered : '' }`
-	classes += `${ pad ? ' ' + padded : '' }`
+	classes += 'tight' === width ? `${ ' ' + widthTight }` : ''
+	classes += centre            ? `${ ' ' + centered }` : ''
+	classes += pad               ? `${ ' ' + padded }` : ''
 
 	return (
 		<div className={ classes }>

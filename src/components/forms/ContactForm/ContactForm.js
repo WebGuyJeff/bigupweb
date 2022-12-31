@@ -96,6 +96,7 @@ const ContactForm = ( { files } ) => {
 				<Button
 					type={ 'submit' }
 					text='submit'
+					style='primary'
 				>
 					Submit
 				</Button>

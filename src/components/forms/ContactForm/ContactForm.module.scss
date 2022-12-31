@@ -59,6 +59,7 @@
 				resize: vertical;
 				text-shadow: 0 0 white;
 				color: var(--bigup_white);
+				font: inherit;
 			}
 
 			[class~=form_input]:not([class~=form_section]:disabled > [class~=form_input]):hover {

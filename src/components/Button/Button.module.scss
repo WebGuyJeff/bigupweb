@@ -1,33 +1,23 @@
 @use "sass:map";
 @import "styles/variables";
 
-.button {
-	color: inherit;
-	background-color: transparent;
-	border: 0;
-	text-decoration: none;
-	transition: color 0.3s ease;
+.button,
+.button-primary,
+.button-secondary,
+.button-outline {
+	position: relative;
+	transition: all 0.3s ease;
+	border: solid map.get( $borders, "thick" ) map.get( $colours, "black" );
+	background-color: map.get( $colours, "black" );
+	padding: map.get( $spaces, "xxs" ) map.get( $spaces, "xs" );
 	text-transform: capitalize;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: map.get( $colours, "yellow" );
+	font: inherit;
 	font-size: inherit;
 	font-weight: 700;
-	position: relative;
-	padding: 0;
-	padding-bottom: 15px;
-	align-self: flex-start;
-	display: inline-flex;
-	align-items: center;
-
-	&::after {
-		content: "";
-		display: block;
-		position: absolute;
-		height: 3px;
-		left: 0;
-		right: 0;
-		bottom: 8px;
-		background-color: map.get( $colours, "pinkred" );
-		transition: left 0.3s ease;
-	}
+	font-variation-settings: 'wght' 700;
 
 	&:focus {
 		color: map.get( $colours, "pinkred" );
@@ -36,10 +26,18 @@
 	@media (hover: hover) {
 		&:hover {
 			cursor: pointer;
-			color: map.get( $colours, "pinkred" );
+			border: solid map.get( $borders, "thick" ) map.get( $colours, "pinkred" );
+		}
+	}
 
-			&::after {
-				left: 100%;
+	&-primary {
+		border: solid map.get( $borders, "thick" ) map.get( $colours, "hotpurple" );
+		background-color: map.get( $colours, "hotpurple" );
+
+		@media (hover: hover) {
+			&:hover {
+				cursor: pointer;
+				border: solid map.get( $borders, "thick" ) map.get( $colours, "black" );
 			}
 		}
 	}
