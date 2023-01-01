@@ -21,7 +21,7 @@ const headMeta = () => {
 }
 headMeta.propTypes = {
 	title: PropTypes.string.isRequired,
-	description: PropTypes.string.isRequired
+	excerptHTML: PropTypes.string.isRequired
 }
 
 const Contact = () => {
@@ -59,9 +59,12 @@ const Contact = () => {
 		</LandingLayout>
 	)
 }
+/* To fix - refactor to be able to validate the page data.
 Contact.propTypes = {
-	title: PropTypes.string.isRequired,
-	description: PropTypes.string.isRequired
+	title: PropTypes.object.isRequired,
+	excerptHTML: PropTypes.string.isRequired,
+	contentHTML: PropTypes.string.isRequired,
+	headerImageAlt: PropTypes.string.isRequired
 }
-
+*/
 export default Contact

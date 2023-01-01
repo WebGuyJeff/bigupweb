@@ -8,14 +8,17 @@ import {
 	buttonOutline
 } from './Button.module.scss'
 
-const Button = ( { text, style, arrow } ) => {
+const Button = ( { id, text, style, arrow } ) => {
 	let classes = button
 	classes += 'primary' === style ? `${ ' ' + buttonPrimary }` :
 		'secondary' === style ? `${ ' ' + buttonSecondary }` :
 			'outline' === style ? `${ ' ' + buttonOutline }` : ''
 
 	return (
-		<button className={ classes } >
+		<button
+			id={ id }
+			className={ classes }
+		>
 			{ text }
 			{ arrow ? <Arrow style={ { marginLeft: '10px' } } /> : null }
 		</button>
@@ -23,6 +26,7 @@ const Button = ( { text, style, arrow } ) => {
 }
 
 Button.propTypes = {
+	id: PropTypes.string,
 	text: PropTypes.string,
 	style: PropTypes.string,
 	arrow: PropTypes.bool
