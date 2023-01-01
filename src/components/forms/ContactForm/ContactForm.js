@@ -12,7 +12,7 @@ const ContactForm = ( { files } ) => {
 	//Dev testing
 	files = true
 
-	//https://wp-source.bigupweb.uk/bigup/contact-form/v1/submit
+	//https://wp-source.bigupweb.uk/wp-json/bigup/contact-form/v1/submit
 
 	//Rest api handles nonces automatically - Disable this???
 
@@ -86,7 +86,7 @@ const ContactForm = ( { files } ) => {
      */
 	//const wp = wp_localize_bigup_contact_form_vars
 	const wp = {
-		'rest_url': 'https://wp-source.bigupweb.uk/bigup/contact-form/v1/submit',
+		'rest_url': 'https://wp-source.bigupweb.uk/wp-json/bigup/contact-form/v1/submit',
 		'rest_nonce': 'bad_nonce_to_test',
 		'admin_email': 'me@jeffersonreal.uk'
 	}
