@@ -28,7 +28,8 @@ const ContactForm = ( { files } ) => {
 	*/
 
 
-
+	// See here for JWT Auth
+	// https://hashinteractive.com/blog/headless-wordpress-jwt-vue-authentication/
 
 
 
