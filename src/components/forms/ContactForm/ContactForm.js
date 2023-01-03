@@ -6,10 +6,7 @@ import {
 } from 'react-icons/fa'
 import * as styles from './ContactForm.module.scss'
 
-const ContactForm = ( { files } ) => {
-
-	//Dev testing - DELETE
-	files = true
+const ContactForm = ( { enableFileUpload } ) => {
 
 	let debug = true
 	let startTime // set when form is submitted.
@@ -35,20 +32,13 @@ const ContactForm = ( { files } ) => {
 		'application/msword',
 	]
 
-	const form_init = setInterval( () => {
-		if ( document.readyState === 'complete' ) {
-			clearInterval( form_init )
-			document.querySelector( '.' + styles.form ).addEventListener( 'submit', handle_form_submit )
-		}
-	}, 250 )
-
 	let form_busy = false
 
-	const handle_form_submit = async ( event ) => {
+	const handleSubmit = async ( event ) => {
 		event.preventDefault()
 		startTime = Date.now()
 		if( debug ) console.log( 'Time | Start/Finish | Function | Target' )
-		if( debug ) console.log( timeElapsed() + ' |START| handle_form_submit' )
+		if( debug ) console.log( timeElapsed() + ' |START| handleSubmit' )
 
 		const form = event.currentTarget
 		const output = form.querySelector( 'footer > div' )
@@ -135,9 +125,8 @@ const ContactForm = ( { files } ) => {
 		} catch ( error ) {
 			console.error( error )
 		} finally {
-			if( debug ) console.log( timeElapsed() + ' | END | handle_form_submit' )
+			if( debug ) console.log( timeElapsed() + ' | END | handleSubmit' )
 		}
-
 	}
 
 
@@ -311,7 +300,13 @@ const ContactForm = ( { files } ) => {
 
 
 	return (
-		<form className={ styles.form } method="post" acceptCharset="utf-8" autoComplete="on">
+		<form
+			className={ styles.form }
+			onSubmit={ handleSubmit.bind( this ) }
+			method="post"
+			acceptCharset="utf-8"
+			autoComplete="on"
+		>
 			<header>
 				<h3>
 					Form Title
@@ -376,7 +371,7 @@ const ContactForm = ( { files } ) => {
 					<span></span>
 					<span></span>
 				</div>
-				{ files && (
+				{ enableFileUpload && (
 					<div className={ styles.customFileUpload }>
 						<label>
 							<input
@@ -410,7 +405,7 @@ const ContactForm = ( { files } ) => {
 }
 
 ContactForm.propTypes = {
-	files: PropTypes.bool
+	enableFileUpload: PropTypes.bool
 }
 
 export default ContactForm

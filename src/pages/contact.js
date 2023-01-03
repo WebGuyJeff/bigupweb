@@ -54,7 +54,7 @@ const Contact = () => {
 				</Container>
 			) }
 			<Container width="tight" pad centre>
-				<ContactForm />
+				<ContactForm enableFileUpload />
 			</Container>
 		</LandingLayout>
 	)
