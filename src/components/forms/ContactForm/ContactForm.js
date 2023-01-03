@@ -181,7 +181,7 @@ const ContactForm = ( { files } ) => {
 		const fetch_options = {
 			method: 'POST',
 			headers: {
-				'X-WP-Nonce': wp.rest_nonce,
+				/* 'X-WP-Nonce': wp.rest_nonce, */
 				'Accept': 'application/json'
 			},
 			body: formData,
