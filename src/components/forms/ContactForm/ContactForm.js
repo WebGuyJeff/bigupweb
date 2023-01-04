@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import Button from 'components/Button/Button'
 import {
@@ -8,17 +8,41 @@ import * as styles from './ContactForm.module.scss'
 
 const ContactForm = ( { enableFileUpload } ) => {
 
-	const formRef = useRef()
-	let debug = true
-	let startTime // set when form is submitted.
-	const timeElapsed = () => {
-		let elapsed = Date.now() - startTime
-		return elapsed.toString().padStart( 5, '0' )
-	}
-
 	const wpRestEndpoint = 'https://wp-source.bigupweb.uk/wp-json/bigup/contact-form/v1/submit'
 
-	const buttonID = `${styles.form}-submit`
+	const [ state, setState ] = useState( () => {
+		const storage = JSON.parse( localStorage.getItem( 'bigupFormState' ) )
+		const empty = {
+			name: { value: '', errors: [] },
+			email: { value: '', errors: [] },
+			message: { value: '', errors: [] },
+			files: { value: '', errors: [] },
+			submitting: false
+		}
+		const state = storage ? { ...empty, ...storage } : empty
+		return state
+	} )
+
+	const updateState = ( object ) => {
+		const newState = {
+			...state,
+			...object
+		}
+		setState( newState )
+		localStorage.setItem( 'bigupFormState', JSON.stringify( newState ) )
+	}
+
+	const handleChange = ( event ) => {
+		const name   = event.target.name
+		const value  = event.target.value
+		const errors = value === '' ? [] : validate( name, value )
+		updateState( {
+			[ name ]: {
+				value: value,
+				errors: errors
+			}
+		} )
+	}
 
 	const allowedFileUploadTypes = [
 		'image/jpeg',
@@ -33,7 +57,52 @@ const ContactForm = ( { enableFileUpload } ) => {
 		'application/msword',
 	]
 
-	let form_busy = false
+	const validate = ( name, value ) => {
+		let errors = []
+
+		switch( name ) {
+
+		case 'name':
+			if ( value.length < 2 || value.length > 100 ) {
+				errors.push( 'Name should be 2-100 characters.' )
+			}
+			return errors
+
+		case 'email':
+			if ( false === !! /^\S+@\S+\.\S+$/.test( value ) ) {
+				errors.push( 'Email must match format "joe@email.uk".' )
+			}
+			return errors
+
+		case 'message':
+			if ( value.length < 10 || value.length > 3000 ) {
+				errors.push( 'Message should be 10-3000 characters.' )
+			}
+			return errors
+
+		case 'files':
+			for( let i = 0; i < value.length; i++ ){
+				let file = value[ i ]
+				if ( false === !! allowedFileUploadTypes.includes( file.type ) ) {
+					errors.push( `The file type "${file.type}" is not allowed. Allowed file types: jpg, png, webp, svg, pdf, txt, odf, xlsx, doc.` )
+				}
+			}
+			return errors
+
+		default:
+			return Error( `No validation function matched the passed identifier "${name}"` )
+		} 
+	}
+
+	let debug = true
+	let startTime // set when form is submitted.
+
+	const timeElapsed = () => {
+		let elapsed = Date.now() - startTime
+		return elapsed.toString().padStart( 5, '0' )
+	}
+
+	const buttonID = `${styles.form}-submit`
 
 	const handleSubmit = async ( event ) => {
 		event.preventDefault()
@@ -51,7 +120,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 			window.location.replace( 'https://en.wikipedia.org/wiki/Robot' )
 		}
 
-		const formData  = new FormData( formRef.current )
+		const formData  = new FormData( form )
 		const fileInput = form.querySelector( '.' + styles.customFileUpload + ' input' )
 		const files     = ( !! fileInput.files && fileInput.files.length > 0 )  ? fileInput.files : false
 
@@ -88,8 +157,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 		}
 
 		try {
-			form_busy = true
-			lockFormInputs( form )
+			updateState( { submitting: true } )
 			output.style.display = 'flex'
 			await displayMessagesAsPopouts( output, [ 'Connecting...' ], classes )
 			let [ result, ] = await Promise.all( [
@@ -113,9 +181,10 @@ const ContactForm = ( { enableFileUpload } ) => {
 				let fieldset = form.querySelectorAll( '.' + styles.input )
 				fieldset.forEach( input => { input.value = '' } )
 				removeChildElements( form.querySelector( `.${styles.customFileUpload} > div` ) )
+				localStorage.removeItem( 'bigupFormState' )
 			}
 			output.style.display = 'none'
-			form_busy = false
+			updateState( { submitting: false } )
 
 		} catch ( error ) {
 			console.error( error )
@@ -190,25 +259,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 			}, milliseconds )
 		} )
 	}
-
-
-	const lockFormInputs = ( form ) => {
-		if( debug ) console.log( `${timeElapsed()} |START| lockFormInputs | Locked` )
-		const button = form.querySelector( '#' + buttonID )
-		const inputs = form.querySelectorAll( '.' + styles.input )
-		inputs.forEach( input => { input.disabled = true } )
-		let idle_text = button.innerText
-		button.innerText = '[Busy]'
-		let unlockFormInputs = setInterval( () => {
-			if ( ! form_busy ) {
-				clearInterval( unlockFormInputs )
-				inputs.forEach( input => { input.disabled = false } )
-				button.innerText = idle_text
-				if( debug ) console.log( `${timeElapsed()} | END | lockFormInputs | Unlocked` )
-			}
-		}, 250 )
-	}
-
 
 	const displayMessagesAsPopouts = ( parent, messages, classes ) => {
 		if( debug ) console.log( `${timeElapsed()} |START| displayMessagesAsPopouts | ${messages[ 0 ]}` )
@@ -291,7 +341,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 	return (
 		<form
-			ref={ formRef }
 			className={ styles.form }
 			onSubmit={ handleSubmit.bind( this ) }
 			method="post"
@@ -306,7 +355,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 					Complete and submit the form.
 				</p>
 			</header>
-			<fieldset>
+			<fieldset disabled={ state.submitting }>
 				<input
 					style={ { display: 'none' } }
 					id="saveTheBees"
@@ -325,10 +374,15 @@ const ContactForm = ( { enableFileUpload } ) => {
 						placeholder="Name (required)"
 						onFocus={ ( e ) => e.target.placeholder='' }
 						onBlur={ ( e ) => e.target.placeholder='Name (required)' }
+						value={ state.name.value }
+						onChange={ handleChange }
 						required
 					/>
 					<span></span>
 					<span></span>
+					<div data-errors={ ( state.name.errors.length !== 0 ) }>
+						{ state.name.errors.map( ( error, index ) => { return ( <span key={ index }>{ error }</span> ) } ) }
+					</div>
 				</div>
 				<div className={ `${styles.inputWrap} ${styles.inputWrap__narrow}` }>
 					<input
@@ -341,26 +395,36 @@ const ContactForm = ( { enableFileUpload } ) => {
 						placeholder="Email (required)"
 						onFocus={ ( e ) => e.target.placeholder='' }
 						onBlur={ ( e ) => e.target.placeholder='Email (required)' }
+						value={ state.email.value }
+						onChange={ handleChange }
 						required
 					/>
 					<span></span>
 					<span></span>
+					<div data-errors={ ( state.email.errors.length !== 0 ) }>
+						{ state.email.errors.map( ( error, index ) => { return ( <span key={ index }>{ error }</span> ) } ) }
+					</div>
 				</div>
 				<div className={ `${styles.inputWrap} ${styles.inputWrap__wide}` }>
 					<textarea
 						className={ styles.input }
 						name="message"
-						maxLength="5000"
+						maxLength="3000"
 						title="Message"
 						rows="8"
 						aria-label="Message"
 						placeholder="Type your message here..."
 						onFocus={ ( e ) => e.target.placeholder='' }
 						onBlur={ ( e ) => e.target.placeholder='Type your message...' }
+						value={ state.message.value }
+						onChange={ handleChange }
 					>
 					</textarea>
 					<span></span>
 					<span></span>
+					<div data-errors={ ( state.message.errors.length !== 0 ) }>
+						{ state.message.errors.map( ( error, index ) => { return ( <span key={ index }>{ error }</span> ) } ) }
+					</div>
 				</div>
 				{ enableFileUpload && (
 					<div className={ styles.customFileUpload }>
@@ -370,6 +434,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 								type="file"
 								name="files"
 								multiple
+								value={ state.files.value }
 								onChange={ ( e ) => updateFileList( e.target ) }
 							/>
 							<span>
@@ -378,18 +443,24 @@ const ContactForm = ( { enableFileUpload } ) => {
 							Attach file
 						</label>
 						<div></div>
+						<div data-errors={ ( state.files.errors.length !== 0 ) }>
+							{ state.files.errors.map( ( error, index ) => { return ( <span key={ index }>{ error }</span> ) } ) }
+						</div>
 					</div>
 				) }
 				<Button
 					id={ buttonID }
 					type={ 'submit' }
 					text='submit'
+					disabled={ state.submitting }
 				>
-					Submit
+					{ state.submitting ? '[BUSY]' : 'Submit' }
 				</Button>
 			</fieldset>
 			<footer>
 				<div style={ { display: 'none', opacity: 0 } }></div>
+				<template>
+				</template>
 			</footer>
 		</form>
 	)
