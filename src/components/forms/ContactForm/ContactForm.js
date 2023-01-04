@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import Button from 'components/Button/Button'
 import {
@@ -8,6 +8,7 @@ import * as styles from './ContactForm.module.scss'
 
 const ContactForm = ( { enableFileUpload } ) => {
 
+	const formRef = useRef()
 	let debug = true
 	let startTime // set when form is submitted.
 	const timeElapsed = () => {
@@ -45,22 +46,16 @@ const ContactForm = ( { enableFileUpload } ) => {
 		let classes = [ styles.popout ]
 
 		// redirect bots if honeypot is filled.
-		if ( '' != form.querySelector( '[name="required_field"]' ).value ) {
+		if ( '' != form.querySelector( '#saveTheBees' ).value ) {
 			document.documentElement.remove()
 			window.location.replace( 'https://en.wikipedia.org/wiki/Robot' )
 		}
 
-		const formData    = new FormData()
-		const textInputs  = form.querySelectorAll( '.' + styles.input )
-		const fileInput   = form.querySelector( '.customFileUpload_input' )
+		const formData  = new FormData( formRef.current )
+		const fileInput = form.querySelector( '.' + styles.customFileUpload + ' input' )
+		const files     = ( !! fileInput.files && fileInput.files.length > 0 )  ? fileInput.files : false
 
-		textInputs.forEach( input => {
-			formData.append( input.name, input.value )
-		} )
-
-		if ( fileInput ) {
-			const files = fileInput.files
-
+		if ( files ) {
 			for( let i = 0; i < files.length; i++ ){
 				let file = files[ i ]
 
@@ -81,6 +76,8 @@ const ContactForm = ( { enableFileUpload } ) => {
 					return
 				}
 			}
+		} else {
+			formData.delete( 'files' )
 		}
 
 		const url = wpRestEndpoint
@@ -94,16 +91,14 @@ const ContactForm = ( { enableFileUpload } ) => {
 			form_busy = true
 			lockFormInputs( form )
 			output.style.display = 'flex'
-
 			await displayMessagesAsPopouts( output, [ 'Connecting...' ], classes )
-
 			let [ result, ] = await Promise.all( [
 				doFetchWithJSONResponse( url, fetch_options ),
 				animateMultipleWithCallback( output, 'opacity', '1' )
 			] )
 			result.class = ( result.ok ) ? styles.popout__success : styles.popout__danger
 			classes = [ ...classes, result.class ]
-
+			
 			// Animate the popout messages.
 			await animateMultipleWithCallback( output, 'opacity', '0' )
 			await removeChildElements( output )
@@ -198,16 +193,12 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 
 	const lockFormInputs = ( form ) => {
-
 		if( debug ) console.log( `${timeElapsed()} |START| lockFormInputs | Locked` )
-
 		const button = form.querySelector( '#' + buttonID )
 		const inputs = form.querySelectorAll( '.' + styles.input )
-
 		inputs.forEach( input => { input.disabled = true } )
 		let idle_text = button.innerText
 		button.innerText = '[Busy]'
-
 		let unlockFormInputs = setInterval( () => {
 			if ( ! form_busy ) {
 				clearInterval( unlockFormInputs )
@@ -275,7 +266,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 			const promises = elements.map( ( node ) => animateWithCallback.bind( node )( property, value ) )
 			let result = await Promise.all( promises )
 			return result
-
 		} else {
 			throw new TypeError( 'elements must be a non-string iterable. ' + typeof elements + ' found.' )
 		}
@@ -301,6 +291,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 	return (
 		<form
+			ref={ formRef }
 			className={ styles.form }
 			onSubmit={ handleSubmit.bind( this ) }
 			method="post"
