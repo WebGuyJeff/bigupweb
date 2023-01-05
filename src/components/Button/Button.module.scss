@@ -32,7 +32,7 @@
 	}
 
 	@media (hover: hover) {
-		&:hover {
+		&:hover:not( &:disabled ) {
 			cursor: pointer;
 			border: solid map.get( $borders, "thick" ) map.get( $colours, "hotpurple" );
 			background-color: map.get( $colours, "hotpurple" );
@@ -45,7 +45,7 @@
 		background-color: map.get( $colours, "hotpurple" );
 
 		@media (hover: hover) {
-			&:hover {
+			&:hover:not( &:disabled ) {
 				border: solid map.get( $borders, "thick" ) map.get( $colours, "black" );
 			}
 		}
@@ -57,7 +57,7 @@
 		color: inherit;
 
 		@media (hover: hover) {
-			&:hover {
+			&:hover:not( &:disabled ) {
 				border: solid map.get( $borders, "thick" ) map.get( $colours, "hotpurple" );
 				background-color: #0000;
 			}

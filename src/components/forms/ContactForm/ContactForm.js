@@ -14,13 +14,14 @@ const ContactForm = ( { enableFileUpload } ) => {
 		name: { value: '', errors: [] },
 		email: { value: '', errors: [] },
 		message: { value: '', errors: [] },
-		files: { value: '', errors: [] },
-		submitting: false
+		files: { value: [], errors: [] },
+		submitting: false,
+		hasErrors: false
 	}
 
 	const [ state, setState ] = useState( () => {
 		const storage = JSON.parse( localStorage.getItem( 'bigupFormState' ) )
-		const initState = storage ? { ...empty, ...storage } : empty
+		const initState = storage ? { ...empty, ...storage, files: { value: [], errors: [] } } : empty
 		return initState
 	} )
 
@@ -34,16 +35,18 @@ const ContactForm = ( { enableFileUpload } ) => {
 			...state,
 			...object
 		}
-		setState( newState )
+		setState( {
+			...newState,
+			hasErrors: hasErrors( newState )
+		} )
 		localStorage.setItem( 'bigupFormState', JSON.stringify( newState ) )
 	}
 
 	const handleChange = ( event ) => {
-		const name   = event.target.name
-		const value  = event.target.value
-		const errors = value === '' ? [] : validate( name, value )
+		const input = event.target
+		const { value, errors } = validate( input )
 		updateState( {
-			[ name ]: {
+			[ input.name ]: {
 				value: value,
 				errors: errors
 			}
@@ -63,45 +66,55 @@ const ContactForm = ( { enableFileUpload } ) => {
 		'application/msword',
 	]
 
-	const validate = ( name, value ) => {
+	const validate = ( input ) => {
+		const i = input
 		let errors = []
-		switch( name ) {
+
+		if ( i.value === '' || i.value === undefined || i.value.length == 0 ) return { value: i.value, errors }
+
+		switch( i.name ) {
 
 		case 'name':
-			if ( value.length < 2 || value.length > 100 ) {
+			if ( i.value.length < 2 || i.value.length > 100 ) {
 				errors.push( 'Name should be 2-100 characters.' )
 			}
-			return errors
+			return { value: i.value, errors }
 
 		case 'email':
-			if ( false === !! /^\S+@\S+\.\S+$/.test( value ) ) {
+			if ( false === !! /^\S+@\S+\.\S+$/.test( i.value ) ) {
 				errors.push( 'Email must match format "joe@email.uk".' )
 			}
-			return errors
+			return { value: i.value, errors }
 
 		case 'message':
-			if ( value.length < 10 || value.length > 3000 ) {
+			if ( i.value.length < 10 || i.value.length > 3000 ) {
 				errors.push( 'Message should be 10-3000 characters.' )
 			}
-			return errors
+			return { value: i.value, errors }
 
 		case 'files':
-			for( let i = 0; i < value.length; i++ ){
-				let file = value[ i ]
+			for( let n = 0; n < i.files.length; n++ ) {
+				let file = i.files[ n ]
 				if ( false === !! allowedFileUploadTypes.includes( file.type ) ) {
-					errors.push( `The file type "${file.type}" is not allowed. Allowed file types: jpg, png, webp, svg, pdf, txt, odf, xlsx, doc.` )
+					errors.push( 'That file type is not allowed. Allowed file types: jpg, png, webp, svg, pdf, txt, odf, xlsx, doc.' )
+					return { value: i.files, errors }
 				}
 			}
-			return errors
+			return { value: i.files, errors }
 
 		default:
-			return Error( `No validation function matched the passed identifier "${name}"` )
+			return Error( `No validation function matched the passed identifier "${i.name}"` )
 		} 
 	}
 
-	const hasErrors = () => {
+	const hasErrors = ( stateObj ) => {
 		let result
-		state.map( input => input.errors.length > 0 && result === true ) )
+		Object.keys( stateObj ).forEach( ( input ) => {
+			if ( stateObj[ input ].errors && stateObj[ input ].errors.length > 0 ) {
+				result = true
+			}
+		} )
+		return result || false
 	}
 
 	let debug = true
@@ -326,14 +339,24 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 
 	const updateFileList = ( input ) => {
+		/*
+		console.log( '### updateFileList FIRED ###' )
+		console.log( state.files.value )
+
 		const output = input.parentElement.nextElementSibling
 		const list   = document.createElement( 'ul' )
 		removeChildElements( output )
+
 		output.appendChild( list )
-		for ( let i = 0; i < input.files.length; ++i ) {
-			list.innerHTML += '<li>' + input.files.item( i ).name + '</li>'
+		for ( let i = 0; i < state.files.value.length; ++i ) {
+			list.innerHTML += '<li>' + state.files.value.item( i ).name + '</li>'
 		}
+*/
 	}
+
+
+	console.log( state.files.value )
+
 
 
 	return (
@@ -432,14 +455,20 @@ const ContactForm = ( { enableFileUpload } ) => {
 								name="files"
 								multiple
 								value={ state.files.value }
-								onChange={ ( e ) => updateFileList( e.target ) }
+								onChange={ handleChange }
 							/>
 							<span>
 								<FaFileUpload />
 							</span>	
 							Attach file
 						</label>
-						<div></div>
+						<div>
+							{ state.files.value.length > 0 &&
+								<ul>
+									{ state.files.value.map( ( file, index ) => { return ( <li key={ index }>{ file }</li> ) } ) }
+								</ul>
+							}
+						</div>
 						<div data-errors={ ( state.files.errors.length !== 0 ) }>
 							{ state.files.errors.map( ( error, index ) => { return ( <span key={ index }>{ error }</span> ) } ) }
 						</div>
@@ -447,13 +476,13 @@ const ContactForm = ( { enableFileUpload } ) => {
 				) }
 				<Button
 					type='submit'
-					text={ state.submitting ? '[BUSY]' : 'Submit' }
-					disabled={ state.submitting }
+					text={ state.submitting ? '[BUSY]' : state.hasErrors ? '[FIX ERRORS]' : 'Submit' }
+					disabled={ [ state.submitting, state.hasErrors ].includes( true ) }
 				/>
 				<Button
 					type='button'
-					style='outline'
 					text='Reset'
+					style='outline'
 					disabled={ state.submitting }
 					onClick={ reset }
 				/>
