@@ -10,18 +10,24 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 	const wpRestEndpoint = 'https://wp-source.bigupweb.uk/wp-json/bigup/contact-form/v1/submit'
 
+	const empty = {
+		name: { value: '', errors: [] },
+		email: { value: '', errors: [] },
+		message: { value: '', errors: [] },
+		files: { value: '', errors: [] },
+		submitting: false
+	}
+
 	const [ state, setState ] = useState( () => {
 		const storage = JSON.parse( localStorage.getItem( 'bigupFormState' ) )
-		const empty = {
-			name: { value: '', errors: [] },
-			email: { value: '', errors: [] },
-			message: { value: '', errors: [] },
-			files: { value: '', errors: [] },
-			submitting: false
-		}
-		const state = storage ? { ...empty, ...storage } : empty
-		return state
+		const initState = storage ? { ...empty, ...storage } : empty
+		return initState
 	} )
+
+	const reset = () => {
+		setState( empty )
+		localStorage.removeItem( 'bigupFormState' )
+	}
 
 	const updateState = ( object ) => {
 		const newState = {
@@ -59,7 +65,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 	const validate = ( name, value ) => {
 		let errors = []
-
 		switch( name ) {
 
 		case 'name':
@@ -94,6 +99,11 @@ const ContactForm = ( { enableFileUpload } ) => {
 		} 
 	}
 
+	const hasErrors = () => {
+		let result
+		state.map( input => input.errors.length > 0 && result === true ) )
+	}
+
 	let debug = true
 	let startTime // set when form is submitted.
 
@@ -102,25 +112,19 @@ const ContactForm = ( { enableFileUpload } ) => {
 		return elapsed.toString().padStart( 5, '0' )
 	}
 
-	const buttonID = `${styles.form}-submit`
-
 	const handleSubmit = async ( event ) => {
 		event.preventDefault()
-		startTime = Date.now()
-		if( debug ) console.log( 'Time | Start/Finish | Function | Target' )
-		if( debug ) console.log( timeElapsed() + ' |START| handleSubmit' )
-
 		const form = event.currentTarget
-		const output = form.querySelector( 'footer > div' )
-		let classes = [ styles.popout ]
+		if ( '' !== form.querySelector( '#saveTheBees' ).value ) return
 
-		// redirect bots if honeypot is filled.
-		if ( '' != form.querySelector( '#saveTheBees' ).value ) {
-			document.documentElement.remove()
-			window.location.replace( 'https://en.wikipedia.org/wiki/Robot' )
+		const output    = form.querySelector( 'footer > div' )
+		let classes     = [ styles.popout ]
+
+		const formData  = new FormData()
+		for ( let key in state ) {
+			!! state[ key ].value && formData.append( key, state[ key ].value )
 		}
 
-		const formData  = new FormData( form )
 		const fileInput = form.querySelector( '.' + styles.customFileUpload + ' input' )
 		const files     = ( !! fileInput.files && fileInput.files.length > 0 )  ? fileInput.files : false
 
@@ -145,8 +149,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 					return
 				}
 			}
-		} else {
-			formData.delete( 'files' )
 		}
 
 		const url = wpRestEndpoint
@@ -196,7 +198,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 	const doFetchWithJSONResponse = async ( url, options ) => {
 		try {
-			if( debug ) console.log( `${timeElapsed()} |START| Fetch request` )
 			const controller = new AbortController()
 			const abort      = setTimeout( () => controller.abort(), 14000 )
 			const response   = await fetch( url, { ...options, signal: controller.signal } )
@@ -236,7 +237,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 
 	const removeChildElements = ( parent ) => {
-		if( debug ) console.log( `${timeElapsed()} |START| removeChildElements | ${parent.classList}` )
 		return new Promise( ( resolve, reject ) => {
 			try {
 				while ( parent.firstChild ) {
@@ -261,7 +261,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 	}
 
 	const displayMessagesAsPopouts = ( parent, messages, classes ) => {
-		if( debug ) console.log( `${timeElapsed()} |START| displayMessagesAsPopouts | ${messages[ 0 ]}` )
 		return new Promise( ( resolve, reject ) => {
 			try {
 				if ( ! parent || parent.nodeType !== Node.ELEMENT_NODE ) {
@@ -292,14 +291,12 @@ const ContactForm = ( { enableFileUpload } ) => {
 	function animateWithCallback( property, value ) {
 		return new Promise( ( resolve, reject ) => {
 			try {
-				if( debug ) console.log( `${timeElapsed()} |START| animateWithCallback | ${this.classList} : ${property} : ${value}` )
 				this.style[ property ] = value
 				// Replacement for built-in event listeners which don't initialise on new elements in time.
 				let transition_complete = setInterval( () => {
 					let style = getComputedStyle( this )
 					if ( style[ property ] === value ) {
 						clearInterval( transition_complete )
-						if( debug ) console.log( `${timeElapsed()} | END | animateWithCallback | ${this.classList} : ${property} : ${value}` )
 						resolve( 'Transition complete.' )
 					}
 				}, 10 )
@@ -449,13 +446,17 @@ const ContactForm = ( { enableFileUpload } ) => {
 					</div>
 				) }
 				<Button
-					id={ buttonID }
-					type={ 'submit' }
-					text='submit'
+					type='submit'
+					text={ state.submitting ? '[BUSY]' : 'Submit' }
 					disabled={ state.submitting }
-				>
-					{ state.submitting ? '[BUSY]' : 'Submit' }
-				</Button>
+				/>
+				<Button
+					type='button'
+					style='outline'
+					text='Reset'
+					disabled={ state.submitting }
+					onClick={ reset }
+				/>
 			</fieldset>
 			<footer>
 				<div style={ { display: 'none', opacity: 0 } }></div>

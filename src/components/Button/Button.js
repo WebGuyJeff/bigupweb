@@ -8,7 +8,7 @@ import {
 	buttonOutline
 } from './Button.module.scss'
 
-const Button = ( { id, text, style, arrow } ) => {
+const Button = ( { type, id, text, style, arrow, onClick, disabled } ) => {
 	let classes = button
 	classes += 'primary' === style ? `${ ' ' + buttonPrimary }` :
 		'secondary' === style ? `${ ' ' + buttonSecondary }` :
@@ -18,6 +18,9 @@ const Button = ( { id, text, style, arrow } ) => {
 		<button
 			id={ id }
 			className={ classes }
+			type={ type }
+			onClick={ onClick }
+			disabled={ disabled }
 		>
 			{ text }
 			{ arrow ? <Arrow style={ { marginLeft: '10px' } } /> : null }
@@ -26,10 +29,13 @@ const Button = ( { id, text, style, arrow } ) => {
 }
 
 Button.propTypes = {
+	type: PropTypes.string,
 	id: PropTypes.string,
 	text: PropTypes.string,
 	style: PropTypes.string,
-	arrow: PropTypes.bool
+	arrow: PropTypes.bool,
+	onClick: PropTypes.func,
+	disabled: PropTypes.bool
 }
 
 export default Button

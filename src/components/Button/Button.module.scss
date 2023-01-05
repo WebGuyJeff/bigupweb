@@ -23,10 +23,20 @@
 		color: map.get( $colours, "pinkred" );
 	}
 
+	&:disabled {
+		opacity: 0.5;
+	}
+
+	&~button {
+		margin-left: map.get( $spaces, "sm" );
+	}
+
 	@media (hover: hover) {
 		&:hover {
 			cursor: pointer;
-			border: solid map.get( $borders, "thick" ) map.get( $colours, "pinkred" );
+			border: solid map.get( $borders, "thick" ) map.get( $colours, "hotpurple" );
+			background-color: map.get( $colours, "hotpurple" );
+			color: inherit;
 		}
 	}
 
@@ -36,8 +46,20 @@
 
 		@media (hover: hover) {
 			&:hover {
-				cursor: pointer;
 				border: solid map.get( $borders, "thick" ) map.get( $colours, "black" );
+			}
+		}
+	}
+
+	&-outline {
+		border: solid map.get( $borders, "thick" ) map.get( $colours, "black" );
+		background-color: #0000;
+		color: inherit;
+
+		@media (hover: hover) {
+			&:hover {
+				border: solid map.get( $borders, "thick" ) map.get( $colours, "hotpurple" );
+				background-color: #0000;
 			}
 		}
 	}
