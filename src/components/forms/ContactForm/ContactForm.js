@@ -19,38 +19,85 @@ const ContactForm = ( { enableFileUpload } ) => {
 		hasErrors: false
 	}
 
+	const hasErrors = ( stateObj ) => {
+		// DEBUG
+		console.log( '=== hasErrors ===' )
+
+		let result = false
+		Object.keys( stateObj ).forEach( ( input ) => {
+
+			// DEBUG
+			console.log( 'hasErrors | ' + input )
+
+			if ( stateObj[ input ].errors && stateObj[ input ].errors.length > 0 ) {
+
+				// DEBUG
+				console.log( 'hasErrors !! ' + input )
+				result = true
+			}
+		} )
+		return result
+	}
+
+	const updateState = ( newValue ) => {
+		// DEBUG
+		console.log( '=== updateState ===' )
+
+		const newState = {
+			...state,
+			...newValue
+		}
+		/*
+		const errorCheckedState = {
+			...newState,
+			hasErrors: hasErrors( newState )
+		}
+*/
+		const errorCheckedState = newState
+
+		localStorage.setItem( 'bigupFormState', JSON.stringify( errorCheckedState ) )
+		return errorCheckedState
+	}
+
 	const [ state, setState ] = useState( () => {
-		const storage = JSON.parse( localStorage.getItem( 'bigupFormState' ) )
-		const initState = storage ? { ...empty, ...storage, files: { value: [], errors: [] } } : empty
+		// DEBUG
+		console.log( '=== useState ===' )
+
+		const storedJSON  = localStorage.getItem( 'bigupFormState' )
+		const storedState = storedJSON !== 'undefined' ? JSON.parse( localStorage.getItem( 'bigupFormState' ) ) : empty
+		const initState   = storedState ? updateState( {
+			...empty,
+			...storedState,
+			files: { value: [], errors: [] }
+		} ) : empty
 		return initState
 	} )
 
 	const reset = () => {
+		// DEBUG
+		console.log( '=== reset ===' )
+
 		setState( empty )
 		localStorage.removeItem( 'bigupFormState' )
 	}
 
-	const updateState = ( object ) => {
-		const newState = {
-			...state,
-			...object
-		}
-		setState( {
-			...newState,
-			hasErrors: hasErrors( newState )
-		} )
-		localStorage.setItem( 'bigupFormState', JSON.stringify( newState ) )
-	}
-
 	const handleChange = ( event ) => {
+		// DEBUG
+		console.log( '=== handleChange ===' )
+
 		const input = event.target
 		const { value, errors } = validate( input )
-		updateState( {
+
+		// DEBUG
+		console.log( '### handleChange ###' )
+		console.log( value )
+
+		setState( updateState( {
 			[ input.name ]: {
 				value: value,
 				errors: errors
 			}
-		} )
+		} ) )
 	}
 
 	const allowedFileUploadTypes = [
@@ -67,6 +114,9 @@ const ContactForm = ( { enableFileUpload } ) => {
 	]
 
 	const validate = ( input ) => {
+		// DEBUG
+		console.log( '=== validate ===' )
+
 		const i = input
 		let errors = []
 
@@ -97,9 +147,23 @@ const ContactForm = ( { enableFileUpload } ) => {
 				let file = i.files[ n ]
 				if ( false === !! allowedFileUploadTypes.includes( file.type ) ) {
 					errors.push( 'That file type is not allowed. Allowed file types: jpg, png, webp, svg, pdf, txt, odf, xlsx, doc.' )
+
+
+					// DEBUG
+					console.log( '### VALIDATION FAIL STATE ###' )
+					console.log( i.files )
+
+
+
 					return { value: i.files, errors }
 				}
 			}
+
+
+			// DEBUG
+			console.log( '### VALIDATION SUCCESS STATE ###' )
+			console.log( i.files )
+
 			return { value: i.files, errors }
 
 		default:
@@ -107,25 +171,21 @@ const ContactForm = ( { enableFileUpload } ) => {
 		} 
 	}
 
-	const hasErrors = ( stateObj ) => {
-		let result
-		Object.keys( stateObj ).forEach( ( input ) => {
-			if ( stateObj[ input ].errors && stateObj[ input ].errors.length > 0 ) {
-				result = true
-			}
-		} )
-		return result || false
-	}
-
 	let debug = true
 	let startTime // set when form is submitted.
 
 	const timeElapsed = () => {
+		// DEBUG
+		console.log( '=== timeElapsed ===' )
+
 		let elapsed = Date.now() - startTime
 		return elapsed.toString().padStart( 5, '0' )
 	}
 
 	const handleSubmit = async ( event ) => {
+		// DEBUG
+		console.log( '=== handleSubmit ===' )
+
 		event.preventDefault()
 		const form = event.currentTarget
 		if ( '' !== form.querySelector( '#saveTheBees' ).value ) return
@@ -210,6 +270,9 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 
 	const doFetchWithJSONResponse = async ( url, options ) => {
+		// DEBUG
+		console.log( '=== doFetchWithJSONResponse ===' )
+
 		try {
 			const controller = new AbortController()
 			const abort      = setTimeout( () => controller.abort(), 14000 )
@@ -239,6 +302,9 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 
 	const makeStringHumanReadable = ( string ) => {
+		// DEBUG
+		console.log( '=== makeStringHumanReadable ===' )
+
 		const HTMLtags = /(?<!\([^)]*?)<[^>]*?>/g
 		const humanReadableChars = /(\([^\)]*?\))|[ \p{L}\p{N}\p{M}\p{P}]/ug
 		const extraSpaces = /^\s*|\s(?=\s)|\s*$/g
@@ -250,6 +316,9 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 
 	const removeChildElements = ( parent ) => {
+		// DEBUG
+		console.log( '=== removeChildElements ===' )
+
 		return new Promise( ( resolve, reject ) => {
 			try {
 				while ( parent.firstChild ) {
@@ -266,6 +335,9 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 
 	const pauseWithCallback = ( milliseconds ) => { 
+		// DEBUG
+		console.log( '=== pauseWithCallback ===' )
+
 		return new Promise( ( resolve ) => { 
 			setTimeout( () => {
 				resolve()
@@ -274,6 +346,9 @@ const ContactForm = ( { enableFileUpload } ) => {
 	}
 
 	const displayMessagesAsPopouts = ( parent, messages, classes ) => {
+		// DEBUG
+		console.log( '=== displayMessagesAsPopouts ===' )
+
 		return new Promise( ( resolve, reject ) => {
 			try {
 				if ( ! parent || parent.nodeType !== Node.ELEMENT_NODE ) {
@@ -302,6 +377,9 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 
 	function animateWithCallback( property, value ) {
+		// DEBUG
+		console.log( '=== animateWithCallback ===' )
+
 		return new Promise( ( resolve, reject ) => {
 			try {
 				this.style[ property ] = value
@@ -321,6 +399,9 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 
 	const animateMultipleWithCallback = async ( elements, property, value ) => {
+		// DEBUG
+		console.log( '=== animateMultipleWithCallback ===' )
+
 		if ( ! is_iterable( elements ) ) elements = [ elements ]
 		if ( is_iterable( elements ) && elements.every( ( element ) => { return element.nodeType === 1 } ) ) {
 			const promises = elements.map( ( node ) => animateWithCallback.bind( node )( property, value ) )
@@ -333,12 +414,18 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 
 	const is_iterable = ( object ) => {
+		// DEBUG
+		console.log( '=== is_iterable ===' )
+
 		if ( object === null || object === undefined ) return false
 		return typeof object[ Symbol.iterator ] === 'function'
 	}
 
 
 	const updateFileList = ( input ) => {
+		// DEBUG
+		console.log( '=== updateFileList ===' )
+
 		/*
 		console.log( '### updateFileList FIRED ###' )
 		console.log( state.files.value )
@@ -351,13 +438,9 @@ const ContactForm = ( { enableFileUpload } ) => {
 		for ( let i = 0; i < state.files.value.length; ++i ) {
 			list.innerHTML += '<li>' + state.files.value.item( i ).name + '</li>'
 		}
-*/
+		*/
 	}
 
-
-	console.log( state.files.value )
-	console.log( state.files.value.length > 0 )
-	console.log( state.files.value.length )
 
 
 	return (
@@ -463,12 +546,26 @@ const ContactForm = ( { enableFileUpload } ) => {
 							</span>	
 							Attach file
 						</label>
-						{ state.files.value.length > 0 &&
+						{ /*
+							state.files.value.length > 0 &&
 							<div>
 								<ul>
-									{ state.files.value.map( ( file, index ) => { return ( <li key={ index }>{ file }</li> ) } ) }
+									{
+										/*Object.keys( state.files.value ).map( ( file, index ) => { return ( <li key={ index }>{ file.name }</li> ) } )*/
+							/*
+										() => { 
+											let test = []
+											for ( let i = 0; i < state.files.value.length; ++i ) {
+												return( test.push( '<li>' + state.files.value.item( i ).name + '</li>' ) )
+											}
+											test.map( ( file, index ) => { return ( <li key={ index }>{ file.name }</li> ) } )
+										}
+
+
+									}
 								</ul>
 							</div>
+							*/
 						}
 						<div data-errors={ ( state.files.errors.length !== 0 ) }>
 							{ state.files.errors.map( ( error, index ) => { return ( <span key={ index }>{ error }</span> ) } ) }
