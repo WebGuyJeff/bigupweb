@@ -356,7 +356,8 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 
 	console.log( state.files.value )
-
+	console.log( state.files.value.length > 0 )
+	console.log( state.files.value.length )
 
 
 	return (
@@ -462,13 +463,13 @@ const ContactForm = ( { enableFileUpload } ) => {
 							</span>	
 							Attach file
 						</label>
-						<div>
-							{ state.files.value.length > 0 &&
+						{ state.files.value.length > 0 &&
+							<div>
 								<ul>
 									{ state.files.value.map( ( file, index ) => { return ( <li key={ index }>{ file }</li> ) } ) }
 								</ul>
-							}
-						</div>
+							</div>
+						}
 						<div data-errors={ ( state.files.errors.length !== 0 ) }>
 							{ state.files.errors.map( ( error, index ) => { return ( <span key={ index }>{ error }</span> ) } ) }
 						</div>
