@@ -175,6 +175,28 @@
 		}
 	}
 
+	ul {
+		display: flex;
+		flex-flow: column;
+		padding-left: 0;
+		margin: 1em 0;
+		gap: 0.5em;
+
+		li {
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: space-between;
+			list-style: none;
+			padding: 0.25em;
+			border: solid 2px #000;
+
+			svg {
+				align-self: center;
+				font-size: 1.2em;
+			}
+		}
+	}
+
 	div {
 		margin-left: 0;
 	}

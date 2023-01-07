@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import Button from 'components/Button/Button'
 import {
-	FaFileUpload
+	FaFileUpload,
+	FaRegWindowClose
 } from 'react-icons/fa'
 import * as styles from './ContactForm.module.scss'
 
@@ -20,19 +21,9 @@ const ContactForm = ( { enableFileUpload } ) => {
 	}
 
 	const hasErrors = ( stateObj ) => {
-		// DEBUG
-		console.log( '=== hasErrors ===' )
-
 		let result = false
 		Object.keys( stateObj ).forEach( ( input ) => {
-
-			// DEBUG
-			console.log( 'hasErrors | ' + input )
-
 			if ( stateObj[ input ].errors && stateObj[ input ].errors.length > 0 ) {
-
-				// DEBUG
-				console.log( 'hasErrors !! ' + input )
 				result = true
 			}
 		} )
@@ -40,29 +31,19 @@ const ContactForm = ( { enableFileUpload } ) => {
 	}
 
 	const updateState = ( newValue ) => {
-		// DEBUG
-		console.log( '=== updateState ===' )
-
 		const newState = {
 			...state,
 			...newValue
 		}
-		/*
 		const errorCheckedState = {
 			...newState,
 			hasErrors: hasErrors( newState )
 		}
-*/
-		const errorCheckedState = newState
-
 		localStorage.setItem( 'bigupFormState', JSON.stringify( errorCheckedState ) )
 		return errorCheckedState
 	}
 
 	const [ state, setState ] = useState( () => {
-		// DEBUG
-		console.log( '=== useState ===' )
-
 		const storedJSON  = localStorage.getItem( 'bigupFormState' )
 		const storedState = storedJSON !== 'undefined' ? JSON.parse( localStorage.getItem( 'bigupFormState' ) ) : empty
 		const initState   = storedState ? updateState( {
@@ -74,30 +55,8 @@ const ContactForm = ( { enableFileUpload } ) => {
 	} )
 
 	const reset = () => {
-		// DEBUG
-		console.log( '=== reset ===' )
-
 		setState( empty )
 		localStorage.removeItem( 'bigupFormState' )
-	}
-
-	const handleChange = ( event ) => {
-		// DEBUG
-		console.log( '=== handleChange ===' )
-
-		const input = event.target
-		const { value, errors } = validate( input )
-
-		// DEBUG
-		console.log( '### handleChange ###' )
-		console.log( value )
-
-		setState( updateState( {
-			[ input.name ]: {
-				value: value,
-				errors: errors
-			}
-		} ) )
 	}
 
 	const allowedFileUploadTypes = [
@@ -114,12 +73,8 @@ const ContactForm = ( { enableFileUpload } ) => {
 	]
 
 	const validate = ( input ) => {
-		// DEBUG
-		console.log( '=== validate ===' )
-
 		const i = input
 		let errors = []
-
 		if ( i.value === '' || i.value === undefined || i.value.length == 0 ) return { value: i.value, errors }
 
 		switch( i.name ) {
@@ -142,89 +97,61 @@ const ContactForm = ( { enableFileUpload } ) => {
 			}
 			return { value: i.value, errors }
 
-		case 'files':
-			for( let n = 0; n < i.files.length; n++ ) {
-				let file = i.files[ n ]
+		case 'files': { // block scope to allow var declarations.
+			const files = Array.from( i.files )
+			files.forEach( file => {
 				if ( false === !! allowedFileUploadTypes.includes( file.type ) ) {
-					errors.push( 'That file type is not allowed. Allowed file types: jpg, png, webp, svg, pdf, txt, odf, xlsx, doc.' )
-
-
-					// DEBUG
-					console.log( '### VALIDATION FAIL STATE ###' )
-					console.log( i.files )
-
-
-
-					return { value: i.files, errors }
+					errors.push( 'File type is not allowed. Allowed file types: jpg, png, webp, svg, pdf, txt, odf, xlsx, doc.' )
+					return { value: files, errors }
 				}
-			}
-
-
-			// DEBUG
-			console.log( '### VALIDATION SUCCESS STATE ###' )
-			console.log( i.files )
-
-			return { value: i.files, errors }
-
+			} )
+			return { value: files, errors }
+		}
 		default:
 			return Error( `No validation function matched the passed identifier "${i.name}"` )
 		} 
+	}
+
+	const handleChange = ( event ) => {
+		const input = event.target
+		const { value, errors } = validate( input )
+		setState( updateState( {
+			[ input.name ]: {
+				value: value,
+				errors: errors
+			}
+		} ) )
 	}
 
 	let debug = true
 	let startTime // set when form is submitted.
 
 	const timeElapsed = () => {
-		// DEBUG
-		console.log( '=== timeElapsed ===' )
-
 		let elapsed = Date.now() - startTime
 		return elapsed.toString().padStart( 5, '0' )
 	}
 
 	const handleSubmit = async ( event ) => {
-		// DEBUG
-		console.log( '=== handleSubmit ===' )
-
 		event.preventDefault()
 		const form = event.currentTarget
 		if ( '' !== form.querySelector( '#saveTheBees' ).value ) return
 
-		const output    = form.querySelector( 'footer > div' )
-		let classes     = [ styles.popout ]
-
 		const formData  = new FormData()
 		for ( let key in state ) {
-			!! state[ key ].value && formData.append( key, state[ key ].value )
-		}
-
-		const fileInput = form.querySelector( '.' + styles.customFileUpload + ' input' )
-		const files     = ( !! fileInput.files && fileInput.files.length > 0 )  ? fileInput.files : false
-
-		if ( files ) {
-			for( let i = 0; i < files.length; i++ ){
-				let file = files[ i ]
-
-				if ( allowedFileUploadTypes.includes( file.type ) ) {
-					formData.append( 'files[]', file, file.name )
-
+			if ( state[ key ].value ) {
+				if ( key === 'files' ) {
+					state.files.value.forEach( file => {
+						formData.append( 'files[]', file, file.name )
+					} )
 				} else {
-					classes = [ ...classes, styles.popout__danger ]
-					output.style.display = 'flex'
-					await animateMultipleWithCallback( output, 'opacity', '0' )
-					await removeChildElements( output )
-					await displayMessagesAsPopouts( output, [ 'The selected file type is not allowed' ], classes )
-					await animateMultipleWithCallback( output, 'opacity', '1' )
-					await pauseWithCallback( 5000 )
-					await animateMultipleWithCallback( output, 'opacity', '0' )
-					await removeChildElements( output )
-					output.style.display = 'none'
-					return
+					formData.append( key, state[ key ].value )
 				}
 			}
 		}
 
-		const url = wpRestEndpoint
+		const output = form.querySelector( 'footer > div' )
+		let classes  = [ styles.popout ]
+		const url    = wpRestEndpoint
 		const fetch_options = {
 			method: 'POST',
 			headers: { 'Accept': 'application/json' },
@@ -253,9 +180,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 			// Clean up the form.
 			if ( result.ok ) {
-				let fieldset = form.querySelectorAll( '.' + styles.input )
-				fieldset.forEach( input => { input.value = '' } )
-				removeChildElements( form.querySelector( `.${styles.customFileUpload} > div` ) )
+				reset()
 				localStorage.removeItem( 'bigupFormState' )
 			}
 			output.style.display = 'none'
@@ -263,16 +188,10 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 		} catch ( error ) {
 			console.error( error )
-		} finally {
-			if( debug ) console.log( timeElapsed() + ' | END | handleSubmit' )
 		}
 	}
 
-
 	const doFetchWithJSONResponse = async ( url, options ) => {
-		// DEBUG
-		console.log( '=== doFetchWithJSONResponse ===' )
-
 		try {
 			const controller = new AbortController()
 			const abort      = setTimeout( () => controller.abort(), 14000 )
@@ -294,17 +213,10 @@ const ContactForm = ( { enableFileUpload } ) => {
 				console.error( makeStringHumanReadable( error.output[ message ] ) )
 			}
 			return error
-
-		} finally {
-			if( debug ) console.log( `${timeElapsed()} | END | Fetch request` )
 		}
 	}
 
-
 	const makeStringHumanReadable = ( string ) => {
-		// DEBUG
-		console.log( '=== makeStringHumanReadable ===' )
-
 		const HTMLtags = /(?<!\([^)]*?)<[^>]*?>/g
 		const humanReadableChars = /(\([^\)]*?\))|[ \p{L}\p{N}\p{M}\p{P}]/ug
 		const extraSpaces = /^\s*|\s(?=\s)|\s*$/g
@@ -314,11 +226,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 		return cleanString
 	}
 
-
 	const removeChildElements = ( parent ) => {
-		// DEBUG
-		console.log( '=== removeChildElements ===' )
-
 		return new Promise( ( resolve, reject ) => {
 			try {
 				while ( parent.firstChild ) {
@@ -333,11 +241,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 		} )
 	}
 
-
 	const pauseWithCallback = ( milliseconds ) => { 
-		// DEBUG
-		console.log( '=== pauseWithCallback ===' )
-
 		return new Promise( ( resolve ) => { 
 			setTimeout( () => {
 				resolve()
@@ -346,9 +250,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 	}
 
 	const displayMessagesAsPopouts = ( parent, messages, classes ) => {
-		// DEBUG
-		console.log( '=== displayMessagesAsPopouts ===' )
-
 		return new Promise( ( resolve, reject ) => {
 			try {
 				if ( ! parent || parent.nodeType !== Node.ELEMENT_NODE ) {
@@ -375,11 +276,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 		} )
 	}
 
-
 	function animateWithCallback( property, value ) {
-		// DEBUG
-		console.log( '=== animateWithCallback ===' )
-
 		return new Promise( ( resolve, reject ) => {
 			try {
 				this.style[ property ] = value
@@ -397,11 +294,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 		} )
 	}
 
-
 	const animateMultipleWithCallback = async ( elements, property, value ) => {
-		// DEBUG
-		console.log( '=== animateMultipleWithCallback ===' )
-
 		if ( ! is_iterable( elements ) ) elements = [ elements ]
 		if ( is_iterable( elements ) && elements.every( ( element ) => { return element.nodeType === 1 } ) ) {
 			const promises = elements.map( ( node ) => animateWithCallback.bind( node )( property, value ) )
@@ -412,35 +305,10 @@ const ContactForm = ( { enableFileUpload } ) => {
 		}
 	}
 
-
 	const is_iterable = ( object ) => {
-		// DEBUG
-		console.log( '=== is_iterable ===' )
-
 		if ( object === null || object === undefined ) return false
 		return typeof object[ Symbol.iterator ] === 'function'
 	}
-
-
-	const updateFileList = ( input ) => {
-		// DEBUG
-		console.log( '=== updateFileList ===' )
-
-		/*
-		console.log( '### updateFileList FIRED ###' )
-		console.log( state.files.value )
-
-		const output = input.parentElement.nextElementSibling
-		const list   = document.createElement( 'ul' )
-		removeChildElements( output )
-
-		output.appendChild( list )
-		for ( let i = 0; i < state.files.value.length; ++i ) {
-			list.innerHTML += '<li>' + state.files.value.item( i ).name + '</li>'
-		}
-		*/
-	}
-
 
 
 	return (
@@ -538,7 +406,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 								type="file"
 								name="files"
 								multiple
-								value={ state.files.value }
 								onChange={ handleChange }
 							/>
 							<span>
@@ -546,26 +413,22 @@ const ContactForm = ( { enableFileUpload } ) => {
 							</span>	
 							Attach file
 						</label>
-						{ /*
+						{
 							state.files.value.length > 0 &&
 							<div>
 								<ul>
-									{
-										/*Object.keys( state.files.value ).map( ( file, index ) => { return ( <li key={ index }>{ file.name }</li> ) } )*/
-							/*
-										() => { 
-											let test = []
-											for ( let i = 0; i < state.files.value.length; ++i ) {
-												return( test.push( '<li>' + state.files.value.item( i ).name + '</li>' ) )
-											}
-											test.map( ( file, index ) => { return ( <li key={ index }>{ file.name }</li> ) } )
-										}
-
-
-									}
+									{ state.files.value.map( ( file, index ) => { return (
+										<li key={ index }>
+											<span>
+												{ file.name }
+											</span>
+											<FaRegWindowClose
+												onClick={ () => { return updateState( { files: { value: state.files.value.filter( ( e ) => { return e !== file } ), errors: [] } } ) } }
+											/>
+										</li>
+									) } ) }
 								</ul>
 							</div>
-							*/
 						}
 						<div data-errors={ ( state.files.errors.length !== 0 ) }>
 							{ state.files.errors.map( ( error, index ) => { return ( <span key={ index }>{ error }</span> ) } ) }
