@@ -1,3 +1,6 @@
+@use "sass:map";
+@import "styles/variables";
+
 .form {
     --bigup_white: #fff;
     --bigup_black: #262626;
@@ -7,7 +10,6 @@
 	--bigup_blue: #70d3e5;
     --bigup_lightGrey: #eee;
     --bigup_radius-small: 0.6em;
-    --bigup_border: solid 0.1em;
     --bigup_shadow-inset: inset -0.1em 0.2em 0.5em 0.2em #000c;
 	--bigup_border: solid 0.2em var(--bigup_black);
     position: relative;
@@ -81,13 +83,6 @@
 		padding-top: 0;
 		padding-bottom: 0;
 	}
-
-	div[data-errors="true"] {
-		transform: translateY( 0 );
-		margin-top: 0.2em;
-		padding-top: 0.4em;
-		padding-bottom: 0.4em;
-	}
 }
 
 .inputWrap__wide {
@@ -160,7 +155,7 @@
 
 	label {
 		display: block;
-		border: 2px solid #000;
+		border: map.get( $borders, "default" ) solid #000;
 		cursor: pointer;
 		padding: 6px 12px;
 		width: fit-content;
@@ -186,9 +181,10 @@
 			display: flex;
 			flex-flow: row nowrap;
 			justify-content: space-between;
-			list-style: none;
+			margin-left: 0;
+			border: solid map.get( $borders, "fine" ) #000;
 			padding: 0.25em;
-			border: solid 2px #000;
+			list-style: none;
 
 			svg {
 				align-self: center;
@@ -197,15 +193,22 @@
 		}
 	}
 
-	div {
-		margin-left: 0;
+	div[data-errors=false] {
+		display: none;
+	}
+
+	div[data-errors=true] {
+		display: block;
+		transform: translateY( 0 );
+		margin-top: 0.2em;
+		padding-top: 0.4em;
+		padding-bottom: 0.4em;
 	}
 }
 
 .popout {
 	margin-block-end:1.688em;
-	border:var(--bigup_border);
-	border-radius:var(--bigup_radius-small);
+	border: map.get( $borders, "default" );
 	box-shadow: 1px 3px 6px 1px #000a;
 	background:var(--bigup_lightGrey);
 	padding:.8em;

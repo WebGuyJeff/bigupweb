@@ -45,11 +45,12 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 	const [ state, setState ] = useState( () => {
 		const storedJSON  = localStorage.getItem( 'bigupFormState' )
-		const storedState = storedJSON !== 'undefined' ? JSON.parse( localStorage.getItem( 'bigupFormState' ) ) : empty
+		const storedState = storedJSON !== 'undefined' ? JSON.parse( storedJSON ) : empty
 		const initState   = storedState ? updateState( {
 			...empty,
 			...storedState,
-			files: { value: [], errors: [] }
+			files: { value: [], errors: [] },
+			submitting: false
 		} ) : empty
 		return initState
 	} )
@@ -76,7 +77,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 		const i = input
 		let errors = []
 		if ( i.value === '' || i.value === undefined || i.value.length == 0 ) return { value: i.value, errors }
-
 		switch( i.name ) {
 
 		case 'name':
@@ -101,14 +101,14 @@ const ContactForm = ( { enableFileUpload } ) => {
 			const files = Array.from( i.files )
 			files.forEach( file => {
 				if ( false === !! allowedFileUploadTypes.includes( file.type ) ) {
-					errors.push( 'File type is not allowed. Allowed file types: jpg, png, webp, svg, pdf, txt, odf, xlsx, doc.' )
+					errors.push( `File type "${file.name}" is not allowed.` )
 					return { value: files, errors }
 				}
 			} )
 			return { value: files, errors }
 		}
 		default:
-			return Error( `No validation function matched the passed identifier "${i.name}"` )
+			return Error( `No validation function matched the passed input "${i.name}"` )
 		} 
 	}
 
@@ -121,14 +121,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 				errors: errors
 			}
 		} ) )
-	}
-
-	let debug = true
-	let startTime // set when form is submitted.
-
-	const timeElapsed = () => {
-		let elapsed = Date.now() - startTime
-		return elapsed.toString().padStart( 5, '0' )
 	}
 
 	const handleSubmit = async ( event ) => {
@@ -235,8 +227,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 				resolve( 'Child nodes removed successfully.' )
 			} catch ( error ) {
 				reject( error )
-			} finally {
-				if( debug ) console.log( `${timeElapsed()} | END | removeChildElements | ${parent.classList}` )
 			}
 		} )
 	}
@@ -270,8 +260,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 				resolve( popouts )
 			} catch ( error ) {
 				reject( error )
-			} finally {
-				if( debug ) console.log( `${timeElapsed()} | END | displayMessagesAsPopouts | ${messages[ 0 ]}` )
 			}
 		} )
 	}
@@ -423,7 +411,15 @@ const ContactForm = ( { enableFileUpload } ) => {
 												{ file.name }
 											</span>
 											<FaRegWindowClose
-												onClick={ () => { return updateState( { files: { value: state.files.value.filter( ( e ) => { return e !== file } ), errors: [] } } ) } }
+												onClick={ () => {
+													console.log( state.files.value.filter( ( e ) => { return e !== file } ) )
+													setState( updateState( { 
+														files: { 
+															value: state.files.value.filter( ( e ) => { return e !== file } ),
+															errors: [] // Need to recheck validation for errors after removal of the file
+														}
+													} ) )
+												} }
 											/>
 										</li>
 									) } ) }
@@ -432,6 +428,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 						}
 						<div data-errors={ ( state.files.errors.length !== 0 ) }>
 							{ state.files.errors.map( ( error, index ) => { return ( <span key={ index }>{ error }</span> ) } ) }
+							<p>Allowed file types: jpg, png, webp, svg, pdf, txt, odf, xlsx, doc.</p>
 						</div>
 					</div>
 				) }

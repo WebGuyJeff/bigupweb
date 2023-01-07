@@ -7,7 +7,7 @@
 .button-outline {
 	position: relative;
 	transition: all 0.3s ease;
-	border: solid map.get( $borders, "thick" ) map.get( $colours, "black" );
+	border: solid map.get( $borders, "default" ) map.get( $colours, "black" );
 	background-color: map.get( $colours, "black" );
 	padding: map.get( $spaces, "xxs" ) map.get( $spaces, "xs" );
 	text-transform: capitalize;
@@ -34,31 +34,31 @@
 	@media (hover: hover) {
 		&:hover:not( &:disabled ) {
 			cursor: pointer;
-			border: solid map.get( $borders, "thick" ) map.get( $colours, "hotpurple" );
+			border: solid map.get( $borders, "default" ) map.get( $colours, "hotpurple" );
 			background-color: map.get( $colours, "hotpurple" );
 			color: inherit;
 		}
 	}
 
 	&-primary {
-		border: solid map.get( $borders, "thick" ) map.get( $colours, "hotpurple" );
+		border: solid map.get( $borders, "default" ) map.get( $colours, "hotpurple" );
 		background-color: map.get( $colours, "hotpurple" );
 
 		@media (hover: hover) {
 			&:hover:not( &:disabled ) {
-				border: solid map.get( $borders, "thick" ) map.get( $colours, "black" );
+				border: solid map.get( $borders, "default" ) map.get( $colours, "black" );
 			}
 		}
 	}
 
 	&-outline {
-		border: solid map.get( $borders, "thick" ) map.get( $colours, "black" );
+		border: solid map.get( $borders, "default" ) map.get( $colours, "black" );
 		background-color: #0000;
 		color: inherit;
 
 		@media (hover: hover) {
 			&:hover:not( &:disabled ) {
-				border: solid map.get( $borders, "thick" ) map.get( $colours, "hotpurple" );
+				border: solid map.get( $borders, "default" ) map.get( $colours, "hotpurple" );
 				background-color: #0000;
 			}
 		}
