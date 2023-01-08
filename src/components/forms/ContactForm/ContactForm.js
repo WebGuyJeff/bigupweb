@@ -30,10 +30,53 @@ const ContactForm = ( { enableFileUpload } ) => {
 		return result
 	}
 
+	const validate = ( key, i ) => {
+		let errors = []
+		const val = i.value
+		if ( val === '' || val === undefined || val.length == 0 ) return { value: val, errors }
+		switch( key ) {
+
+		case 'name':
+			if ( val.length < 2 || val.length > 100 ) {
+				errors.push( 'Name should be 2-100 characters.' )
+			}
+			break
+
+		case 'email':
+			if ( false === !! /^\S+@\S+\.\S+$/.test( val ) ) {
+				errors.push( 'Email must match format "joe@email.uk".' )
+			}
+			break
+
+		case 'message':
+			if ( val.length < 10 || val.length > 3000 ) {
+				errors.push( 'Message should be 10-3000 characters.' )
+			}
+			break
+
+		case 'files':
+			val.forEach( file => {
+				if ( false === !! allowedFileUploadTypes.includes( file.type ) ) {
+					errors.push( `File type "${file.name}" is not allowed.` )
+				}
+			} )
+			break
+		default:
+			return Error( `No validation function matched the passed input "${i.name}"` )
+		}
+		return { value: val, errors }
+	}
+
 	const updateState = ( newValue ) => {
 		const newState = {
-			...state,
-			...newValue
+			...state
+		}
+		for ( const key in newValue ) {
+			if ( newValue[ key ].value ) {
+				newState[ key ] = validate( key, newValue[ key ] )
+			} else {
+				newState[ key ] = newValue[ key ]
+			}
 		}
 		const errorCheckedState = {
 			...newState,
@@ -73,52 +116,13 @@ const ContactForm = ( { enableFileUpload } ) => {
 		'application/msword',
 	]
 
-	const validate = ( input ) => {
-		const i = input
-		let errors = []
-		if ( i.value === '' || i.value === undefined || i.value.length == 0 ) return { value: i.value, errors }
-		switch( i.name ) {
-
-		case 'name':
-			if ( i.value.length < 2 || i.value.length > 100 ) {
-				errors.push( 'Name should be 2-100 characters.' )
-			}
-			return { value: i.value, errors }
-
-		case 'email':
-			if ( false === !! /^\S+@\S+\.\S+$/.test( i.value ) ) {
-				errors.push( 'Email must match format "joe@email.uk".' )
-			}
-			return { value: i.value, errors }
-
-		case 'message':
-			if ( i.value.length < 10 || i.value.length > 3000 ) {
-				errors.push( 'Message should be 10-3000 characters.' )
-			}
-			return { value: i.value, errors }
-
-		case 'files': { // block scope to allow var declarations.
-			const files = Array.from( i.files )
-			files.forEach( file => {
-				if ( false === !! allowedFileUploadTypes.includes( file.type ) ) {
-					errors.push( `File type "${file.name}" is not allowed.` )
-					return { value: files, errors }
-				}
-			} )
-			return { value: files, errors }
-		}
-		default:
-			return Error( `No validation function matched the passed input "${i.name}"` )
-		} 
-	}
-
 	const handleChange = ( event ) => {
 		const input = event.target
-		const { value, errors } = validate( input )
+		const value = input.name === 'files' ? Array.from( input.files ) : input.value
 		setState( updateState( {
 			[ input.name ]: {
 				value: value,
-				errors: errors
+				errors: []
 			}
 		} ) )
 	}
@@ -412,7 +416,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 											</span>
 											<FaRegWindowClose
 												onClick={ () => {
-													console.log( state.files.value.filter( ( e ) => { return e !== file } ) )
 													setState( updateState( { 
 														files: { 
 															value: state.files.value.filter( ( e ) => { return e !== file } ),
