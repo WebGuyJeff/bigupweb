@@ -13,7 +13,6 @@
     --bigup_shadow-inset: inset -0.1em 0.2em 0.5em 0.2em #000c;
 	--bigup_border: solid 0.2em var(--bigup_black);
     position: relative;
-	padding: 1em;
 	width: clamp(10em, 100%, 34em);
 
 	header {
@@ -31,13 +30,24 @@
 		width: 100%;
 	}
 
+	fieldset {
+		display: flex;
+		flex-flow: column;
+        gap: map.get( $spaces, "sm" );
+	}
+
 	fieldset:disabled:hover,
 	fieldset:disabled:hover * {
 		pointer-events: none;
 	}
 
 	hr {
-		border: solid map.get( $borders, "default" ) map.get( $colours, "black" );
+		margin-top: map.get( $spaces, "lg" );
+		margin-bottom: map.get( $spaces, "lg" );
+		border: none;
+		background-color: map.get( $colours, "black" );
+		width: 100%;
+		height: map.get( $borders, "default" );
 	}
 
 	footer {
@@ -58,7 +68,6 @@
 .inputWrap {
 	position: relative;
 	transition: 0.2s;
-	margin: 0.5em auto 0.5em 0;
 	box-shadow: var(--bigup_shadow-inset);
 	background: var(--bigup_black);
 	width: 80%;
@@ -162,11 +171,10 @@
 
 .customFileUpload {
 	display: block;
-	margin: 0.5em auto 0.5em 0;
 
 	label {
 		display: flex;
-		flex-flow: nowrap;
+		flex-flow: row nowrap;
 		align-items: center;
 		gap: 0.25em;
 		border: map.get( $borders, "default" ) solid #000;
@@ -201,8 +209,8 @@
 		display: flex;
 		flex-flow: column;
 		padding-left: 0;
-		margin: 1em 0;
-		gap: 0.5em;
+		margin: map.get( $spaces, "sm" ) 0;
+		gap: map.get( $spaces, "sm" );
 
 		li {
 			display: flex;
@@ -225,7 +233,9 @@
 	}
 
 	div[data-errors=true] {
-		display: block;
+		display: flex;
+		flex-flow: column;
+		gap: map.get( $spaces, "xxs" );
 	}
 }
 

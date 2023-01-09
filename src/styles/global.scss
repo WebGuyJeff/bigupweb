@@ -123,35 +123,36 @@ i {
 }
 
 .underline {
-  text-decoration: underline;
-  text-underline-position: under;
-  text-decoration-color: map.get( $colours, "pinkred" );
-  text-decoration-thickness: 0.125rem;
+	text-decoration: underline;
+	text-underline-position: under;
+	text-decoration-color: map.get( $colours, "pinkred" );
+	text-decoration-thickness: 0.125rem;
 }
 
 hr,
 ol,
 ul,
 blockquote {
-  margin-top: calc(map.get( $spaces, "xxxl" ) / 2);
-  margin-bottom: calc(map.get( $spaces, "xxxl" ) / 2);
+	margin-top: map.get( $spaces, "xl");
+	margin-bottom: map.get( $spaces, "xl" );
 }
 
 hr {
-  border: none; 
-  height: 2px;
-  background-color: map.get( $colours, "black" );
+	border: none;
+	background-color: map.get( $colours, "black" );
+	width: 100%;
+	height: map.get( $borders, "default" );
 }
 
 a {
-  color: inherit;
-  transition: color 0.3s ease;
-  cursor: pointer;
+	color: inherit;
+	transition: color 0.3s ease;
+	cursor: pointer;
 
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
+	&:hover,
+	&:focus {
+		text-decoration: none;
+	}
 }
 
 blockquote {

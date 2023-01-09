@@ -5,7 +5,7 @@ import useWpLatestPosts from 'hooks/useWpLatestPosts'
 import Section from 'components/containers/Section/Section'
 import Container from 'components/containers/Container/Container'
 import PostFeed from 'components/Feeds/PostFeed/PostFeed'
-import Button from 'components/Button/Button'
+import Button from 'components/buttons/Button/Button'
 import {
 	learnMore,
 	introArea

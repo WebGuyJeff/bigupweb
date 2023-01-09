@@ -26,10 +26,6 @@
 		opacity: 0.5;
 	}
 
-	&~button {
-		margin-left: map.get( $spaces, "sm" );
-	}
-
 	@media (hover: hover) {
 		&:hover:not( &:disabled ) {
 			cursor: pointer;

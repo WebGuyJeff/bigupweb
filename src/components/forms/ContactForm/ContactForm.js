@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import Button from 'components/Button/Button'
+import ButtonGroup from 'components/buttons/ButtonGroup/ButtonGroup'
+import Button from 'components/buttons/Button/Button'
 import {
 	FaFileUpload,
 	FaRegWindowClose
@@ -432,23 +433,25 @@ const ContactForm = ( { enableFileUpload } ) => {
 						}
 						<div data-errors={ ( state.files.errors.length !== 0 ) }>
 							{ state.files.errors.map( ( error, index ) => { return ( <span key={ index }>{ error }</span> ) } ) }
-							<p>Allowed file types: jpg, png, webp, svg, pdf, txt, odf, xlsx, doc.</p>
+							<span>Allowed file types: jpg, png, webp, svg, pdf, txt, odf, xlsx, doc.</span>
 						</div>
 					</div>
 				) }
 				<hr />
-				<Button
-					type='submit'
-					text={ state.submitting ? '[BUSY]' : state.hasErrors ? '[FIX ERRORS]' : 'Submit' }
-					disabled={ [ state.submitting, state.hasErrors ].includes( true ) }
-				/>
-				<Button
-					type='button'
-					text='Reset'
-					style='outline'
-					disabled={ state.submitting }
-					onClick={ reset }
-				/>
+				<ButtonGroup>
+					<Button
+						type='submit'
+						text={ state.submitting ? '[BUSY]' : state.hasErrors ? '[FIX ERRORS]' : 'Submit' }
+						disabled={ [ state.submitting, state.hasErrors ].includes( true ) }
+					/>
+					<Button
+						type='button'
+						text='Reset'
+						style='outline'
+						disabled={ state.submitting }
+						onClick={ reset }
+					/>
+				</ButtonGroup>
 			</fieldset>
 			<footer>
 				<div style={ { display: 'none', opacity: 0 } }></div>

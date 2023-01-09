@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import Button from 'components/Button/Button'
+import Button from 'components/buttons/Button/Button'
 import {
 	postItem,
 	postItem_img,

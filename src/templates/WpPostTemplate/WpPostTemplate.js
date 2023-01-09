@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import TitleBanner from 'components/banners/TitleBanner/TitleBanner'
 import Section from 'components/containers/Section/Section'
-import Button from 'components/Button/Button'
+import Button from 'components/buttons/Button/Button'
 import LatestPosts from 'components/post/LatestPosts/LatestPosts'
 import WPContent from 'components/containers/WPContent/WPContent'
 import {
