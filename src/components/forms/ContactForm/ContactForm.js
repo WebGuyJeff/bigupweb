@@ -392,7 +392,10 @@ const ContactForm = ( { enableFileUpload } ) => {
 				</div>
 				{ enableFileUpload && (
 					<div className={ styles.customFileUpload }>
-						<label>
+						<label
+							tabIndex={ 0 }
+							onKeyUp={ ( e ) => e.key === ' ' && e.target.click() }
+						>
 							<input
 								title="Attach a File"
 								type="file"
@@ -400,9 +403,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 								multiple
 								onChange={ handleChange }
 							/>
-							<span>
-								<FaFileUpload />
-							</span>	
+							<FaFileUpload />
 							Attach file
 						</label>
 						{
@@ -419,7 +420,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 													setState( updateState( { 
 														files: { 
 															value: state.files.value.filter( ( e ) => { return e !== file } ),
-															errors: [] // Need to recheck validation for errors after removal of the file
+															errors: []
 														}
 													} ) )
 												} }
@@ -435,6 +436,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 						</div>
 					</div>
 				) }
+				<hr />
 				<Button
 					type='submit'
 					text={ state.submitting ? '[BUSY]' : state.hasErrors ? '[FIX ERRORS]' : 'Submit' }

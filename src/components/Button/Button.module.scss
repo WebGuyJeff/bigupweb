@@ -10,7 +10,6 @@
 	border: solid map.get( $borders, "default" ) map.get( $colours, "black" );
 	background-color: map.get( $colours, "black" );
 	padding: map.get( $spaces, "xxs" ) map.get( $spaces, "xs" );
-	text-transform: capitalize;
 	text-transform: uppercase;
 	text-decoration: none;
 	color: map.get( $colours, "yellow" );
