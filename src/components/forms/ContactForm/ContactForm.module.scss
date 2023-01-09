@@ -279,3 +279,12 @@
 	background:var(--bigup_orange);
 	color:#fff;
 }
+
+.httpOutput {
+	display: none;
+
+	&[data-active=true] {
+        display: flex;
+        opacity: 1;
+	}
+}

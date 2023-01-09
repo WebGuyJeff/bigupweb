@@ -1,24 +1,21 @@
 @use "sass:map";
 @import "styles/variables";
 
-.buttonGroup,
-.buttonGroup-column,
-.buttonGroup-end,
-.buttonGroup-centre {
+.buttonGroup {
 	display: flex;
 	flex-flow: row wrap;
     justify-content: flex-start;
 	gap: map.get( $spaces, "sm" );
+}
 
-	&-column {
-		flex-flow: column;
-	}
+.buttonGroup-column {
+	flex-flow: column;
+}
 
-	&-end {
-		justify-content: flex-end;
-	}
+.buttonGroup-end {
+	justify-content: flex-end;
+}
 
-	&-centre {
-		justify-content: center;
-	}
+.buttonGroup-centre {
+	justify-content: center;
 }

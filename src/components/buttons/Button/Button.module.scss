@@ -1,10 +1,7 @@
 @use "sass:map";
 @import "styles/variables";
 
-.button,
-.button-primary,
-.button-secondary,
-.button-outline {
+.button {
 	position: relative;
 	transition: all 0.3s ease;
 	border: solid map.get( $borders, "default" ) map.get( $colours, "black" );
@@ -34,28 +31,28 @@
 			color: inherit;
 		}
 	}
+}
 
-	&-primary {
-		border: solid map.get( $borders, "default" ) map.get( $colours, "hotpurple" );
-		background-color: map.get( $colours, "hotpurple" );
+.button-primary {
+	border: solid map.get( $borders, "default" ) map.get( $colours, "hotpurple" );
+	background-color: map.get( $colours, "hotpurple" );
 
-		@media (hover: hover) {
-			&:hover:not( &:disabled ) {
-				border: solid map.get( $borders, "default" ) map.get( $colours, "black" );
-			}
+	@media (hover: hover) {
+		&:hover:not( &:disabled ) {
+			border: solid map.get( $borders, "default" ) map.get( $colours, "black" );
 		}
 	}
+}
 
-	&-outline {
-		border: solid map.get( $borders, "default" ) map.get( $colours, "black" );
-		background-color: #0000;
-		color: inherit;
+.button-outline {
+	border: solid map.get( $borders, "default" ) map.get( $colours, "black" );
+	background-color: #0000;
+	color: inherit;
 
-		@media (hover: hover) {
-			&:hover:not( &:disabled ) {
-				border: solid map.get( $borders, "default" ) map.get( $colours, "hotpurple" );
-				background-color: #0000;
-			}
+	@media (hover: hover) {
+		&:hover:not( &:disabled ) {
+			border: solid map.get( $borders, "default" ) map.get( $colours, "hotpurple" );
+			background-color: #0000;
 		}
 	}
 }

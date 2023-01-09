@@ -100,9 +100,14 @@ const ContactForm = ( { enableFileUpload } ) => {
 	} )
 
 	const reset = () => {
+
+		console.log( 'reset called!' )
+
 		setState( empty )
 		localStorage.removeItem( 'bigupFormState' )
 	}
+	console.log( empty )
+	console.log( state )
 
 	const allowedFileUploadTypes = [
 		'image/jpeg',
@@ -146,7 +151,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 			}
 		}
 
-		const output = form.querySelector( 'footer > div' )
+		const output = form.querySelector( '.' + styles.httpOutput )
 		let classes  = [ styles.popout ]
 		const url    = wpRestEndpoint
 		const fetch_options = {
@@ -156,33 +161,19 @@ const ContactForm = ( { enableFileUpload } ) => {
 		}
 
 		try {
-			updateState( { submitting: true } )
-			output.style.display = 'flex'
-			await displayMessagesAsPopouts( output, [ 'Connecting...' ], classes )
-			let [ result, ] = await Promise.all( [
-				doFetchWithJSONResponse( url, fetch_options ),
-				animateMultipleWithCallback( output, 'opacity', '1' )
-			] )
-			result.class = ( result.ok ) ? styles.popout__success : styles.popout__danger
-			classes = [ ...classes, result.class ]
-			
-			// Animate the popout messages.
-			await animateMultipleWithCallback( output, 'opacity', '0' )
-			await removeChildElements( output )
-			await displayMessagesAsPopouts( output, result.output, classes )
-			await animateMultipleWithCallback( output, 'opacity', '1' )
+			setState( updateState( { submitting: true } ) )
+			displayMessagesAsPopouts( output, [ 'Connecting...' ], classes )
+			const result = await doFetchWithJSONResponse( url, fetch_options )
+			classes = [ ...classes, ( result.ok ) ? styles.popout__success : styles.popout__danger ]
+			removeChildElements( output )
+			displayMessagesAsPopouts( output, result.output, classes )
 			await pauseWithCallback( 5000 )
-			await animateMultipleWithCallback( output, 'opacity', '0' )
-			await removeChildElements( output )
-
-			// Clean up the form.
+			removeChildElements( output )
 			if ( result.ok ) {
 				reset()
 				localStorage.removeItem( 'bigupFormState' )
 			}
-			output.style.display = 'none'
-			updateState( { submitting: false } )
-
+			setState( updateState( { submitting: false } ) )
 		} catch ( error ) {
 			console.error( error )
 		}
@@ -202,7 +193,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 
 		} catch ( error ) {
 			if ( ! error.output ) {
-				// error is not a server response, so display a generic error.
+				// Error is not a server response, so display a generic error.
 				error.output = [ 'Failed to establish a connection to the server.' ]
 				error.ok = false
 			}
@@ -224,16 +215,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 	}
 
 	const removeChildElements = ( parent ) => {
-		return new Promise( ( resolve, reject ) => {
-			try {
-				while ( parent.firstChild ) {
-					parent.removeChild( parent.firstChild )
-				}
-				resolve( 'Child nodes removed successfully.' )
-			} catch ( error ) {
-				reject( error )
-			}
-		} )
+		while ( parent.firstChild ) parent.removeChild( parent.firstChild )
 	}
 
 	const pauseWithCallback = ( milliseconds ) => { 
@@ -245,57 +227,15 @@ const ContactForm = ( { enableFileUpload } ) => {
 	}
 
 	const displayMessagesAsPopouts = ( parent, messages, classes ) => {
-		return new Promise( ( resolve, reject ) => {
-			try {
-				if ( ! parent || parent.nodeType !== Node.ELEMENT_NODE ) {
-					throw new TypeError( 'parent must be an element node.' )
-				} else if ( ! is_iterable( messages ) ) {
-					throw new TypeError( `message_array must be non-string iterable. ${typeof messages} found.` )
-				}
-				let popouts = []
-				messages.forEach( ( message ) => {
-					let p = document.createElement( 'p' )
-					p.innerText = makeStringHumanReadable( message )
-					classes.forEach( ( className ) => {
-						p.classList.add( className )
-					} )
-					parent.appendChild( p )
-					popouts.push( p )
-				} )
-				resolve( popouts )
-			} catch ( error ) {
-				reject( error )
-			}
-		} )
-	}
-
-	function animateWithCallback( property, value ) {
-		return new Promise( ( resolve, reject ) => {
-			try {
-				this.style[ property ] = value
-				// Replacement for built-in event listeners which don't initialise on new elements in time.
-				let transition_complete = setInterval( () => {
-					let style = getComputedStyle( this )
-					if ( style[ property ] === value ) {
-						clearInterval( transition_complete )
-						resolve( 'Transition complete.' )
-					}
-				}, 10 )
-			} catch ( error ) {
-				reject( error )
-			}
-		} )
-	}
-
-	const animateMultipleWithCallback = async ( elements, property, value ) => {
-		if ( ! is_iterable( elements ) ) elements = [ elements ]
-		if ( is_iterable( elements ) && elements.every( ( element ) => { return element.nodeType === 1 } ) ) {
-			const promises = elements.map( ( node ) => animateWithCallback.bind( node )( property, value ) )
-			let result = await Promise.all( promises )
-			return result
-		} else {
-			throw new TypeError( 'elements must be a non-string iterable. ' + typeof elements + ' found.' )
+		if ( ! is_iterable( messages ) ) {
+			throw new TypeError( `message_array must be non-string iterable. ${typeof messages} found.` )
 		}
+		messages.forEach( ( message ) => {
+			let p = document.createElement( 'p' )
+			p.innerText = makeStringHumanReadable( message )
+			classes.forEach( ( className ) => p.classList.add( className ) )
+			parent.appendChild( p )
+		} )
 	}
 
 	const is_iterable = ( object ) => {
@@ -454,7 +394,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 				</ButtonGroup>
 			</fieldset>
 			<footer>
-				<div style={ { display: 'none', opacity: 0 } }></div>
+				<div className={ styles.httpOutput } data-active={ state.submitting }></div>
 				<template>
 				</template>
 			</footer>
