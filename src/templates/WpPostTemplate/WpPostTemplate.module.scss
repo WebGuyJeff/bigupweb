@@ -3,7 +3,26 @@
 
 .wpPostTemplate {
 
+	header {
+		display: flex;
+		flex-flow: column;
+		align-items: flex-start;
+		justify-content: flex-end;
+		padding: 0 map.get( $spaces, "padx-content" ) map.get( $spaces, "xxl" );
+		width: 100%;
+
+		h1 {
+			font-size: map.get( $fontsizes, "display-1" );
+			border-bottom: map.get( $borders, "default" ) solid rgb(0, 0, 0);
+			display: inline-block;
+		}
+	}
+
 	button {
 		margin: 0 map.get( $spaces, "padx-content" );
 	}
+}
+
+.wpPostTemplate__date {
+	color: #333;
 }

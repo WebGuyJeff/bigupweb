@@ -26,6 +26,23 @@ export const data = graphql`
 					}
 				}
 			}
+			author {
+				node {
+					name
+					lastName
+					avatar {
+						url
+						width
+						height
+					}
+				}
+			}
+			tags {
+				nodes {
+					name
+					uri
+				}
+			}
 		}
 	}
 `

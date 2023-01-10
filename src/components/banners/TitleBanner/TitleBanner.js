@@ -1,4 +1,3 @@
-import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Fullstop from 'components/Fullstop/Fullstop'

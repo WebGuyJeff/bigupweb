@@ -6,7 +6,7 @@
 	max-width: 1024px;
 	//background: #fff;
 	border-radius: map.get( $borderradius, 'lg' );
-	padding: map.get( $spaces, 'md' ) map.get( $spaces, 'xs' );
+	padding: map.get( $spaces, "xxl" ) map.get( $spaces, "padx-content" );
 	margin: map.get( $spaces, 'xl' ) auto;
 
 	@media ( min-width: map.get( $breakpoints, 'sm' ) ) {

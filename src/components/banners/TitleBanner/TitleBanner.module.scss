@@ -13,12 +13,7 @@
 	}
 		.titleBanner_content {
 			position: relative;
-			z-index: 2;
 			width: 100%;
-
-			@media (min-width: 768px) {
-				width: 66vw;
-			}
 
 			h1 {
 				font-size: map.get( $fontsizes, "display-1" );

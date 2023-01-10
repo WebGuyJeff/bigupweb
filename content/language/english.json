@@ -1,5 +1,10 @@
 {
 	"pages": {
+		"home": {
+			"title": "Home",
+			"excerptHTML": "<p>Downright different web development<p>",
+			"contentHTML": "<p>Welcome to Bigup Web. This is the intro text for the home page.</p>"
+		},
 		"blog": {
 			"title": "Blog",
 			"headerImageAlt": "Squid in the deep sea",
