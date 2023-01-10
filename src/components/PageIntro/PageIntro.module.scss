@@ -1,0 +1,23 @@
+@use "sass:map";
+@import "styles/variables";
+
+.pageIntro {
+	margin-top: map.get( $spaces, "xxxl" );
+	margin-bottom: map.get( $spaces, "xxxl" );
+	padding: 0 map.get( $spaces, "xxl" );
+}
+
+.pageIntro__content {
+	font-size: map.get( $fontsizes, "display-3" );
+	font-weight: 600;
+	font-variation-settings: 'wght' 600;
+	text-transform: uppercase;
+}
+
+.pageIntro__eyebrow {
+	display: inline-block;
+	margin-inline-start: clamp( 0vw, calc( 10vw - 2em ), map.get( $spaces, "xxxl" ) );
+	font-size: map.get( $fontsizes, "h3" );
+	font-weight: 600;
+	font-variation-settings: 'WGHT' 600, 'SLNT' 40;
+}

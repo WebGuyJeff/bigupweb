@@ -6,6 +6,7 @@ import {
 	FaFileUpload,
 	FaRegWindowClose
 } from 'react-icons/fa'
+import { AiFillFile } from 'react-icons/ai'
 import * as styles from './ContactForm.module.scss'
 
 const ContactForm = ( { enableFileUpload } ) => {
@@ -100,14 +101,9 @@ const ContactForm = ( { enableFileUpload } ) => {
 	} )
 
 	const reset = () => {
-
-		console.log( 'reset called!' )
-
 		setState( empty )
 		localStorage.removeItem( 'bigupFormState' )
 	}
-	console.log( empty )
-	console.log( state )
 
 	const allowedFileUploadTypes = [
 		'image/jpeg',
@@ -152,7 +148,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 		}
 
 		const output = form.querySelector( '.' + styles.httpOutput )
-		let classes  = [ styles.popout ]
+		let classes  = [ styles.popout, styles.popout__info ]
 		const url    = wpRestEndpoint
 		const fetch_options = {
 			method: 'POST',
@@ -164,7 +160,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 			setState( updateState( { submitting: true } ) )
 			displayMessagesAsPopouts( output, [ 'Connecting...' ], classes )
 			const result = await doFetchWithJSONResponse( url, fetch_options )
-			classes = [ ...classes, ( result.ok ) ? styles.popout__success : styles.popout__danger ]
+			classes = [ styles.popout, ( result.ok ) ? styles.popout__success : styles.popout__danger ]
 			removeChildElements( output )
 			displayMessagesAsPopouts( output, result.output, classes )
 			await pauseWithCallback( 5000 )
@@ -173,9 +169,9 @@ const ContactForm = ( { enableFileUpload } ) => {
 				reset()
 				localStorage.removeItem( 'bigupFormState' )
 			}
-			setState( updateState( { submitting: false } ) )
 		} catch ( error ) {
 			console.error( error )
+			setState( updateState( { submitting: false } ) )
 		}
 	}
 
@@ -190,7 +186,6 @@ const ContactForm = ( { enableFileUpload } ) => {
 			if ( typeof result.output === 'string' ) result.output = [ result.output ]
 			if ( ! result.ok ) throw result
 			return result
-
 		} catch ( error ) {
 			if ( ! error.output ) {
 				// Error is not a server response, so display a generic error.
@@ -345,7 +340,9 @@ const ContactForm = ( { enableFileUpload } ) => {
 								onChange={ handleChange }
 							/>
 							<FaFileUpload />
-							Attach file
+							<span>
+								Attach file
+							</span>
 						</label>
 						{
 							state.files.value.length > 0 &&
@@ -353,6 +350,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 								<ul>
 									{ state.files.value.map( ( file, index ) => { return (
 										<li key={ index }>
+											<AiFillFile />
 											<span>
 												{ file.name }
 											</span>
@@ -373,7 +371,7 @@ const ContactForm = ( { enableFileUpload } ) => {
 						}
 						<div data-errors={ ( state.files.errors.length !== 0 ) }>
 							{ state.files.errors.map( ( error, index ) => { return ( <span key={ index }>{ error }</span> ) } ) }
-							<span>Allowed file types: jpg, png, webp, svg, pdf, txt, odf, xlsx, doc.</span>
+							<p>Allowed file types: jpg, png, webp, svg, pdf, txt, odf, xlsx, doc.</p>
 						</div>
 					</div>
 				) }

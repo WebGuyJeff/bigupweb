@@ -8,6 +8,7 @@ import HeadMeta from 'components/HeadMeta'
 import LandingLayout from 'components/Layout/LandingLayout/LandingLayout'
 import HeroBanner from 'components/banners/HeroBanner/HeroBanner'
 import Container from 'components/containers/Container/Container'
+import PageIntro from 'components/PageIntro/PageIntro'
 import Section from 'components/containers/Section/Section'
 import PostFeed from 'components/Feeds/PostFeed/PostFeed'
 import JSONData from 'root/content/language/english.json'
@@ -52,7 +53,11 @@ const Blog = () => {
 			/>
 			{ contentHTML && (
 				<Container width="tight" centre pad>
-					{ parse( contentHTML ) }
+					<PageIntro
+						eyebrow="Read some stuff"
+					>
+						{ parse( contentHTML ) }	
+					</ PageIntro>
 				</Container>
 			) }
 			<Section>

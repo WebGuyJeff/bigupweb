@@ -4,7 +4,7 @@
 
 .wPContent {
 	max-width: 1024px;
-	background: #fff;
+	//background: #fff;
 	border-radius: map.get( $borderradius, 'lg' );
 	padding: map.get( $spaces, 'md' ) map.get( $spaces, 'xs' );
 	margin: map.get( $spaces, 'xl' ) auto;

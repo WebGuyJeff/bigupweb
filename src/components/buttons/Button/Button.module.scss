@@ -26,16 +26,27 @@
 	@media (hover: hover) {
 		&:hover:not( &:disabled ) {
 			cursor: pointer;
-			border: solid map.get( $borders, "default" ) map.get( $colours, "hotpurple" );
-			background-color: map.get( $colours, "hotpurple" );
-			color: inherit;
+			border: solid map.get( $borders, "default" ) map.get( $colours, "pinkred" );
+			background-color: map.get( $colours, "pinkred" );
+			//color: inherit;
 		}
 	}
 }
 
 .button-primary {
-	border: solid map.get( $borders, "default" ) map.get( $colours, "hotpurple" );
-	background-color: map.get( $colours, "hotpurple" );
+	border: solid map.get( $borders, "default" ) map.get( $colours, "pinkred" );
+	background-color: map.get( $colours, "pinkred" );
+
+	@media (hover: hover) {
+		&:hover:not( &:disabled ) {
+			border: solid map.get( $borders, "default" ) map.get( $colours, "black" );
+		}
+	}
+}
+
+.button-secondary {
+	border: solid map.get( $borders, "default" ) map.get( $colours, "cyan" );
+	background-color: map.get( $colours, "cyan" );
 
 	@media (hover: hover) {
 		&:hover:not( &:disabled ) {
@@ -51,7 +62,7 @@
 
 	@media (hover: hover) {
 		&:hover:not( &:disabled ) {
-			border: solid map.get( $borders, "default" ) map.get( $colours, "hotpurple" );
+			border: solid map.get( $borders, "default" ) map.get( $colours, "pinkred" );
 			background-color: #0000;
 		}
 	}
