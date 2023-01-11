@@ -14,9 +14,9 @@
 
 	@media ( min-width: map.get( $breakpoints, "lg" ) ) {
 		grid-template:
-			"header  header"
-			"sidebar main"
-			"footer  footer";
+			"header  header" auto
+			"main sidebar"   auto
+			"footer  footer" auto / 1fr 400px;
 	}
 }
 

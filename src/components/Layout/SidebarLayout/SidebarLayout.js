@@ -13,12 +13,12 @@ const SidebarLayout = ( { children } ) => {
 	return (
 		<div className={ layout }>
 			<Header sticky />
-			<Sidebar>
-				<TagCloud />
-			</Sidebar>
 			<main className={ main }>
 				{ children }
 			</main>
+			<Sidebar>
+				<TagCloud />
+			</Sidebar>
 			<Footer />
 		</div>
 	)

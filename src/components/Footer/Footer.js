@@ -21,51 +21,49 @@ const Footer = () => {
 
 	return (
 		<footer style={ { marginBottom: 0 } } className={ footer }>
-			<Container width="tight">
-				<div className={ footer_inner }>
-					<div className={ footer_menu }>
-						<h5>
-							Links
-							<Fullstop />
-						</h5>
-						<ul>
-							{ footerLinks.map( ( node, index ) => {
-								return (
-									<li key={ index }>
-										<Link
-											to={ node.uri }
-											activeClassName="menu_item--active"
-										>
-											{ node.label }
-											<Fullstop />
-										</Link>
-									</li>
-								)
-							} ) }
-						</ul>
-					</div>
-					<div className={ footer_menu }>
-						<h5>
-						Follow Bigup Web
-							<Fullstop />
-						</h5>
-						<SocialLinks />
-					</div>
+			<div className={ footer_inner }>
+				<div className={ footer_menu }>
+					<h5>
+						Links
+						<Fullstop />
+					</h5>
+					<ul>
+						{ footerLinks.map( ( node, index ) => {
+							return (
+								<li key={ index }>
+									<Link
+										to={ node.uri }
+										activeClassName="menu_item--active"
+									>
+										{ node.label }
+										<Fullstop />
+									</Link>
+								</li>
+							)
+						} ) }
+					</ul>
 				</div>
-				<div className={ copyright }>
-					<p>
-						Designed & developed by{ ' ' }
-						<a
-							href={ developerUrl }
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							{ developerName }
-						</a>
-						<span>.</span>
-					</p>
+				<div className={ footer_menu }>
+					<h5>
+					Follow Bigup Web
+						<Fullstop />
+					</h5>
+					<SocialLinks />
 				</div>
-			</ Container>
+			</div>
+			<div className={ copyright }>
+				<p>
+					Designed & developed by{ ' ' }
+					<a
+						href={ developerUrl }
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						{ developerName }
+					</a>
+					<span>.</span>
+				</p>
+			</div>
 		</footer>
 	)
 }

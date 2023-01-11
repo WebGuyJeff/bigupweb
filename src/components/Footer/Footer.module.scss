@@ -24,10 +24,10 @@
 }
 
 .footer_inner {
-	display: flex;
-	flex-flow: column;
-	justify-content: flex-end;
-	gap: map.get( $spaces, "xl" );
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	grid-column-gap: map.get( $spaces, "xl" );
+	width: 100%;
 
 	@media (min-width: 768px) {
 		align-items: flex-start;
