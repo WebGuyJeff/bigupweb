@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gatsby build --verbose",
-    "develop": "gatsby develop --verbose",
+    "dev": "gatsby develop --verbose",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
     "lint-fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json}\"",
     "serve": "gatsby serve",
