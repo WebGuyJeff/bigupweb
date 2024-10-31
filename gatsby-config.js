@@ -13,8 +13,8 @@ require( 'dotenv' ).config( {
 module.exports = {
 	trailingSlash: false,
 	siteMetadata: {
-		title: 'Bigup Web',
-		siteUrl: 'https://bigupweb.uk',
+		title: 'Bigup Web Hosting',
+		siteUrl: 'https://gatsby-site.bigupweb.com',
 		description: 'Exciting, Bold, and Downright Different Web Development',
 		author: 'Jefferson Real',
 		twitterUsername: 'bigupweb',

@@ -1,7 +1,7 @@
 {
   "name": "bigupweb",
   "version": "0.0.1",
-  "description": "A website for bigupweb.uk",
+  "description": "A Gatsby website for Bigup Web Hosting",
   "main": "index.js",
   "scripts": {
     "build": "gatsby build --verbose",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bigupjeff/bigupweb.git"
+    "url": "git+https://github.com/webguyjeff/bigupweb.git"
   },
   "keywords": [
     "bigupweb",
@@ -23,9 +23,9 @@
   "author": "Jefferson Real",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/bigupjeff/bigupweb/issues"
+    "url": "https://github.com/webguyjeff/bigupweb/issues"
   },
-  "homepage": "https://github.com/bigupjeff/bigupweb#readme",
+  "homepage": "https://github.com/webguyjeff/bigupweb#readme",
   "browserslist": [
     ">0.2%",
     "not dead",

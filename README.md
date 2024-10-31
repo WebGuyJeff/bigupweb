@@ -1,6 +1,6 @@
-# Bigup Web
+# Bigup Web Gatsby
 
-A website for bigupweb.uk
+A Gatsby website for Bigup Web Hosting
 
 ## Styles
 
@@ -13,15 +13,3 @@ One drawback to CSS Modules, is the incompatibility with underscores making my v
 **Linting**
 
 `npm run lint-fix`
-
-
-## Known Bugs
-
-For a reason I can't work out, NPM hangs when trying to fetch "@pasdo501/gatsby-source-woocommerce".
-
-[package.json]
-"dependencies": {
-	"@pasdo501/gatsby-source-woocommerce": "^0.15.1",
-	...
-
-For now, I've pulled Woo support because there's little to no docs online and I don't have time.
